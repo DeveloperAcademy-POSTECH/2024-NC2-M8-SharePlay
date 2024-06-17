@@ -12,7 +12,7 @@
 		4250FA7F2C1F220B006E83C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4250FA7E2C1F220B006E83C0 /* Assets.xcassets */; };
 		4250FA822C1F220B006E83C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4250FA812C1F220B006E83C0 /* Preview Assets.xcassets */; };
 		4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */; };
-		4250FA8B2C205342006E83C0 /* NICameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8A2C205342006E83C0 /* NICameraView.swift */; };
+		4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */; };
 		4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8C2C20566C006E83C0 /* NISessionManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,7 +23,7 @@
 		4250FA7E2C1F220B006E83C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4250FA812C1F220B006E83C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NINotSupportedDeviceView.swift; sourceTree = "<group>"; };
-		4250FA8A2C205342006E83C0 /* NICameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NICameraView.swift; sourceTree = "<group>"; };
+		4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NICameraAssistanceView.swift; sourceTree = "<group>"; };
 		4250FA8C2C20566C006E83C0 /* NISessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NISessionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,7 +60,7 @@
 				4250FA7A2C1F220A006E83C0 /* HitTheSpotApp.swift */,
 				4250FA7C2C1F220A006E83C0 /* ContentView.swift */,
 				4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */,
-				4250FA8A2C205342006E83C0 /* NICameraView.swift */,
+				4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */,
 				4250FA8C2C20566C006E83C0 /* NISessionManager.swift */,
 				4250FA7E2C1F220B006E83C0 /* Assets.xcassets */,
 				4250FA802C1F220B006E83C0 /* Preview Content */,
@@ -147,7 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */,
-				4250FA8B2C205342006E83C0 /* NICameraView.swift in Sources */,
+				4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */,
 				4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */,
 				4250FA7D2C1F220A006E83C0 /* ContentView.swift in Sources */,
 				4250FA7B2C1F220A006E83C0 /* HitTheSpotApp.swift in Sources */,

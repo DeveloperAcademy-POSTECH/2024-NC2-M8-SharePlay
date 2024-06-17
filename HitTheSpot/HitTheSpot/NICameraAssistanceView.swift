@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NICameraView: View {
+struct NICameraAssistanceView: View {
     let niStatus: NIStatus
     
     var body: some View {
@@ -16,6 +16,6 @@ struct NICameraView: View {
 }
 
 #Preview {
-    NICameraView(niStatus: .extended)
+    NICameraAssistanceView(niStatus: .extended)
 //    NICameraView(niOption: .precise)
 }
