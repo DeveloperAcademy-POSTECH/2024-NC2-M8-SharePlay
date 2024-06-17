@@ -11,6 +11,11 @@ import ARKit
 
 @Observable
 class NISessionManager: NSObject {
+    @ObservationIgnored private let niSessionQueue = DispatchQueue(
+        label: "HitTheSpot.sessionManager.NISessionQueue",
+        qos: .userInitiated
+    )
+    
     @ObservationIgnored private var niStatus: NIStatus
     @ObservationIgnored private var niSession: NISession?
     @ObservationIgnored private var arSession: ARSession?
@@ -19,6 +24,8 @@ class NISessionManager: NSObject {
     init(niStatus: NIStatus) {
         self.niStatus = niStatus
         super.init()
+        // TODO: - 뷰 진입 시 Manager를 선언하는 경우 아닐 경우 수정
+        startNISession()
     }
 }
 
@@ -37,6 +44,15 @@ extension NISessionManager {
         self.arSession = arSession
         // Monitor ARKit session events.
         arSession.delegate = self
+    }
+    
+    func startNISession() {
+        // Create the interaction session.
+        niSession = NISession()
+        niSession?.delegateQueue = niSessionQueue
+        
+        // Set a delegate.
+        niSession?.delegate = self
     }
 }
 
