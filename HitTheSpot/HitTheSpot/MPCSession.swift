@@ -102,6 +102,7 @@ class MPCSession: NSObject {
         super.init()
         
         mcSession.delegate = self
+        mcAdvertiser.delegate = self
     }
 }
 
@@ -249,5 +250,30 @@ extension MPCSession: MCSessionDelegate {
         withError error: (any Error)?
     ) {
         print(#fileID, #function, #line, "\(peerID.displayName)")
+    }
+}
+
+extension MPCSession: MCNearbyServiceAdvertiserDelegate {
+    /// Peer로부터 세션 초대를 받으면 호출되는 함수
+    /// - Parameters:
+    ///   - advertiser: 세션에 참여하도록 초대한 advertiser
+    ///   - peerID: 초대한 Peer의 ID
+    ///   - context: 근처 피어로부터 수신된 임의의 데이터
+    ///   - invitationHandler: 초대를 수락/거부할 지를 나타내고 연결할 세션 정보를 전달하는 클로저
+    internal func advertiser(
+        _ advertiser: MCNearbyServiceAdvertiser,
+        didReceiveInvitationFromPeer peerID: MCPeerID,
+        withContext context: Data?,
+        invitationHandler: @escaping (Bool, MCSession?) -> Void
+    ) {
+        mpcSessionSerialQueue.sync { [weak self] in
+            guard let self else { return }
+            // Accept the invitation only if the current number of peers is
+            // less than the maximum.
+            if self.mcSession.connectedPeers.count < self.maxNumPeers {
+                // 초대를 수락하고, 연결할 세션 정보를 전달합니다.
+                invitationHandler(true, self.mcSession)
+            }
+        }
     }
 }
