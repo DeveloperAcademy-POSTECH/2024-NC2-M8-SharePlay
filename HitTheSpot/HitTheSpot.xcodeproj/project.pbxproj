@@ -15,6 +15,7 @@
 		4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */; };
 		4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8C2C20566C006E83C0 /* NISessionManager.swift */; };
 		4250FA8F2C206AE6006E83C0 /* NIARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8E2C206AE6006E83C0 /* NIARView.swift */; };
+		4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA912C2077ED006E83C0 /* MPCSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4250FA8C2C20566C006E83C0 /* NISessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NISessionManager.swift; sourceTree = "<group>"; };
 		4250FA8E2C206AE6006E83C0 /* NIARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIARView.swift; sourceTree = "<group>"; };
 		4250FA902C2072FE006E83C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4250FA912C2077ED006E83C0 /* MPCSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */,
 				4250FA8E2C206AE6006E83C0 /* NIARView.swift */,
 				4250FA8C2C20566C006E83C0 /* NISessionManager.swift */,
+				4250FA912C2077ED006E83C0 /* MPCSession.swift */,
 				4250FA7E2C1F220B006E83C0 /* Assets.xcassets */,
 				4250FA802C1F220B006E83C0 /* Preview Content */,
 			);
@@ -157,6 +160,7 @@
 				4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */,
 				4250FA7D2C1F220A006E83C0 /* ContentView.swift in Sources */,
 				4250FA7B2C1F220A006E83C0 /* HitTheSpotApp.swift in Sources */,
+				4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
