@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct NICameraAssistanceView: View {
+    @State private var niSessionManager: NISessionManager
+    
     let niStatus: NIStatus
+    
+    init(niStatus: NIStatus) {
+        self.niStatus = niStatus
+        self._niSessionManager = State(wrappedValue: NISessionManager(niStatus: niStatus))
+    }
     
     var body: some View {
         Text(niStatus.description)
