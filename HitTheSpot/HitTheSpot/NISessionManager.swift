@@ -11,11 +11,13 @@ import ARKit
 
 @Observable
 class NISessionManager: NSObject {
+    @ObservationIgnored private var niStatus: NIStatus
     @ObservationIgnored private var niSession: NISession?
     @ObservationIgnored private var arSession: ARSession?
     @ObservationIgnored private var peerDiscoveryToken: NIDiscoveryToken?
     
-    override init() {
+    init(niStatus: NIStatus) {
+        self.niStatus = niStatus
         super.init()
     }
 }

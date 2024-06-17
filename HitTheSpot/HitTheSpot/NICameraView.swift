@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct NICameraView: View {
-    let niOption: NIOption
+    let niStatus: NIStatus
     
     var body: some View {
-        Text(niOption.description)
+        Text(niStatus.description)
     }
 }
 
 #Preview {
-    NICameraView(niOption: .extended)
+    NICameraView(niStatus: .extended)
 //    NICameraView(niOption: .precise)
 }

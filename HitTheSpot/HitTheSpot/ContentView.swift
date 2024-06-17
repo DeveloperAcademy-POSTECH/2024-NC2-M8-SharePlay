@@ -8,7 +8,7 @@
 import SwiftUI
 import NearbyInteraction
 
-enum NIOption {
+enum NIStatus {
     case notSupported
     case precise
     case extended
@@ -31,9 +31,9 @@ struct ContentView: View {
     
     var body: some View {
         if #available(iOS 17.0, watchOS 10.0, *), isSupportU2 {
-            NICameraView(niOption: .extended)
+            NICameraView(niStatus: .extended)
         } else if isSupportU1 {
-            NICameraView(niOption: .precise)
+            NICameraView(niStatus: .precise)
         } else {
             NINotSupportedDeviceView()
         }
