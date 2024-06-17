@@ -304,6 +304,7 @@
 				INFOPLIST_FILE = HitTheSpot/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Hit the Spot!";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 위한 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "로컬 네트워크 사용을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "근처 사용자의 위치를 확인하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -337,6 +338,7 @@
 				INFOPLIST_FILE = HitTheSpot/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Hit the Spot!";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 위한 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "로컬 네트워크 사용을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "근처 사용자의 위치를 확인하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
