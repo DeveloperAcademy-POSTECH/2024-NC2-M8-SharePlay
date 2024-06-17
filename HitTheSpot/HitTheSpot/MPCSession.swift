@@ -24,7 +24,6 @@ class MPCSession: NSObject {
     /// Peer가 연결이 끊어지면 실행되는 클로저
     var peerDisconnectedHandler: ((MCPeerID) -> Void)?
     
-    
     // MARK: - Immutable
     
     /// 모든 Peer 간의 통신을 활성화하고 관리하는 세션
@@ -48,7 +47,6 @@ class MPCSession: NSObject {
     /// 최대 연결할 수 있는 Peer의 수
     private let maxNumPeers: Int
     
-    
     // MARK: - Mutable
     
     /// 현재 연결된 Peer 배열
@@ -56,7 +54,6 @@ class MPCSession: NSObject {
     
     /// 앱을 사용하는 동안 Connetion, Disconnections, Invitation의 Send, Accept를 동기화하기 위한 Queue입니다.
     private var mpcSessionSerialQueue: DispatchQueue
-    
     
     init(
         localID: String,
@@ -103,6 +100,7 @@ class MPCSession: NSObject {
         
         mcSession.delegate = self
         mcAdvertiser.delegate = self
+        mcBrowser.delegate = self
     }
 }
 
@@ -275,5 +273,47 @@ extension MPCSession: MCNearbyServiceAdvertiserDelegate {
                 invitationHandler(true, self.mcSession)
             }
         }
+    }
+}
+
+extension MPCSession: MCNearbyServiceBrowserDelegate {
+    
+    /// 근처 Peer를 찾았을 때 호출되는 함수
+    /// - Parameters:
+    ///   - browser: Peer를 찾은 browser 객체
+    ///   - peerID: 찾은 Peer ID
+    ///   - info: Peer의 advertiser의 정보
+    func browser(
+        _ browser: MCNearbyServiceBrowser,
+        foundPeer peerID: MCPeerID,
+        withDiscoveryInfo info: [String : String]?
+    ) {
+        // Only connect with peers matched with the same `identityInfo` (both key and value).
+        guard let identityValue = info?[MPCSessionConstants.kKeyIdentity],
+              identityValue == discoveryInfoIdentity else {
+            return
+        }
+        
+        mpcSessionSerialQueue.sync { [weak self] in
+            guard let self else { return }
+            // Invite a new peer if the current number of peers is less than
+            // the maximum.
+            if self.mcSession.connectedPeers.count < self.maxNumPeers {
+                browser.invitePeer(
+                    peerID,
+                    to: self.mcSession,
+                    withContext: nil,
+                    timeout: 10
+                )
+            }
+        }
+    }
+    
+    // MARK: - MCNearbyServiceBrowserDelegate를 따르기 위해 구현된 함수
+    func browser(
+        _ browser: MCNearbyServiceBrowser,
+        lostPeer peerID: MCPeerID
+    ) {
+        
     }
 }
