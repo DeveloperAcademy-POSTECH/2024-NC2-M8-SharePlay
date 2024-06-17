@@ -13,6 +13,7 @@
 		4250FA822C1F220B006E83C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4250FA812C1F220B006E83C0 /* Preview Assets.xcassets */; };
 		4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */; };
 		4250FA8B2C205342006E83C0 /* NICameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8A2C205342006E83C0 /* NICameraView.swift */; };
+		4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8C2C20566C006E83C0 /* NISessionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		4250FA812C1F220B006E83C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NINotSupportedDeviceView.swift; sourceTree = "<group>"; };
 		4250FA8A2C205342006E83C0 /* NICameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NICameraView.swift; sourceTree = "<group>"; };
+		4250FA8C2C20566C006E83C0 /* NISessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NISessionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				4250FA7C2C1F220A006E83C0 /* ContentView.swift */,
 				4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */,
 				4250FA8A2C205342006E83C0 /* NICameraView.swift */,
+				4250FA8C2C20566C006E83C0 /* NISessionManager.swift */,
 				4250FA7E2C1F220B006E83C0 /* Assets.xcassets */,
 				4250FA802C1F220B006E83C0 /* Preview Content */,
 			);
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */,
 				4250FA8B2C205342006E83C0 /* NICameraView.swift in Sources */,
 				4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */,
 				4250FA7D2C1F220A006E83C0 /* ContentView.swift in Sources */,
@@ -283,6 +287,7 @@
 				DEVELOPMENT_TEAM = Q6CK9777WL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "근처 사용자의 위치를 확인하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -312,6 +317,7 @@
 				DEVELOPMENT_TEAM = Q6CK9777WL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "근처 사용자의 위치를 확인하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
