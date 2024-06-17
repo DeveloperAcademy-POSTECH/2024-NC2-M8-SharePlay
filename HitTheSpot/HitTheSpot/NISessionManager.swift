@@ -7,18 +7,21 @@
 
 import SwiftUI
 import NearbyInteraction
+import MultipeerConnectivity
 import ARKit
 
 @Observable
 class NISessionManager: NSObject {
+    @ObservationIgnored private let niStatus: NIStatus
     @ObservationIgnored private let niSessionQueue = DispatchQueue(
-        label: "HitTheSpot.sessionManager.NISessionQueue",
+        label: QueueLabel.niSessionQueue,
         qos: .userInitiated
     )
     
-    @ObservationIgnored private var niStatus: NIStatus
     @ObservationIgnored private var niSession: NISession?
+    @ObservationIgnored private var mpcSession: MPCSession?
     @ObservationIgnored private var arSession: ARSession?
+    
     @ObservationIgnored private var peerDiscoveryToken: NIDiscoveryToken?
     
     init(niStatus: NIStatus) {
@@ -30,7 +33,6 @@ class NISessionManager: NSObject {
 }
 
 extension NISessionManager {
-    // MARK: - NISession를 위한 ARSession 세팅 함수
     /// NISession를 위한 ARSession 세팅 함수
     ///
     /// - Parameter arSession:
@@ -45,6 +47,13 @@ extension NISessionManager {
         // Monitor ARKit session events.
         arSession.delegate = self
     }
+}
+
+extension NISessionManager {
+    func startup() {
+        startNISession()
+        startMPCSession()
+    }
     
     func startNISession() {
         // Create the interaction session.
@@ -54,6 +63,51 @@ extension NISessionManager {
         // Set a delegate.
         niSession?.delegate = self
     }
+    
+    func startMPCSession() {
+        if mpcSession == nil {
+            // The app advertises `DiscoveryInfo` within Multipeer Connectivity framework's
+            // Bonjour TXT records that identify the device for browsers to see.
+            // Here, the app uses `["identity": discoveryInfoIdentity]` to advertise to peers.
+            // `LocalID` is the displayName of `MCPeerID` that's sent to peers.
+
+            // Prevent Simulator from finding devices.
+            #if targetEnvironment(simulator)
+            let serviceIdentity = niStatus == .extended
+            ? Constant.serviceIdentityForSimulatorEDM
+            : Constant.serviceIdentityForSimulator
+            #else
+            let serviceIdentity = Constant.serviceIdentity
+            #endif
+            
+            let localName = UIDevice.current.name
+            
+            mpcSession = MPCSession(
+                localID: localName,
+                service: Constant.service,
+                serviceIdentity: serviceIdentity,
+                maxPeers: 1 // TODO: - max Peer 전환 여부 체크
+            )
+            
+            mpcSession?.peerConnectedHandler = connectedToPeer
+            mpcSession?.peerDataHandler = dataReceivedHandler
+            mpcSession?.peerDisconnectedHandler = disconnectedFromPeer
+        }
+        
+        mpcSession?.invalidate()
+        mpcSession?.start()
+    }
+    
+    func endMPCSession() {
+        mpcSession?.invalidate()
+        mpcSession = nil
+    }
+}
+
+extension NISessionManager {
+    private func connectedToPeer(peer: MCPeerID) {}
+    private func disconnectedFromPeer(peer: MCPeerID) {}
+    private func dataReceivedHandler(data: Data, peer: MCPeerID) {}
 }
 
 extension NISessionManager: NISessionDelegate {

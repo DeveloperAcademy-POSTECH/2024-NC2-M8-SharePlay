@@ -92,7 +92,7 @@ class MPCSession: NSObject {
         self.maxNumPeers = maxPeers
         self.currentConnectedPeers = [MCPeerID]()
         self.mpcSessionSerialQueue = DispatchQueue(
-            label: "HitTheSpot.mpcQueue",
+            label: QueueLabel.mpcSessionSerialQueue,
             qos: .default
         )
         
