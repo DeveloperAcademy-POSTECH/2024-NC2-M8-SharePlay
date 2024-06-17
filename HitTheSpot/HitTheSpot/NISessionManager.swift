@@ -5,12 +5,37 @@
 //  Created by 남유성 on 6/17/24.
 //
 
-import Foundation
+import SwiftUI
 import NearbyInteraction
+import ARKit
 
 @Observable
 class NISessionManager: NSObject {
+    @ObservationIgnored private var niSession: NISession?
+    @ObservationIgnored private var arSession: ARSession?
     @ObservationIgnored private var peerDiscoveryToken: NIDiscoveryToken?
+    
+    override init() {
+        super.init()
+    }
+}
+
+extension NISessionManager {
+    // MARK: - NISession를 위한 ARSession 세팅 함수
+    /// NISession를 위한 ARSession 세팅 함수
+    ///
+    /// - Parameter arSession:
+    /// sessionShouldAttemptRelocalization(_:) 메서드에서 false를 리턴하는 ARSession
+    ///
+    func setARSession(_ arSession: ARSession) {
+        // Set the ARSession to the interaction session before
+        // running the interaction session so that the framework doesn't
+        // create its own AR session.
+        niSession?.setARSession(arSession)
+        self.arSession = arSession
+        // Monitor ARKit session events.
+        arSession.delegate = self
+    }
 }
 
 extension NISessionManager: NISessionDelegate {
@@ -119,5 +144,11 @@ extension NISessionManager: NISessionDelegate {
     }
 }
 
+extension NISessionManager: ARSessionDelegate {
+    /// Returns `false` as required by the `NISession.setARSession(_:)` documentation.
+    func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
+        return false
+    }
+}
 
 
