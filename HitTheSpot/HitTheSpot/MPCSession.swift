@@ -123,6 +123,22 @@ extension MPCSession {
         mcSession.disconnect()
         currentConnectedPeers.removeAll()
     }
+    
+    public func sendDataToAllPeers(data: Data) {
+        sendData(data: data, peers: mcSession.connectedPeers, mode: .reliable)
+    }
+    
+    public func sendData(
+        data: Data,
+        peers: [MCPeerID],
+        mode: MCSessionSendDataMode
+    ) {
+        do {
+            try mcSession.send(data, toPeers: peers, with: mode)
+        } catch let error {
+            NSLog("Error sending data: \(error).")
+        }
+    }
 }
 
 extension MPCSession {
