@@ -12,6 +12,9 @@ import ARKit
 
 @Observable
 class NISessionManager: NSObject {
+    var connectedPeerName: String = ""
+    var latestNearbyObject: NINearbyObject?
+    
     /// Nearby Interaction 지원 상태
     @ObservationIgnored private let niStatus: NIStatus
     
@@ -20,6 +23,9 @@ class NISessionManager: NSObject {
         label: QueueLabel.niSessionQueue,
         qos: .userInitiated
     )
+    
+    /// 상대 Peer와의 측정 퀄리티 측정 객체
+    @ObservationIgnored private let qualityEstimator: MeasurementQualityEstimator?
     
     /// 현재 Nearby Interation Session
     @ObservationIgnored private var niSession: NISession?
@@ -54,7 +60,7 @@ class NISessionManager: NSObject {
     init(niStatus: NIStatus) {
         NSLog("Starting NI session for \(niStatus.description).")
         self.niStatus = niStatus
-        
+        self.qualityEstimator = niStatus == .extended ? MeasurementQualityEstimator() : nil
         super.init()
         // TODO: - 뷰 진입 시 Manager를 선언하는 경우 아닐 경우 수정
         startup()
@@ -70,6 +76,7 @@ class NISessionManager: NSObject {
 extension NISessionManager {
     func startup() {
         // TODO: - View initialize
+//        near
         resetPeerData()
         startNISession()
         startMPCSession()
