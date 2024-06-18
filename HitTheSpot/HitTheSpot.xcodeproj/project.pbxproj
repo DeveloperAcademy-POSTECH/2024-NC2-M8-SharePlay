@@ -11,6 +11,13 @@
 		4250FA7D2C1F220A006E83C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA7C2C1F220A006E83C0 /* ContentView.swift */; };
 		4250FA7F2C1F220B006E83C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4250FA7E2C1F220B006E83C0 /* Assets.xcassets */; };
 		4250FA822C1F220B006E83C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4250FA812C1F220B006E83C0 /* Preview Assets.xcassets */; };
+		4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */; };
+		4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */; };
+		4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8C2C20566C006E83C0 /* NISessionManager.swift */; };
+		4250FA8F2C206AE6006E83C0 /* NIARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8E2C206AE6006E83C0 /* NIARView.swift */; };
+		4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA912C2077ED006E83C0 /* MPCSession.swift */; };
+		4250FA942C209322006E83C0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA932C209322006E83C0 /* Constant.swift */; };
+		4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,14 @@
 		4250FA7C2C1F220A006E83C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4250FA7E2C1F220B006E83C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4250FA812C1F220B006E83C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NINotSupportedDeviceView.swift; sourceTree = "<group>"; };
+		4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NICameraAssistanceView.swift; sourceTree = "<group>"; };
+		4250FA8C2C20566C006E83C0 /* NISessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NISessionManager.swift; sourceTree = "<group>"; };
+		4250FA8E2C206AE6006E83C0 /* NIARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIARView.swift; sourceTree = "<group>"; };
+		4250FA902C2072FE006E83C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4250FA912C2077ED006E83C0 /* MPCSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCSession.swift; sourceTree = "<group>"; };
+		4250FA932C209322006E83C0 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementQualityEstimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +66,18 @@
 		4250FA792C1F220A006E83C0 /* HitTheSpot */ = {
 			isa = PBXGroup;
 			children = (
+				4250FA902C2072FE006E83C0 /* Info.plist */,
 				4250FA7A2C1F220A006E83C0 /* HitTheSpotApp.swift */,
 				4250FA7C2C1F220A006E83C0 /* ContentView.swift */,
+				4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */,
+				4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */,
+				4250FA8E2C206AE6006E83C0 /* NIARView.swift */,
+				4250FA8C2C20566C006E83C0 /* NISessionManager.swift */,
+				4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */,
+				4250FA912C2077ED006E83C0 /* MPCSession.swift */,
 				4250FA7E2C1F220B006E83C0 /* Assets.xcassets */,
 				4250FA802C1F220B006E83C0 /* Preview Content */,
+				4250FA932C209322006E83C0 /* Constant.swift */,
 			);
 			path = HitTheSpot;
 			sourceTree = "<group>";
@@ -137,8 +160,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4250FA8F2C206AE6006E83C0 /* NIARView.swift in Sources */,
+				4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */,
+				4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */,
+				4250FA942C209322006E83C0 /* Constant.swift in Sources */,
+				4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */,
 				4250FA7D2C1F220A006E83C0 /* ContentView.swift in Sources */,
+				4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */,
 				4250FA7B2C1F220A006E83C0 /* HitTheSpotApp.swift in Sources */,
+				4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,17 +305,22 @@
 				DEVELOPMENT_TEAM = Q6CK9777WL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HitTheSpot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Hit the Spot!";
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 위한 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "로컬 네트워크 사용을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "근처 사용자의 위치를 확인하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuseong.com.HitTheSpot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myulaGilah.HitTheSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -304,17 +339,22 @@
 				DEVELOPMENT_TEAM = Q6CK9777WL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HitTheSpot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Hit the Spot!";
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 위한 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "로컬 네트워크 사용을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "근처 사용자의 위치를 확인하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuseong.com.HitTheSpot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myulaGilah.HitTheSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
