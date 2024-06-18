@@ -62,8 +62,6 @@ class NISessionManager: NSObject {
         self.niStatus = niStatus
         self.qualityEstimator = niStatus == .extended ? MeasurementQualityEstimator() : nil
         super.init()
-        // TODO: - 뷰 진입 시 Manager를 선언하는 경우 아닐 경우 수정
-        startup()
     }
     
     deinit {

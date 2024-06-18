@@ -31,9 +31,9 @@ struct ContentView: View {
     
     var body: some View {
         if #available(iOS 17.0, watchOS 10.0, *), isSupportU2 {
-            NICameraAssistanceView(niStatus: .extended)
+            MainHomeView(niStatus: .extended)
         } else if isSupportU1 {
-            NICameraAssistanceView(niStatus: .precise)
+            MainHomeView(niStatus: .precise)
         } else {
             NINotSupportedDeviceView()
         }
