@@ -58,7 +58,6 @@ class NISessionManager: NSObject {
     @ObservationIgnored private var isSupportU2: Bool { niStatus == .extended }
     
     init(niStatus: NIStatus) {
-        NSLog("Starting NI session for \(niStatus.description).")
         self.niStatus = niStatus
         self.qualityEstimator = niStatus == .extended ? MeasurementQualityEstimator() : nil
         super.init()

@@ -8,54 +8,62 @@
 import SwiftUI
 
 struct MainHomeView: View {
-    @State private var arViewController = NIARViewController()
-    @State private var niSessionManager: NISessionManager
-    let niStatus: NIStatus
+    @Binding var viewState: MainView.ViewState
+    @State private var isSharePlayPresented = false
     
-    init(niStatus: NIStatus) {
-        self.niStatus = niStatus
-        self._niSessionManager = State(wrappedValue: NISessionManager(niStatus: niStatus))
-    }
+    let arViewController: NIARViewController
     
     var body: some View {
-        ZStack {
-            NIARView(
-                arViewController: arViewController,
-                niStatus: niStatus,
-                niSessionManager: niSessionManager
-            )
-            .ignoresSafeArea()
-            
-            // TODO: - 메인 홈 UI 구현
+        VStack {
             VStack {
-                VStack {
-                    Text("HIT")
-                    Text("THE")
-                    Text("SPOT")
-                }
-                .font(.largeTitle.bold())
-                .foregroundStyle(.white)
-                .padding()
-                
-                Spacer()
-                
-                NavigationLink {
-                    SharePlayingView()
-                } label: {
-                    Label("SharePlay로 친구 찾기", systemImage: "shareplay")
-                }
+                Text("HIT")
+                Text("THE")
+                Text("SPOT")
             }
+            .font(.largeTitle.bold())
+            .foregroundStyle(.white)
             .padding()
+            
+            Spacer()
+            
+            SharePlayButton {
+                isSharePlayPresented = true
+            }
         }
-        .onAppear {
-            arViewController.startSession()
-        }
-        .onDisappear {
-            arViewController.pauseSession()
+        .padding()
+        .sheet(isPresented: $isSharePlayPresented) {
+            GroupActivityShareSheet {
+                ShareLocationActivity()
+            }
+            .onAppear {
+                arViewController.pauseSession()
+            }
+            .onDisappear {
+                arViewController.startSession()
+            }
         }
     }
 }
 
+extension MainHomeView {
+    @ViewBuilder
+    func SharePlayButton(action: @escaping () -> Void) -> some View {
+        Button {
+            action()
+        } label: {
+            Label(
+                title: { Text("Start SharePlay") },
+                icon: { Image(systemName: "shareplay") }
+            )
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.green)
+    }
+}
+
 #Preview {
-    MainHomeView(niStatus: .extended)
+    MainHomeView(
+        viewState: .constant(.home),
+        arViewController: NIARViewController()
+    )
 }

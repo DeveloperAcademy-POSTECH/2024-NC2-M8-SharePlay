@@ -6,13 +6,21 @@
 //
 
 import SwiftUI
+import NearbyInteraction
 
 @main
 struct HitTheSpotApp: App {
+    var isSupportU1: Bool { NISession.deviceCapabilities.supportsPreciseDistanceMeasurement }
+    var isSupportU2: Bool { NISession.deviceCapabilities.supportsExtendedDistanceMeasurement }
+    
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                ContentView()
+            if #available(iOS 17.0, watchOS 10.0, *), isSupportU2 {
+                ContentView(niStatus: .extended)
+            } else if isSupportU1 {
+                ContentView(niStatus: .precise)
+            } else {
+                NINotSupportedDeviceView()
             }
         }
     }
