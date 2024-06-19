@@ -56,12 +56,12 @@ extension MainLocationView {
             Circle()
                 .fill(Color.white)
                 .blendMode(.destinationOut)
-                .frame(width: 360, height: 360)
+                .padding(.horizontal, 16)
             
             // stroke
             Circle()
                 .stroke(.white, lineWidth: 1)
-                .frame(width: 360, height: 360)
+                .padding(.horizontal, 16)
         }
         .compositingGroup()
     }
