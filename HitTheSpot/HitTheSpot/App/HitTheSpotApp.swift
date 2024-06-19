@@ -16,10 +16,13 @@ struct HitTheSpotApp: App {
     var body: some Scene {
         WindowGroup {
             if #available(iOS 17.0, watchOS 10.0, *), isSupportU2 {
+                // iPhone 15, iOS 17 이상
                 ContentView(niStatus: .extended)
             } else if isSupportU1 {
+                // iPhone 11 이상
                 ContentView(niStatus: .precise)
             } else {
+                // 지원 대상 아님
                 NINotSupportedDeviceView()
             }
         }

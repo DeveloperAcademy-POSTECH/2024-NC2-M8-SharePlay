@@ -66,4 +66,5 @@ extension MainHomeView {
         viewState: .constant(.home),
         arViewController: NIARViewController()
     )
+    .preferredColorScheme(.dark)
 }
