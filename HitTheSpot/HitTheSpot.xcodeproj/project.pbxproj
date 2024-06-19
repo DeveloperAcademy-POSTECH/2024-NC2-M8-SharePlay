@@ -26,6 +26,8 @@
 		4250FAA52C21D641006E83C0 /* MainDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA42C21D641006E83C0 /* MainDistanceView.swift */; };
 		4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA62C21D64F006E83C0 /* MainLocationView.swift */; };
 		4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */; };
+		5B28506A2C22FFC9007DB581 /* Syncopate-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B2850692C22FFC9007DB581 /* Syncopate-Regular.ttf */; };
+		5B28506C2C23051C007DB581 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B28506B2C23051C007DB581 /* Pretendard-SemiBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		4250FAA42C21D641006E83C0 /* MainDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDistanceView.swift; sourceTree = "<group>"; };
 		4250FAA62C21D64F006E83C0 /* MainLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocationView.swift; sourceTree = "<group>"; };
 		4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNearbyView.swift; sourceTree = "<group>"; };
+		5B2850692C22FFC9007DB581 /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
+		5B28506B2C23051C007DB581 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,7 @@
 		4250FAB32C21DBBA006E83C0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5B2850682C22FFB8007DB581 /* Fonts */,
 				4250FA902C2072FE006E83C0 /* Info.plist */,
 				4250FA9F2C21A37E006E83C0 /* HitTheSpot.entitlements */,
 				4250FA7E2C1F220B006E83C0 /* Assets.xcassets */,
@@ -194,6 +199,15 @@
 				4250FA912C2077ED006E83C0 /* MPCSession.swift */,
 			);
 			path = MultipeerConnectivity;
+			sourceTree = "<group>";
+		};
+		5B2850682C22FFB8007DB581 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5B2850692C22FFC9007DB581 /* Syncopate-Regular.ttf */,
+				5B28506B2C23051C007DB581 /* Pretendard-SemiBold.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,8 +268,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B28506A2C22FFC9007DB581 /* Syncopate-Regular.ttf in Resources */,
 				4250FA822C1F220B006E83C0 /* Preview Assets.xcassets in Resources */,
 				4250FA7F2C1F220B006E83C0 /* Assets.xcassets in Resources */,
+				5B28506C2C23051C007DB581 /* Pretendard-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

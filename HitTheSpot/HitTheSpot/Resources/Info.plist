@@ -9,5 +9,10 @@
 	</array>
 	<key>Require Full Screen</key>
 	<string>YES</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Syncopate-Regular</string>
+		<string>Pretendard-SemiBold</string>
+	</array>
 </dict>
 </plist>
