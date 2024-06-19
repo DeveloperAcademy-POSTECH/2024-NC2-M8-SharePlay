@@ -26,6 +26,8 @@
 		4250FAA52C21D641006E83C0 /* MainDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA42C21D641006E83C0 /* MainDistanceView.swift */; };
 		4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA62C21D64F006E83C0 /* MainLocationView.swift */; };
 		4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */; };
+		4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */; };
+		4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		4250FAA42C21D641006E83C0 /* MainDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDistanceView.swift; sourceTree = "<group>"; };
 		4250FAA62C21D64F006E83C0 /* MainLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocationView.swift; sourceTree = "<group>"; };
 		4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNearbyView.swift; sourceTree = "<group>"; };
+		4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivityManager.swift; sourceTree = "<group>"; };
+		4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusForSharePlay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 				4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */,
 				4250FAA02C21A79F006E83C0 /* NIStatus.swift */,
 				4250FA932C209322006E83C0 /* Constant.swift */,
+				4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 		4250FAB12C21DB62006E83C0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				4250FAB62C226DD2006E83C0 /* SharePlay */,
 				4250FAB42C21DD13006E83C0 /* NearbyInteraction */,
 				4250FAB52C21DD27006E83C0 /* MultipeerConnectivity */,
 			);
@@ -194,6 +200,14 @@
 				4250FA912C2077ED006E83C0 /* MPCSession.swift */,
 			);
 			path = MultipeerConnectivity;
+			sourceTree = "<group>";
+		};
+		4250FAB62C226DD2006E83C0 /* SharePlay */ = {
+			isa = PBXGroup;
+			children = (
+				4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */,
+			);
+			path = SharePlay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +282,8 @@
 			files = (
 				4250FA8F2C206AE6006E83C0 /* NIARView.swift in Sources */,
 				4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */,
+				4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */,
+				4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */,
 				4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */,
 				4250FA942C209322006E83C0 /* Constant.swift in Sources */,
 				4250FA982C218F7B006E83C0 /* MainHomeView.swift in Sources */,
