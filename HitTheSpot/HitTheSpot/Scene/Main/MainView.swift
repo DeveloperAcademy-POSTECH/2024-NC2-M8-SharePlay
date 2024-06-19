@@ -21,20 +21,39 @@ struct MainView: View {
     let niSessionManager: NISessionManager
     
     @State private var viewState: ViewState = .home
+    @State private var activityManager = GroupActivityManager()
     
     var body: some View {
-        switch viewState {
-        case .home:
-            MainHomeView(
-                viewState: $viewState,
-                arViewController: arViewController
-            )
-        case .distance:
-            MainDistanceView()
-        case .location:
-            MainLocationView()
-        case .nearby:
-            MainNearbyView()
+        VStack {
+            Text(activityManager.statusDescription)
+                .font(.largeTitle.bold())
+                .foregroundStyle(.red)
+            
+            switch viewState {
+            case .home:
+                MainHomeView(
+                    viewState: $viewState,
+                    activityManager: activityManager,
+                    arViewController: arViewController
+                )
+            case .distance:
+                MainDistanceView()
+            case .location:
+                MainLocationView()
+            case .nearby:
+                MainNearbyView()
+            }
+        }
+        .onAppear {
+            activityManager.sharePlayJoinedHandler = { updateView(to: .distance) }
+        }
+    }
+}
+
+extension MainView {
+    func updateView(to viewState: ViewState) {
+        withAnimation {
+            self.viewState = viewState
         }
     }
 }

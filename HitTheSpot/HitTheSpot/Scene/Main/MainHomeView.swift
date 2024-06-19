@@ -11,6 +11,7 @@ struct MainHomeView: View {
     @Binding var viewState: MainView.ViewState
     @State private var isSharePlayPresented = false
     
+    let activityManager: GroupActivityManager
     let arViewController: NIARViewController
     
     var body: some View {
@@ -27,7 +28,15 @@ struct MainHomeView: View {
             Spacer()
             
             SharePlayButton {
-                isSharePlayPresented = true
+                Task {
+                    // SharePlay 혹은 FaceTime 연결여부 확인
+                    // 1. SharePlay 중 -> .preferred: 새 그룹 활동으로 대치
+                    // 2. FaceTime 중 -> .preferred: SharePlay 시작
+                    // 3. local -> .local: SharePlay는 참여 안함/취소
+                    // 4. None -> .needToAsk: SharePlay VC Sheet 호출
+                    let outcome = await activityManager.askStatusForSharePlay()
+                    isSharePlayPresented = outcome.isNeedToAsk
+                }
             }
         }
         .padding()
@@ -63,7 +72,8 @@ extension MainHomeView {
 
 #Preview {
     MainHomeView(
-        viewState: .constant(.home),
+        viewState: .constant(.home), 
+        activityManager: GroupActivityManager(),
         arViewController: NIARViewController()
     )
     .preferredColorScheme(.dark)
