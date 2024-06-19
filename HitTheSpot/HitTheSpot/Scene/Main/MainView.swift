@@ -46,6 +46,7 @@ struct MainView: View {
         }
         .onAppear {
             activityManager.sharePlayJoinedHandler = { updateView(to: .distance) }
+            activityManager.sharePlayInvalidateHandler = { updateView(to: .home) }
         }
     }
 }
