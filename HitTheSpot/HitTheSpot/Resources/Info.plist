@@ -11,8 +11,9 @@
 	<string>YES</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Syncopate-Regular</string>
-		<string>Pretendard-SemiBold</string>
+		<string>Syncopate-Bold.ttf</string>
+		<string>Syncopate-Regular.ttf</string>
+		<string>Pretendard-SemiBold.otf</string>
 	</array>
 </dict>
 </plist>

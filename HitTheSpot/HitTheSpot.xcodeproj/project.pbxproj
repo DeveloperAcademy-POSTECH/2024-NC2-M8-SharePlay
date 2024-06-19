@@ -28,8 +28,13 @@
 		4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */; };
 		5B28506A2C22FFC9007DB581 /* Syncopate-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B2850692C22FFC9007DB581 /* Syncopate-Regular.ttf */; };
 		5B28506C2C23051C007DB581 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B28506B2C23051C007DB581 /* Pretendard-SemiBold.otf */; };
+<<<<<<< Updated upstream
 		4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */; };
 		4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */; };
+=======
+		5B28506E2C230DE6007DB581 /* FontSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28506D2C230DE6007DB581 /* FontSetting.swift */; };
+		5B2850702C2310B4007DB581 /* Syncopate-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B28506F2C2310B4007DB581 /* Syncopate-Bold.ttf */; };
+>>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,8 +62,13 @@
 		4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNearbyView.swift; sourceTree = "<group>"; };
 		5B2850692C22FFC9007DB581 /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
 		5B28506B2C23051C007DB581 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivityManager.swift; sourceTree = "<group>"; };
 		4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusForSharePlay.swift; sourceTree = "<group>"; };
+=======
+		5B28506D2C230DE6007DB581 /* FontSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSetting.swift; sourceTree = "<group>"; };
+		5B28506F2C2310B4007DB581 /* Syncopate-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Bold.ttf"; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +174,11 @@
 				4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */,
 				4250FAA02C21A79F006E83C0 /* NIStatus.swift */,
 				4250FA932C209322006E83C0 /* Constant.swift */,
+<<<<<<< Updated upstream
 				4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */,
+=======
+				5B28506D2C230DE6007DB581 /* FontSetting.swift */,
+>>>>>>> Stashed changes
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -211,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				5B2850692C22FFC9007DB581 /* Syncopate-Regular.ttf */,
+				5B28506F2C2310B4007DB581 /* Syncopate-Bold.ttf */,
 				5B28506B2C23051C007DB581 /* Pretendard-SemiBold.otf */,
 			);
 			path = Fonts;
@@ -284,6 +299,7 @@
 				4250FA822C1F220B006E83C0 /* Preview Assets.xcassets in Resources */,
 				4250FA7F2C1F220B006E83C0 /* Assets.xcassets in Resources */,
 				5B28506C2C23051C007DB581 /* Pretendard-SemiBold.otf in Resources */,
+				5B2850702C2310B4007DB581 /* Syncopate-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +325,7 @@
 				4250FAA12C21A79F006E83C0 /* NIStatus.swift in Sources */,
 				4250FA7B2C1F220A006E83C0 /* HitTheSpotApp.swift in Sources */,
 				4250FAA52C21D641006E83C0 /* MainDistanceView.swift in Sources */,
+				5B28506E2C230DE6007DB581 /* FontSetting.swift in Sources */,
 				4250FA9C2C21A0DD006E83C0 /* GroupActivityShareSheet.swift in Sources */,
 				4250FAA32C21D52F006E83C0 /* MainView.swift in Sources */,
 				4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */,
