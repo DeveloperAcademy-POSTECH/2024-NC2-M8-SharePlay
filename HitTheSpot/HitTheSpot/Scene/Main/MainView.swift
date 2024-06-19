@@ -42,6 +42,8 @@ struct MainView: View {
                 )
             case .location:
                 MainLocationView(
+                    activityManager: activityManager,
+                    arViewController: arViewController,
                     modeChangeHandler: { updateViewState(to: .distance) }
                 )
             case .nearby:

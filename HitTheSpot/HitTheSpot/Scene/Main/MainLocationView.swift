@@ -9,6 +9,10 @@ import SwiftUI
 import MapKit
 
 struct MainLocationView: View {
+    @Bindable var activityManager: GroupActivityManager
+    @State private var locationManager = LocationManager()
+    
+    let arViewController: NIARViewController
     var modeChangeHandler: (() -> Void)?
     
     let peerName: String = "라뮤"
@@ -22,6 +26,21 @@ struct MainLocationView: View {
             VStack {
                 TitleLabel(pearName: peerName)
                 
+                HStack {
+                    VStack(alignment: .leading) {
+                        if let location = locationManager.lastLocation {
+                            Text("Lat: \(location.coordinate.latitude)")
+                            Text("Lng: \(location.coordinate.longitude)")
+                        } else {
+                            Text("Fetching location...")
+                        }
+                    }
+                    .padding(.leading, 24)
+                    .foregroundStyle(.white)
+                    
+                    Spacer()
+                }
+                
                 Spacer()
                 
                 ShowDistanceViewButton {
@@ -29,6 +48,22 @@ struct MainLocationView: View {
                 }
             }
             .padding(.vertical, 60)
+        }
+        .onAppear {
+            locationManager.updateLocationHandler = { location in
+                Task {
+                    do {
+                        try await activityManager.send(ShareLocationMessage(userName: "이거 나임", location: .init(location)))
+                    } catch {
+                        print(#fileID, #function, #line, "\(error)")
+                    }
+                }
+            }
+            locationManager.requestAuthorization()
+            arViewController.pauseSession()
+        }
+        .onDisappear {
+            arViewController.startSession()
         }
     }
 }
@@ -105,5 +140,8 @@ extension MainLocationView {
 }
 
 #Preview {
-    MainLocationView()
+    MainLocationView(
+        activityManager: GroupActivityManager(),
+        arViewController: NIARViewController()
+    )
 }
