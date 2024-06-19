@@ -12,10 +12,16 @@ import Combine
 import UIKit
 
 struct NIARView: UIViewRepresentable {
-    let niStatus: NIStatus
-    var niSessionManager: NISessionManager
+    @State private var arViewController: NIARViewController
+    private let niStatus: NIStatus
+    private var niSessionManager: NISessionManager
     
-    init(niStatus: NIStatus, niSessionManager: NISessionManager) {
+    init(
+        arViewController: NIARViewController,
+        niStatus: NIStatus,
+        niSessionManager: NISessionManager
+    ) {
+        self.arViewController = arViewController
         self.niStatus = niStatus
         self.niSessionManager = niSessionManager
     }
@@ -24,21 +30,9 @@ struct NIARView: UIViewRepresentable {
 extension NIARView {
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
-        self.niSessionManager.setARSession(arView.session)
         
-        // Create a world-tracking configuration to the
-        // AR session requirements for Nearby Interaction.
-        // For more information,
-        // see the `setARSession` function of `NISession`.
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.worldAlignment = .gravity
-        configuration.isCollaborationEnabled = false
-        configuration.userFaceTrackingEnabled = false
-        configuration.initialWorldMap = nil
-        configuration.environmentTexturing = .automatic
-        
-        // Run the view's AR session.
-        arView.session.run(configuration)
+        arViewController.setARView(arView)
+        niSessionManager.setARSession(arView.session)
         
         let blurView = UIVisualEffectView(
             effect: UIBlurEffect(
@@ -68,6 +62,35 @@ extension NIARView {
     }
 }
 
+@Observable
+class NIARViewController {
+    var arView: ARView?
+    
+    func setARView(_ arView: ARView) {
+        self.arView = arView
+    }
+    
+    func startSession() {
+        // Create a world-tracking configuration to the
+        // AR session requirements for Nearby Interaction.
+        // For more information,
+        // see the `setARSession` function of `NISession`.
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.worldAlignment = .gravity
+        configuration.isCollaborationEnabled = false
+        configuration.userFaceTrackingEnabled = false
+        configuration.initialWorldMap = nil
+        configuration.environmentTexturing = .automatic
+        
+        // Run the view's AR session.
+        arView?.session.run(configuration)
+    }
+    
+    func pauseSession() {
+        arView?.session.pause()
+    }
+}
+
 extension NIARView.Coordinator {
     func placeSpheresInView(
         _ arView: ARView,
@@ -91,6 +114,7 @@ extension NIARView.Coordinator {
 
 #Preview {
     NIARView(
+        arViewController: NIARViewController(),
         niStatus: .extended,
         niSessionManager: NISessionManager(niStatus: .extended)
     )

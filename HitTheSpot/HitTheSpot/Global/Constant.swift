@@ -12,6 +12,8 @@ enum Constant {
     static let serviceIdentity = "com.myulaGilah.HitTheSpot"
     static let serviceIdentityForSimulator = "com.myulaGilah.HitTheSpot.simulator"
     static let serviceIdentityForSimulatorEDM = "com.myulaGilah.HitTheSpot.simulator-edm"
+    
+    static let activityIdentifier = "com.myulaGilah.HitTheSpot.ShareLocationActivity"
 }
 
 enum QueueLabel {

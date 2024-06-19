@@ -58,12 +58,9 @@ class NISessionManager: NSObject {
     @ObservationIgnored private var isSupportU2: Bool { niStatus == .extended }
     
     init(niStatus: NIStatus) {
-        NSLog("Starting NI session for \(niStatus.description).")
         self.niStatus = niStatus
         self.qualityEstimator = niStatus == .extended ? MeasurementQualityEstimator() : nil
         super.init()
-        // TODO: - 뷰 진입 시 Manager를 선언하는 경우 아닐 경우 수정
-        startup()
     }
     
     deinit {

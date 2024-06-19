@@ -18,6 +18,14 @@
 		4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA912C2077ED006E83C0 /* MPCSession.swift */; };
 		4250FA942C209322006E83C0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA932C209322006E83C0 /* Constant.swift */; };
 		4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */; };
+		4250FA982C218F7B006E83C0 /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA972C218F7B006E83C0 /* MainHomeView.swift */; };
+		4250FA9C2C21A0DD006E83C0 /* GroupActivityShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA9B2C21A0DD006E83C0 /* GroupActivityShareSheet.swift */; };
+		4250FA9E2C21A10C006E83C0 /* ShareLocationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */; };
+		4250FAA12C21A79F006E83C0 /* NIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA02C21A79F006E83C0 /* NIStatus.swift */; };
+		4250FAA32C21D52F006E83C0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA22C21D52F006E83C0 /* MainView.swift */; };
+		4250FAA52C21D641006E83C0 /* MainDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA42C21D641006E83C0 /* MainDistanceView.swift */; };
+		4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA62C21D64F006E83C0 /* MainLocationView.swift */; };
+		4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +38,19 @@
 		4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NICameraAssistanceView.swift; sourceTree = "<group>"; };
 		4250FA8C2C20566C006E83C0 /* NISessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NISessionManager.swift; sourceTree = "<group>"; };
 		4250FA8E2C206AE6006E83C0 /* NIARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIARView.swift; sourceTree = "<group>"; };
-		4250FA902C2072FE006E83C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4250FA902C2072FE006E83C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4250FA912C2077ED006E83C0 /* MPCSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCSession.swift; sourceTree = "<group>"; };
 		4250FA932C209322006E83C0 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementQualityEstimator.swift; sourceTree = "<group>"; };
+		4250FA972C218F7B006E83C0 /* MainHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeView.swift; sourceTree = "<group>"; };
+		4250FA9B2C21A0DD006E83C0 /* GroupActivityShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivityShareSheet.swift; sourceTree = "<group>"; };
+		4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLocationActivity.swift; sourceTree = "<group>"; };
+		4250FA9F2C21A37E006E83C0 /* HitTheSpot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HitTheSpot.entitlements; sourceTree = "<group>"; };
+		4250FAA02C21A79F006E83C0 /* NIStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIStatus.swift; sourceTree = "<group>"; };
+		4250FAA22C21D52F006E83C0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		4250FAA42C21D641006E83C0 /* MainDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDistanceView.swift; sourceTree = "<group>"; };
+		4250FAA62C21D64F006E83C0 /* MainLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocationView.swift; sourceTree = "<group>"; };
+		4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNearbyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,18 +83,12 @@
 		4250FA792C1F220A006E83C0 /* HitTheSpot */ = {
 			isa = PBXGroup;
 			children = (
-				4250FA902C2072FE006E83C0 /* Info.plist */,
-				4250FA7A2C1F220A006E83C0 /* HitTheSpotApp.swift */,
-				4250FA7C2C1F220A006E83C0 /* ContentView.swift */,
-				4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */,
-				4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */,
-				4250FA8E2C206AE6006E83C0 /* NIARView.swift */,
-				4250FA8C2C20566C006E83C0 /* NISessionManager.swift */,
-				4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */,
-				4250FA912C2077ED006E83C0 /* MPCSession.swift */,
-				4250FA7E2C1F220B006E83C0 /* Assets.xcassets */,
+				4250FAAA2C21DACA006E83C0 /* App */,
+				4250FAB02C21DB54006E83C0 /* Global */,
+				4250FAB32C21DBBA006E83C0 /* Resources */,
+				4250FAB12C21DB62006E83C0 /* Helper */,
+				4250FAAC2C21DAE6006E83C0 /* Scene */,
 				4250FA802C1F220B006E83C0 /* Preview Content */,
-				4250FA932C209322006E83C0 /* Constant.swift */,
 			);
 			path = HitTheSpot;
 			sourceTree = "<group>";
@@ -88,6 +99,101 @@
 				4250FA812C1F220B006E83C0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4250FAAA2C21DACA006E83C0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4250FA7A2C1F220A006E83C0 /* HitTheSpotApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4250FAAC2C21DAE6006E83C0 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				4250FAAD2C21DB10006E83C0 /* Components */,
+				4250FAAF2C21DB3E006E83C0 /* Init */,
+				4250FAAE2C21DB2E006E83C0 /* Main */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		4250FAAD2C21DB10006E83C0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4250FA9B2C21A0DD006E83C0 /* GroupActivityShareSheet.swift */,
+				4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */,
+				4250FA8E2C206AE6006E83C0 /* NIARView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		4250FAAE2C21DB2E006E83C0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4250FAA22C21D52F006E83C0 /* MainView.swift */,
+				4250FA972C218F7B006E83C0 /* MainHomeView.swift */,
+				4250FAA42C21D641006E83C0 /* MainDistanceView.swift */,
+				4250FAA62C21D64F006E83C0 /* MainLocationView.swift */,
+				4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		4250FAAF2C21DB3E006E83C0 /* Init */ = {
+			isa = PBXGroup;
+			children = (
+				4250FA7C2C1F220A006E83C0 /* ContentView.swift */,
+				4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */,
+			);
+			path = Init;
+			sourceTree = "<group>";
+		};
+		4250FAB02C21DB54006E83C0 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */,
+				4250FAA02C21A79F006E83C0 /* NIStatus.swift */,
+				4250FA932C209322006E83C0 /* Constant.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		4250FAB12C21DB62006E83C0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4250FAB42C21DD13006E83C0 /* NearbyInteraction */,
+				4250FAB52C21DD27006E83C0 /* MultipeerConnectivity */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		4250FAB32C21DBBA006E83C0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4250FA902C2072FE006E83C0 /* Info.plist */,
+				4250FA9F2C21A37E006E83C0 /* HitTheSpot.entitlements */,
+				4250FA7E2C1F220B006E83C0 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4250FAB42C21DD13006E83C0 /* NearbyInteraction */ = {
+			isa = PBXGroup;
+			children = (
+				4250FA8C2C20566C006E83C0 /* NISessionManager.swift */,
+				4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */,
+			);
+			path = NearbyInteraction;
+			sourceTree = "<group>";
+		};
+		4250FAB52C21DD27006E83C0 /* MultipeerConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				4250FA912C2077ED006E83C0 /* MPCSession.swift */,
+			);
+			path = MultipeerConnectivity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,10 +270,18 @@
 				4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */,
 				4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */,
 				4250FA942C209322006E83C0 /* Constant.swift in Sources */,
+				4250FA982C218F7B006E83C0 /* MainHomeView.swift in Sources */,
 				4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */,
 				4250FA7D2C1F220A006E83C0 /* ContentView.swift in Sources */,
+				4250FA9E2C21A10C006E83C0 /* ShareLocationActivity.swift in Sources */,
 				4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */,
+				4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */,
+				4250FAA12C21A79F006E83C0 /* NIStatus.swift in Sources */,
 				4250FA7B2C1F220A006E83C0 /* HitTheSpotApp.swift in Sources */,
+				4250FAA52C21D641006E83C0 /* MainDistanceView.swift in Sources */,
+				4250FA9C2C21A0DD006E83C0 /* GroupActivityShareSheet.swift in Sources */,
+				4250FAA32C21D52F006E83C0 /* MainView.swift in Sources */,
+				4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */,
 				4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,13 +413,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HitTheSpot/Resources/HitTheSpot.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HitTheSpot/Preview Content\"";
 				DEVELOPMENT_TEAM = Q6CK9777WL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HitTheSpot/Info.plist;
+				INFOPLIST_FILE = HitTheSpot/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Hit the Spot!";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 위한 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "로컬 네트워크 사용을 위해 권한이 필요합니다.";
@@ -333,13 +448,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HitTheSpot/Resources/HitTheSpot.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HitTheSpot/Preview Content\"";
 				DEVELOPMENT_TEAM = Q6CK9777WL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HitTheSpot/Info.plist;
+				INFOPLIST_FILE = HitTheSpot/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Hit the Spot!";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 위한 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "로컬 네트워크 사용을 위해 권한이 필요합니다.";
