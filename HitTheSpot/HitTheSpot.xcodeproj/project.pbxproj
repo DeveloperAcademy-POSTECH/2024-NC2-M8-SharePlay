@@ -35,6 +35,7 @@
 		429ACA4E2C24B6FC00B0276E /* Syncopate-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 429ACA4C2C24B6FC00B0276E /* Syncopate-Bold.ttf */; };
 		429ACA502C24B72200B0276E /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 429ACA4F2C24B72200B0276E /* Pretendard-SemiBold.otf */; };
 		429ACA522C24B73F00B0276E /* FontSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA512C24B73F00B0276E /* FontSetting.swift */; };
+		429ACA542C24C35C00B0276E /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA532C24C35C00B0276E /* Color+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		429ACA4C2C24B6FC00B0276E /* Syncopate-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Bold.ttf"; sourceTree = "<group>"; };
 		429ACA4F2C24B72200B0276E /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		429ACA512C24B73F00B0276E /* FontSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSetting.swift; sourceTree = "<group>"; };
+		429ACA532C24C35C00B0276E /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */,
 				4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */,
 				429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */,
+				429ACA532C24C35C00B0276E /* Color+.swift */,
 				429ACA512C24B73F00B0276E /* FontSetting.swift */,
 			);
 			path = Global;
@@ -321,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4250FA8F2C206AE6006E83C0 /* NIARView.swift in Sources */,
+				429ACA542C24C35C00B0276E /* Color+.swift in Sources */,
 				4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */,
 				4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */,
 				4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */,

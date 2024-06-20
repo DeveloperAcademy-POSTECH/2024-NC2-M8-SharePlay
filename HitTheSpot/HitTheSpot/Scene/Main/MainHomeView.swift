@@ -66,7 +66,7 @@ extension MainHomeView {
             )
         }
         .buttonStyle(.borderedProminent)
-        .tint(.green)
+        .tint(.accent)
     }
 }
 
