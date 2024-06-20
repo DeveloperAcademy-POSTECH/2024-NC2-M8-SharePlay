@@ -38,6 +38,7 @@ struct MainView: View {
                 )
             case .distance:
                 MainDistanceView(
+                    niSessionManager: niSessionManager,
                     modeChangeHandler: { updateViewState(to: .location) }
                 )
             case .location:

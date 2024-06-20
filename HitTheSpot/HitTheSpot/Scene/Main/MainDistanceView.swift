@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct MainDistanceView: View {
+    @Bindable var niSessionManager: NISessionManager
+
     var modeChangeHandler: (() -> Void)?
-    @State private var rotateAngle: Double = 0
-    
-    let peerName: String = "뿌"
-    let distance: Double = 20.8888
     
     var body: some View {
         ZStack {
             VStack {
-                TitleLabel(peerName: peerName, distance: distance)
+                TitleLabel(
+                    peerName: niSessionManager.connectedPeerName,
+                    distance: niSessionManager.latestNearbyObject?.distance ?? 0
+                )
                 
                 Spacer()
                 
@@ -28,7 +29,7 @@ struct MainDistanceView: View {
             .padding(.vertical, 60)
             
             ArrowOverlay()
-                .rotationEffect(.degrees(rotateAngle))
+                .rotationEffect(arrowAngle(orientationRadians: niSessionManager.latestNearbyObject?.horizontalAngle))
         }
     }
 }
@@ -66,7 +67,7 @@ extension MainDistanceView {
     }
     
     @ViewBuilder
-    func TitleLabel(peerName: String, distance: Double) -> some View {
+    func TitleLabel(peerName: String, distance: Float) -> some View {
         HStack {
             VStack(alignment: .leading, spacing: 12) {
                 Text("\(peerName) 만나기까지")
@@ -104,7 +105,14 @@ extension MainDistanceView {
     }
 }
 
+extension MainDistanceView {
+    func arrowAngle(orientationRadians: Float?) -> Angle {
+        let imageRotationOffset = Angle(degrees: -90)
+        return Angle(radians: Double(orientationRadians ?? 0)) + imageRotationOffset
+    }
+}
+
 #Preview {
-    MainDistanceView()
+    MainDistanceView(niSessionManager: NISessionManager(niStatus: .extended))
         .preferredColorScheme(.dark)
 }
