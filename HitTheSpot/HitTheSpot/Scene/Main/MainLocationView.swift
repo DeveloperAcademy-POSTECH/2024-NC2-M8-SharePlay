@@ -10,44 +10,50 @@ import MapKit
 
 struct MainLocationView: View {
     @Bindable var activityManager: GroupActivityManager
+    @State private var cameraPosition: MapCameraPosition = .userLocation(followsHeading: true, fallback: .automatic)
     @State private var locationManager = LocationManager()
     
     let arViewController: NIARViewController
     var modeChangeHandler: (() -> Void)?
     
-    let peerName: String = "라뮤"
-    
     var body: some View {
         ZStack {
-            Map()
-            
-            RadialGradientCover()
-            
-            VStack {
-                TitleLabel(pearName: peerName)
-                
-                HStack {
-                    VStack(alignment: .leading) {
-                        if let location = locationManager.lastLocation {
-                            Text("Lat: \(location.coordinate.latitude)")
-                            Text("Lng: \(location.coordinate.longitude)")
-                        } else {
-                            Text("Fetching location...")
-                        }
+            Map(position: $cameraPosition) {
+                if let myLocation = locationManager.lastLocation {
+                    Annotation("나", coordinate: myLocation.coordinate) {
+                        Marker()
                     }
-                    .padding(.leading, 24)
-                    .foregroundStyle(.white)
-                    
-                    Spacer()
                 }
                 
-                Spacer()
-                
-                ShowDistanceViewButton {
-                    modeChangeHandler?()
+                if let peerLocationMessage = activityManager.locations.last {
+                    Annotation(
+                        peerLocationMessage.userName,
+                        coordinate: .init(peerLocationMessage.location)
+                    ) {
+                        Marker(isPeer: true)
+                    }
                 }
             }
-            .padding(.vertical, 60)
+            
+            Group {
+                RadialGradientCover()
+                
+                VStack {
+                    if let peerLocationMessage = activityManager.locations.last {
+                        TitleLabel(pearName: peerLocationMessage.userName)
+                    } else {
+                        TitleLabel(pearName: "친구")
+                    }
+                    
+                    Spacer()
+                    
+                    ShowDistanceViewButton {
+                        modeChangeHandler?()
+                    }
+                }
+                .padding(.vertical, 60)
+            }
+            .allowsHitTesting(false)
         }
         .onAppear {
             locationManager.updateLocationHandler = { location in
@@ -63,12 +69,41 @@ struct MainLocationView: View {
             arViewController.pauseSession()
         }
         .onDisappear {
+            locationManager.stopUpdatingLocation()
             arViewController.startSession()
+        }
+        .onChange(of: locationManager.lastLocation) {
+            guard let coordinate = locationManager.lastLocation?.coordinate else { return }
+            
+            withAnimation {
+                cameraPosition = .region(
+                    .init(
+                        center: coordinate,
+                        span: .init(
+                            latitudeDelta: 0.02,
+                            longitudeDelta: 0.02
+                        )
+                    )
+                )
+            }
         }
     }
 }
 
 extension MainLocationView {
+    @ViewBuilder
+    func Marker(isPeer: Bool = false) -> some View {
+        ZStack {
+            Circle()
+                .fill(isPeer ? .green : .white)
+                .frame(width: 40, height: 40)
+            Circle()
+                .fill(isPeer ? .white : .green)
+                .frame(width: 36, height: 36)
+        }
+        .shadow(color: .black.opacity(0.1), radius: 10)
+    }
+    
     @ViewBuilder
     func RadialGradientCover() -> some View {
         ZStack {

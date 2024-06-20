@@ -57,7 +57,7 @@ extension GroupActivityManager {
                     // MARK: - Perform any cleanup here
                     self.log("SharePlay stop")
                     self.sharePlayInvalidateHandler?()
-                    break
+                    
                 case .joined: 
                     // MARK: - Handle a re-join to the same session
                     self.log("SharePlay Join")
