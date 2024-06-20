@@ -28,6 +28,9 @@
 		4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */; };
 		4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */; };
 		4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */; };
+		4250FAD62C2317F5006E83C0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAD52C2317F5006E83C0 /* LocationManager.swift */; };
+		4250FAD92C231A4A006E83C0 /* ShareLocationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */; };
+		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,9 @@
 		4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNearbyView.swift; sourceTree = "<group>"; };
 		4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivityManager.swift; sourceTree = "<group>"; };
 		4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusForSharePlay.swift; sourceTree = "<group>"; };
+		4250FAD52C2317F5006E83C0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLocationMessage.swift; sourceTree = "<group>"; };
+		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,8 @@
 				4250FAA02C21A79F006E83C0 /* NIStatus.swift */,
 				4250FA932C209322006E83C0 /* Constant.swift */,
 				4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */,
+				4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */,
+				429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -168,6 +176,7 @@
 		4250FAB12C21DB62006E83C0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				4250FAD72C2317FA006E83C0 /* CoreLocation */,
 				4250FAB62C226DD2006E83C0 /* SharePlay */,
 				4250FAB42C21DD13006E83C0 /* NearbyInteraction */,
 				4250FAB52C21DD27006E83C0 /* MultipeerConnectivity */,
@@ -208,6 +217,14 @@
 				4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */,
 			);
 			path = SharePlay;
+			sourceTree = "<group>";
+		};
+		4250FAD72C2317FA006E83C0 /* CoreLocation */ = {
+			isa = PBXGroup;
+			children = (
+				4250FAD52C2317F5006E83C0 /* LocationManager.swift */,
+			);
+			path = CoreLocation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,13 +302,16 @@
 				4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */,
 				4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */,
 				4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */,
+				4250FAD92C231A4A006E83C0 /* ShareLocationMessage.swift in Sources */,
 				4250FA942C209322006E83C0 /* Constant.swift in Sources */,
 				4250FA982C218F7B006E83C0 /* MainHomeView.swift in Sources */,
 				4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */,
 				4250FA7D2C1F220A006E83C0 /* ContentView.swift in Sources */,
 				4250FA9E2C21A10C006E83C0 /* ShareLocationActivity.swift in Sources */,
+				429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */,
 				4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */,
 				4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */,
+				4250FAD62C2317F5006E83C0 /* LocationManager.swift in Sources */,
 				4250FAA12C21A79F006E83C0 /* NIStatus.swift in Sources */,
 				4250FA7B2C1F220A006E83C0 /* HitTheSpotApp.swift in Sources */,
 				4250FAA52C21D641006E83C0 /* MainDistanceView.swift in Sources */,
@@ -440,6 +460,9 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Hit the Spot!";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 위한 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "로컬 네트워크 사용을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치 정보를 확인하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 위치 정보를 확인하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치 정보를 확인하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "근처 사용자의 위치를 확인하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -475,6 +498,9 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Hit the Spot!";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 위한 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "로컬 네트워크 사용을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치 정보를 확인하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 위치 정보를 확인하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치 정보를 확인하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "근처 사용자의 위치를 확인하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

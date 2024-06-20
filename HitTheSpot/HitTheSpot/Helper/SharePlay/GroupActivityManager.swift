@@ -11,7 +11,7 @@ import Combine
 
 @Observable
 final class GroupActivityManager {
-    var messages: [String] = []
+    var locationMessages: [ShareLocationMessage] = []
     var statusDescription: String = ""
     
     @ObservationIgnored private var session: GroupSession<ShareLocationActivity>?
@@ -45,7 +45,7 @@ extension GroupActivityManager {
         }
         
         messenger = GroupSessionMessenger(session: session)
-        listenToMessages()
+        listenToLocations()
         monitorSessionState()
     }
     
@@ -57,7 +57,7 @@ extension GroupActivityManager {
                     // MARK: - Perform any cleanup here
                     self.log("SharePlay stop")
                     self.sharePlayInvalidateHandler?()
-                    break
+                    
                 case .joined: 
                     // MARK: - Handle a re-join to the same session
                     self.log("SharePlay Join")
@@ -114,13 +114,13 @@ extension GroupActivityManager {
     }
     
     func reset() {
-        messages = []
+        locationMessages = []
     }
 }
 
 // MARK: - 데이터 전송 관련 메서드
 extension GroupActivityManager {
-    public func send(_ message: String) async throws {
+    public func send(_ message: ShareLocationMessage) async throws {
         do {
             try await messenger?.send(message) // codable한 객체를 send 내부에 보낼 수 있다.
         } catch {
@@ -128,13 +128,13 @@ extension GroupActivityManager {
         }
     }
     
-    private func listenToMessages() {
+    private func listenToLocations() {
         guard let messenger else { return }
         
         Task.detached {
-            for await message in messenger.messages(of: String.self) {
-                self.messages.append(message.0)
-                print("Received message: \(message.0)")
+            for await message in messenger.messages(of: ShareLocationMessage.self) {
+                self.locationMessages.append(message.0)
+                print("Received locations: \(message.0)")
             }
         }
     }

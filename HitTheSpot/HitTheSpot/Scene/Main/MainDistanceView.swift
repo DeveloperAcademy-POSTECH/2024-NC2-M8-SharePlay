@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct MainDistanceView: View {
+    var modeChangeHandler: (() -> Void)?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ShowLocationViewButton {
+            modeChangeHandler?()
+        }
+    }
+}
+
+extension MainDistanceView {
+    @ViewBuilder
+    func ShowLocationViewButton(action: @escaping () -> Void) -> some View {
+        Button {
+            action()
+        } label: {
+            HStack {
+                Image(systemName: "smallcircle.filled.circle")
+                Text("위치 보기")
+            }
+            .foregroundStyle(.black)
+            .frame(height: 50)
+            .padding(.horizontal, 20)
+            .background(.white)
+            .clipShape(Capsule())
+        }
     }
 }
 
 #Preview {
     MainDistanceView()
+        .preferredColorScheme(.dark)
 }

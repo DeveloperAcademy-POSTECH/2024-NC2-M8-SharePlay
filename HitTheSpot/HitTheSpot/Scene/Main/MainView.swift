@@ -37,22 +37,28 @@ struct MainView: View {
                     arViewController: arViewController
                 )
             case .distance:
-                MainDistanceView()
+                MainDistanceView(
+                    modeChangeHandler: { updateViewState(to: .location) }
+                )
             case .location:
-                MainLocationView()
+                MainLocationView(
+                    activityManager: activityManager,
+                    arViewController: arViewController,
+                    modeChangeHandler: { updateViewState(to: .distance) }
+                )
             case .nearby:
                 MainNearbyView()
             }
         }
         .onAppear {
-            activityManager.sharePlayJoinedHandler = { updateView(to: .distance) }
-            activityManager.sharePlayInvalidateHandler = { updateView(to: .home) }
+            activityManager.sharePlayJoinedHandler = { updateViewState(to: .distance) }
+            activityManager.sharePlayInvalidateHandler = { updateViewState(to: .home) }
         }
     }
 }
 
 extension MainView {
-    func updateView(to viewState: ViewState) {
+    func updateViewState(to viewState: ViewState) {
         withAnimation {
             self.viewState = viewState
         }
@@ -64,4 +70,5 @@ extension MainView {
         arViewController: NIARViewController(),
         niSessionManager: NISessionManager(niStatus: .extended)
     )
+    .preferredColorScheme(.dark)
 }
