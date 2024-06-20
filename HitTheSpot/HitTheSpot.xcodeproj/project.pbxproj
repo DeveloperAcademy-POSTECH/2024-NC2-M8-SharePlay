@@ -31,6 +31,10 @@
 		4250FAD62C2317F5006E83C0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAD52C2317F5006E83C0 /* LocationManager.swift */; };
 		4250FAD92C231A4A006E83C0 /* ShareLocationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
+		429ACA4D2C24B6FC00B0276E /* Syncopate-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */; };
+		429ACA4E2C24B6FC00B0276E /* Syncopate-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 429ACA4C2C24B6FC00B0276E /* Syncopate-Bold.ttf */; };
+		429ACA502C24B72200B0276E /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 429ACA4F2C24B72200B0276E /* Pretendard-SemiBold.otf */; };
+		429ACA522C24B73F00B0276E /* FontSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA512C24B73F00B0276E /* FontSetting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +65,10 @@
 		4250FAD52C2317F5006E83C0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLocationMessage.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
+		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
+		429ACA4C2C24B6FC00B0276E /* Syncopate-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Bold.ttf"; sourceTree = "<group>"; };
+		429ACA4F2C24B72200B0276E /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		429ACA512C24B73F00B0276E /* FontSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSetting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +177,7 @@
 				4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */,
 				4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */,
 				429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */,
+				429ACA512C24B73F00B0276E /* FontSetting.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -187,6 +196,7 @@
 		4250FAB32C21DBBA006E83C0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				429ACA4A2C24B6F100B0276E /* Fonts */,
 				4250FA902C2072FE006E83C0 /* Info.plist */,
 				4250FA9F2C21A37E006E83C0 /* HitTheSpot.entitlements */,
 				4250FA7E2C1F220B006E83C0 /* Assets.xcassets */,
@@ -225,6 +235,16 @@
 				4250FAD52C2317F5006E83C0 /* LocationManager.swift */,
 			);
 			path = CoreLocation;
+			sourceTree = "<group>";
+		};
+		429ACA4A2C24B6F100B0276E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				429ACA4F2C24B72200B0276E /* Pretendard-SemiBold.otf */,
+				429ACA4C2C24B6FC00B0276E /* Syncopate-Bold.ttf */,
+				429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +305,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				429ACA4D2C24B6FC00B0276E /* Syncopate-Regular.ttf in Resources */,
 				4250FA822C1F220B006E83C0 /* Preview Assets.xcassets in Resources */,
+				429ACA502C24B72200B0276E /* Pretendard-SemiBold.otf in Resources */,
+				429ACA4E2C24B6FC00B0276E /* Syncopate-Bold.ttf in Resources */,
 				4250FA7F2C1F220B006E83C0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +334,7 @@
 				429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */,
 				4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */,
 				4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */,
+				429ACA522C24B73F00B0276E /* FontSetting.swift in Sources */,
 				4250FAD62C2317F5006E83C0 /* LocationManager.swift in Sources */,
 				4250FAA12C21A79F006E83C0 /* NIStatus.swift in Sources */,
 				4250FA7B2C1F220A006E83C0 /* HitTheSpotApp.swift in Sources */,
