@@ -10,8 +10,12 @@ import MapKit
 
 struct MainLocationView: View {
     @Bindable var activityManager: GroupActivityManager
-    @State private var cameraPosition: MapCameraPosition = .userLocation(followsHeading: true, fallback: .automatic)
     @State private var locationManager = LocationManager()
+    @State private var cameraPosition: MapCameraPosition = .userLocation(
+        followsHeading: true,
+        fallback: .automatic
+    )
+    @State private var workItem: DispatchWorkItem?
     
     let arViewController: NIARViewController
     var modeChangeHandler: (() -> Void)?
@@ -25,7 +29,7 @@ struct MainLocationView: View {
                     }
                 }
                 
-                if let peerLocationMessage = activityManager.locations.last {
+                if let peerLocationMessage = activityManager.locationMessages.last {
                     Annotation(
                         peerLocationMessage.userName,
                         coordinate: .init(peerLocationMessage.location)
@@ -39,7 +43,7 @@ struct MainLocationView: View {
                 RadialGradientCover()
                 
                 VStack {
-                    if let peerLocationMessage = activityManager.locations.last {
+                    if let peerLocationMessage = activityManager.locationMessages.last {
                         TitleLabel(pearName: peerLocationMessage.userName)
                     } else {
                         TitleLabel(pearName: "친구")
@@ -72,20 +76,16 @@ struct MainLocationView: View {
             locationManager.stopUpdatingLocation()
             arViewController.startSession()
         }
-        .onChange(of: locationManager.lastLocation) {
-            guard let coordinate = locationManager.lastLocation?.coordinate else { return }
+        .onMapCameraChange(frequency: .continuous) {
+            // TODO: - 다수라면 여기 코드 업데이트
+            let peerLocation = activityManager.locationMessages.last?.location.toCLLocation()
             
-            withAnimation {
-                cameraPosition = .region(
-                    .init(
-                        center: coordinate,
-                        span: .init(
-                            latitudeDelta: 0.02,
-                            longitudeDelta: 0.02
-                        )
-                    )
-                )
-            }
+            schedule(
+                task: {
+                    updateCameraPostion(for: [peerLocation].compactMap { $0 })
+                }, 
+                after: .now() + 1
+            )
         }
     }
 }
@@ -170,6 +170,49 @@ extension MainLocationView {
             .padding(.horizontal, 20)
             .background(.white)
             .clipShape(Capsule())
+        }
+    }
+}
+
+extension MainLocationView {
+    private func schedule(
+        task: @escaping () -> Void,
+        after: DispatchTime = .now() + 1
+    ) {
+        workItem?.cancel()
+        let item = DispatchWorkItem { task() }
+        workItem = item
+        DispatchQueue.main.asyncAfter(deadline: after, execute: item)
+    }
+    
+    private func updateCameraPostion(for locations: [CLLocation] = []) {
+        guard let myLocation = locationManager.lastLocation else { return }
+        
+        guard !locations.isEmpty else {
+            let camPostion = MapCameraPosition.region(
+                .init(
+                    center: myLocation.coordinate,
+                    span: .init(latitudeDelta: 0.02, longitudeDelta: 0.02) // 기본값으로 0.02로 설정
+                )
+            )
+            
+            moveCamera(to: camPostion)
+            return
+        }
+        
+        guard let maxDistance = locations.map({ $0.distance(from: myLocation) }).max() else { return }
+        
+        let span = MKCoordinateSpan(
+            latitudeDelta: maxDistance * 2 * 1.2, // 기본값으로 1.2 만큼 확장되도록 설정
+            longitudeDelta: maxDistance * 2 * 1.2
+        )
+        
+        moveCamera(to: .region(.init(center: myLocation.coordinate, span: span)))
+    }
+    
+    private func moveCamera(to position: MapCameraPosition) {
+        withAnimation {
+            cameraPosition = .userLocation(followsHeading: true, fallback: position)
         }
     }
 }

@@ -30,6 +30,10 @@ struct LocationCoordinate: Codable {
 }
 
 extension LocationCoordinate {
+    func toCLLocation() -> CLLocation {
+        .init(latitude: self.latitude, longitude: self.longitude)
+    }
+    
     func distance(from location: LocationCoordinate) -> CLLocationDistance {
         let fromLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
         let toLocation = CLLocation(latitude: self.latitude, longitude: self.longitude)

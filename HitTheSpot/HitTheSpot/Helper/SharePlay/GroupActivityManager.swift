@@ -11,7 +11,7 @@ import Combine
 
 @Observable
 final class GroupActivityManager {
-    var locations: [ShareLocationMessage] = []
+    var locationMessages: [ShareLocationMessage] = []
     var statusDescription: String = ""
     
     @ObservationIgnored private var session: GroupSession<ShareLocationActivity>?
@@ -114,7 +114,7 @@ extension GroupActivityManager {
     }
     
     func reset() {
-        locations = []
+        locationMessages = []
     }
 }
 
@@ -133,7 +133,7 @@ extension GroupActivityManager {
         
         Task.detached {
             for await message in messenger.messages(of: ShareLocationMessage.self) {
-                self.locations.append(message.0)
+                self.locationMessages.append(message.0)
                 print("Received locations: \(message.0)")
             }
         }
