@@ -24,7 +24,7 @@ extension MainDistanceView {
             action()
         } label: {
             HStack {
-                Image(systemName: "smallcircle.filled.circle")
+                Literal.Icon.location
                 Text("위치 보기")
             }
             .foregroundStyle(.black)

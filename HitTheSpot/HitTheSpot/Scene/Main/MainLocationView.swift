@@ -162,7 +162,7 @@ extension MainLocationView {
             action()
         } label: {
             HStack {
-                Image(systemName: "arrow.up.circle")
+                Literal.Icon.distance
                 Text("거리 보기")
             }
             .foregroundStyle(.black)

@@ -15,31 +15,47 @@ struct MainHomeView: View {
     let arViewController: NIARViewController
     
     var body: some View {
-        VStack {
+        ZStack {
+            Literal.HSImage.mainHomeBg
+                .resizable()
+                .scaledToFill()
+                .opacity(0.4)
+                .ignoresSafeArea()
+            
             VStack {
-                Text("HIT")
-                Text("THE")
-                Text("SPOT")
-            }
-            .font(.largeTitle.bold())
-            .foregroundStyle(.white)
-            .padding()
-            
-            Spacer()
-            
-            SharePlayButton {
-                Task {
-                    // SharePlay 혹은 FaceTime 연결여부 확인
-                    // 1. SharePlay 중 -> .preferred: 새 그룹 활동으로 대치
-                    // 2. FaceTime 중 -> .preferred: SharePlay 시작
-                    // 3. local -> .local: SharePlay는 참여 안함/취소
-                    // 4. None -> .needToAsk: SharePlay VC Sheet 호출
-                    let outcome = await activityManager.askStatusForSharePlay()
-                    isSharePlayPresented = outcome.isNeedToAsk
+                Spacer()
+                Spacer()
+                Spacer()
+                
+                VStack(alignment: .leading){
+                    Text("친구 찾기 어려울 땐, 여기로 모여!")
+                        .font(.pretendard20)
+                        .padding(.bottom, 40)
+                        .foregroundColor(.white)
+                    
+                    Literal.HSImage.titleWithLogo
+                        .frame(height: 225)
+                        .scaledToFit()
                 }
+                
+                Spacer()
+                Spacer()
+                
+                SharePlayButton {
+                    Task {
+                        // SharePlay 혹은 FaceTime 연결여부 확인
+                        // 1. SharePlay 중 -> .preferred: 새 그룹 활동으로 대치
+                        // 2. FaceTime 중 -> .preferred: SharePlay 시작
+                        // 3. local -> .local: SharePlay는 참여 안함/취소
+                        // 4. None -> .needToAsk: SharePlay VC Sheet 호출
+                        let outcome = await activityManager.askStatusForSharePlay()
+                        isSharePlayPresented = outcome.isNeedToAsk
+                    }
+                }
+                .padding(.bottom, 80)
             }
+            .padding(.horizontal, 24)
         }
-        .padding()
         .sheet(isPresented: $isSharePlayPresented) {
             GroupActivityShareSheet {
                 ShareLocationActivity()
@@ -60,13 +76,18 @@ extension MainHomeView {
         Button {
             action()
         } label: {
-            Label(
-                title: { Text("Start SharePlay") },
-                icon: { Image(systemName: "shareplay") }
-            )
+            RoundedRectangle(cornerRadius: 50)
+                .frame(height: 58)
+                .foregroundColor(.accentColor)
+                .overlay(
+                    Label(
+                        title: { Text("SharePlay로 친구 찾기") },
+                        icon: { Literal.Icon.sharePlay }
+                    )
+                    .font(.pretendard20)
+                    .foregroundColor(.black)
+                )
         }
-        .buttonStyle(.borderedProminent)
-        .tint(.green)
     }
 }
 
