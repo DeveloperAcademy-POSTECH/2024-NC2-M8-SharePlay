@@ -106,19 +106,19 @@ class MPCSession: NSObject {
 
 extension MPCSession {
     public func start() {
-        NSLog("Start advertising.")
+        log("주변 Peer 탐색을 시작합니다.")
         mcAdvertiser.startAdvertisingPeer()
         mcBrowser.startBrowsingForPeers()
     }
     
     public func suspend() {
-        NSLog("Suspend advertising.")
+        log("주변 Peer 탐색을 종료합니다.")
         mcAdvertiser.stopAdvertisingPeer()
         mcBrowser.stopBrowsingForPeers()
     }
     
     public func invalidate() {
-        NSLog("Invalidating the session and disconnecting peers.")
+        log("세션 및 peer간 연결을 종료합니다.")
         suspend()
         mcSession.disconnect()
         currentConnectedPeers.removeAll()
@@ -136,14 +136,14 @@ extension MPCSession {
         do {
             try mcSession.send(data, toPeers: peers, with: mode)
         } catch let error {
-            NSLog("Error sending data: \(error).")
+            log("Error sending data: \(error).")
         }
     }
 }
 
 extension MPCSession {
     private func peerConnected(peerID: MCPeerID) {
-        NSLog("Connected peer: \(peerID).")
+        log("\(peerID.displayName)와 연결되었습니다.")
         
         // 최대 Peer 수를 넘어가면, 주변 광고 및 탐색을 멈춤
         guard currentConnectedPeers.count < maxNumPeers else {
@@ -168,7 +168,7 @@ extension MPCSession {
     }
     
     private func peerDisconnected(peerID: MCPeerID) {
-        NSLog("Disconnected peer: \(peerID).")
+        log("\(peerID.displayName)와 연결이 종료되었습니다.")
         
         // 연결이 끊긴 Peer가 현재 연결된 데이터에 있는 지 확인
         guard currentConnectedPeers.contains(peerID) else {
@@ -331,5 +331,11 @@ extension MPCSession: MCNearbyServiceBrowserDelegate {
         lostPeer peerID: MCPeerID
     ) {
         
+    }
+}
+
+extension MPCSession {
+    private func log(_ message: String) {
+        HSLog(from: "\(Self.self)", with: message)
     }
 }

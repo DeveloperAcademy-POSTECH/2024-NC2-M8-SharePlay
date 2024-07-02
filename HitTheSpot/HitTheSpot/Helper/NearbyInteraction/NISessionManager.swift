@@ -170,7 +170,7 @@ extension NISessionManager {
         }
 
         guard connectedPeer == nil else {
-            NSLog("Already connected to a peer.")
+            log("이미 연결된 Peer와 연결되어 있습니다.")
             return
         }
 
@@ -232,7 +232,7 @@ extension NISessionManager {
     ///   - token: 전송한 token description
     private func peerDidShareDiscoveryToken(peer: MCPeerID, token: NIDiscoveryToken) {
         guard connectedPeer == peer else {
-            NSLog("Received a token from an unexpected peer.")
+            log("Received a token from an unexpected peer.")
             return
         }
         
@@ -246,7 +246,7 @@ extension NISessionManager {
             config.isCameraAssistanceEnabled = true
             config.isExtendedDistanceMeasurementEnabled = true
             
-            NSLog("Start ranging with \(peer.displayName).")
+            log("\(peer.displayName) 위치 인식 시작")
             
             // NISession 시작
             self.niSession?.run(config)
