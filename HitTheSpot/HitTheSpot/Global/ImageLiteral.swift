@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum Literal {
-    enum HTSImage {
+    enum HSImage {
         static let title = Image("Title")
         static let titleWithLogo = Image("TitleWithLogo")
         static let mainHomeBg = Image("MainHomeBg")

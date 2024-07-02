@@ -20,7 +20,7 @@ struct MainNearbyView: View {
                 
                 Spacer()
                 
-                Literal.HTSImage.title
+                Literal.HSImage.title
                     .resizable()
                     .scaledToFit()
                     .opacity(0.2)

@@ -16,7 +16,7 @@ struct MainHomeView: View {
     
     var body: some View {
         ZStack {
-            Literal.HTSImage.mainHomeBg
+            Literal.HSImage.mainHomeBg
                 .resizable()
                 .scaledToFill()
                 .opacity(0.4)
@@ -33,7 +33,7 @@ struct MainHomeView: View {
                         .padding(.bottom, 40)
                         .foregroundColor(.white)
                     
-                    Literal.HTSImage.titleWithLogo
+                    Literal.HSImage.titleWithLogo
                         .frame(height: 225)
                         .scaledToFit()
                 }
