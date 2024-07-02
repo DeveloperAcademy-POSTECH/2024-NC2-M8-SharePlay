@@ -20,7 +20,7 @@ struct MainView: View {
     let arViewController: NIARViewController
     let niSessionManager: NISessionManager
     
-    @State private var viewState: ViewState = .home
+    @State private var viewState: ViewState = .distance
     @State private var activityManager = GroupActivityManager()
     
     var body: some View {

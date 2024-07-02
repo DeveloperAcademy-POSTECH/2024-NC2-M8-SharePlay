@@ -241,29 +241,7 @@ extension NISessionManager {
             
             let config = NINearbyPeerConfiguration(peerToken: token)
             config.isCameraAssistanceEnabled = true
-            
-            // Use extended distance measurement (EDM) for visitor finding.
-            // if either device can't use EDM, don't range them.
-            if niStatus == .extended {
-                if #available(iOS 17.0, watchOS 10.0, *) {
-                    guard self.isSupportU2 else {
-                        NSLog("This device isn't capable of using U2")
-                        return
-                    }
-                    
-                    guard token.deviceCapabilities.supportsExtendedDistanceMeasurement else {
-                        NSLog("Peer device \(peer.displayName) isn't capable of using U2.")
-                        return
-                    }
-                    
-                    // EDM을 사용하능할 때 옵션 추가
-                    config.isExtendedDistanceMeasurementEnabled = true
-                    NSLog("The Nearby Interaction session uses extended distance measurement.")
-                    
-                } else {
-                    NSLog("This version of iOS isn't capable of finding visitors.")
-                }
-            }
+            config.isExtendedDistanceMeasurementEnabled = true
             
             NSLog("Start ranging with \(peer.displayName).")
             
@@ -307,6 +285,7 @@ extension NISessionManager: NISessionDelegate {
 
         // Update and compute with updated `nearbyObject`.
         currentNearbyObject = peerObj
+        latestNearbyObject = peerObj
     }
     
     /// 1개 이상의 NearBy 객체가 제거될 때 호출
@@ -410,6 +389,7 @@ extension NISessionManager {
         // Update and compute with updated algorithm `convergence` and `nearbyObject`.
         currentNearbyObject = nearbyObject
         convergenceContext = convergence
+        latestNearbyObject = nearbyObject
     }
 }
 

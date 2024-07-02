@@ -31,6 +31,9 @@ struct MainDistanceView: View {
             ArrowOverlay()
                 .rotationEffect(arrowAngle(orientationRadians: niSessionManager.latestNearbyObject?.horizontalAngle))
         }
+        .onAppear {
+            niSessionManager.startup()
+        }
     }
 }
 
