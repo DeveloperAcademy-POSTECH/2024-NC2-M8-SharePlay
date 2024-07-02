@@ -88,8 +88,6 @@ extension MainHomeView {
                     .foregroundColor(.black)
                 )
         }
-        .buttonStyle(.borderedProminent)
-        .tint(.accent)
     }
 }
 
