@@ -10,8 +10,8 @@ import SwiftUI
 struct NINotSupportedDeviceView: View {
     var body: some View {
         VStack {
-            Image(systemName: "xmark.circle")
-                    .resizable()
+            Literal.Icon.xmark
+                .resizable()
                 .frame(width: 50, height: 50, alignment: .center)
             
             Text("Unsupported Device")

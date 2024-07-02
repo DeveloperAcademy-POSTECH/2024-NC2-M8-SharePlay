@@ -16,7 +16,7 @@ struct MainHomeView: View {
     
     var body: some View {
         ZStack {
-            Image("MainFilter")
+            Literal.HTSImage.mainHomeBg
                 .resizable()
                 .scaledToFill()
                 .opacity(0.4)
@@ -33,7 +33,7 @@ struct MainHomeView: View {
                         .padding(.bottom, 40)
                         .foregroundColor(.white)
                     
-                    Image("MainTitle")
+                    Literal.HTSImage.titleWithLogo
                         .frame(height: 225)
                         .scaledToFit()
                 }
@@ -82,7 +82,7 @@ extension MainHomeView {
                 .overlay(
                     Label(
                         title: { Text("SharePlay로 친구 찾기") },
-                        icon: { Image(systemName: "shareplay") }
+                        icon: { Literal.Icon.sharePlay }
                     )
                     .font(.pretendard20)
                     .foregroundColor(.black)
