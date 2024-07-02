@@ -45,6 +45,7 @@ extension MainNearbyView {
                 Spacer()
             }
         }
+        .foregroundStyle(.white)
         .font(.pretendard24)
     }
 }
