@@ -32,6 +32,7 @@
 		4250FAD92C231A4A006E83C0 /* ShareLocationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */; };
 		425A4B052C3406CA004D7CCF /* NearbyEffect.json in Resources */ = {isa = PBXBuildFile; fileRef = 425A4B032C3406C9004D7CCF /* NearbyEffect.json */; };
 		425A4B082C340EAD004D7CCF /* ImageLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425A4B072C340EAD004D7CCF /* ImageLiteral.swift */; };
+		425A4B0A2C344372004D7CCF /* HSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425A4B092C344372004D7CCF /* HSLog.swift */; };
 		428ED0492C34048600DDD4A8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 428ED0482C34048600DDD4A8 /* Lottie */; };
 		428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ED04A2C34058600DDD4A8 /* LottieView.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
@@ -71,6 +72,7 @@
 		4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLocationMessage.swift; sourceTree = "<group>"; };
 		425A4B032C3406C9004D7CCF /* NearbyEffect.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NearbyEffect.json; sourceTree = "<group>"; };
 		425A4B072C340EAD004D7CCF /* ImageLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiteral.swift; sourceTree = "<group>"; };
+		425A4B092C344372004D7CCF /* HSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLog.swift; sourceTree = "<group>"; };
 		428ED04A2C34058600DDD4A8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				429ACA532C24C35C00B0276E /* Color+.swift */,
 				429ACA512C24B73F00B0276E /* FontSetting.swift */,
 				425A4B072C340EAD004D7CCF /* ImageLiteral.swift */,
+				425A4B092C344372004D7CCF /* HSLog.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			files = (
 				4250FA8F2C206AE6006E83C0 /* NIARView.swift in Sources */,
 				429ACA542C24C35C00B0276E /* Color+.swift in Sources */,
+				425A4B0A2C344372004D7CCF /* HSLog.swift in Sources */,
 				4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */,
 				4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */,
 				4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */,

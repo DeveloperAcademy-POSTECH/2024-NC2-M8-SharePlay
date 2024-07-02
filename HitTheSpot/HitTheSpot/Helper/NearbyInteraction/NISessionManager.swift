@@ -73,7 +73,6 @@ class NISessionManager: NSObject {
 extension NISessionManager {
     func startup() {
         // TODO: - View initialize
-//        near
         resetPeerData()
         startNISession()
         startMPCSession()
@@ -419,5 +418,11 @@ extension NISessionManager: ARSessionDelegate {
     /// Returns `false` as required by the `NISession.setARSession(_:)` documentation.
     func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
         return false
+    }
+}
+
+extension NISessionManager {
+    private func log(_ message: String) {
+        HSLog(from: "\(Self.self)", with: message)
     }
 }
