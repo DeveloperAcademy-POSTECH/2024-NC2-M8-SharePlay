@@ -12,6 +12,7 @@ enum Literal {
         static let title = Image("Title")
         static let titleWithLogo = Image("TitleWithLogo")
         static let mainHomeBg = Image("MainHomeBg")
+        static let arrow = Image("DirectionArrow")
     }
     
     enum Icon {

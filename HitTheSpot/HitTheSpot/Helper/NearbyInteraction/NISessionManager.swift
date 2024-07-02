@@ -12,8 +12,9 @@ import ARKit
 
 @Observable
 class NISessionManager: NSObject {
-    var connectedPeerName: String = ""
-    var latestNearbyObject: NINearbyObject?
+    var connectedPeerName: String? = nil
+    var distance: Float? = nil
+    var horizontalAngle: Float? = nil
     
     /// Nearby Interaction 지원 상태
     @ObservationIgnored private let niStatus: NIStatus
@@ -183,6 +184,7 @@ extension NISessionManager {
         // TODO: - 여럿이 되면 여기를 배열로 변경?
         
         // TODO: - connected Peer 정보 View 업데이트
+        connectedPeerName = connectedPeer?.displayName
     }
     
     /// MPCSession에서 Peer와 연결이 끊어졌을 때 실행할 클로저
@@ -191,6 +193,7 @@ extension NISessionManager {
         // TODO: - 여러 Peer와 연결될 경우, 배열에서 삭제하는 로직으로 수정
         if connectedPeer == peer {
             resetPeerData()
+            connectedPeerName = nil
         }
     }
     
@@ -285,7 +288,9 @@ extension NISessionManager: NISessionDelegate {
 
         // Update and compute with updated `nearbyObject`.
         currentNearbyObject = peerObj
-        latestNearbyObject = peerObj
+        
+        distance = peerObj.distance
+        horizontalAngle = peerObj.horizontalAngle
     }
     
     /// 1개 이상의 NearBy 객체가 제거될 때 호출
@@ -389,7 +394,9 @@ extension NISessionManager {
         // Update and compute with updated algorithm `convergence` and `nearbyObject`.
         currentNearbyObject = nearbyObject
         convergenceContext = convergence
-        latestNearbyObject = nearbyObject
+        
+        distance = nearbyObject.distance
+        horizontalAngle = nearbyObject.horizontalAngle
     }
 }
 

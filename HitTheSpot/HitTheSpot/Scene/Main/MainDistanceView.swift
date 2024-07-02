@@ -9,15 +9,16 @@ import SwiftUI
 
 struct MainDistanceView: View {
     @Bindable var niSessionManager: NISessionManager
-
+    let arViewController: NIARViewController
+    
     var modeChangeHandler: (() -> Void)?
     
     var body: some View {
         ZStack {
             VStack {
                 TitleLabel(
-                    peerName: niSessionManager.connectedPeerName,
-                    distance: niSessionManager.latestNearbyObject?.distance ?? 0
+                    peerName: niSessionManager.connectedPeerName ?? "",
+                    distance: niSessionManager.distance ?? 0
                 )
                 
                 Spacer()
@@ -29,10 +30,16 @@ struct MainDistanceView: View {
             .padding(.vertical, 60)
             
             ArrowOverlay()
-                .rotationEffect(arrowAngle(orientationRadians: niSessionManager.latestNearbyObject?.horizontalAngle))
+                .rotationEffect(
+                    Angle(radians: Double(niSessionManager.horizontalAngle ?? 0))
+                )
         }
         .onAppear {
+            arViewController.startSession()
             niSessionManager.startup()
+        }
+        .onDisappear {
+            arViewController.pauseSession()
         }
     }
 }
@@ -59,7 +66,7 @@ extension MainDistanceView {
             Circle()
                 .stroke(.white, lineWidth: 1)
             
-            Image("DirectionArrow")
+            Literal.HSImage.arrow
             
             Circle()
                 .fill(Color.accent)
@@ -75,6 +82,7 @@ extension MainDistanceView {
             VStack(alignment: .leading, spacing: 12) {
                 Text("\(peerName) 만나기까지")
                     .font(.pretendard24)
+                    .foregroundStyle(.white)
                     
                 HStack(alignment: .bottom) {
                     Text(String(format: "%.1f", distance))
@@ -108,14 +116,10 @@ extension MainDistanceView {
     }
 }
 
-extension MainDistanceView {
-    func arrowAngle(orientationRadians: Float?) -> Angle {
-        let imageRotationOffset = Angle(degrees: -90)
-        return Angle(radians: Double(orientationRadians ?? 0)) + imageRotationOffset
-    }
-}
-
 #Preview {
-    MainDistanceView(niSessionManager: NISessionManager(niStatus: .extended))
-        .preferredColorScheme(.dark)
+    MainDistanceView(
+        niSessionManager: NISessionManager(niStatus: .extended),
+        arViewController: NIARViewController()
+    )
+    .preferredColorScheme(.dark)
 }
