@@ -95,10 +95,10 @@ extension MainLocationView {
     func Marker(isPeer: Bool = false) -> some View {
         ZStack {
             Circle()
-                .fill(isPeer ? .green : .white)
+                .fill(isPeer ? .accent : .white)
                 .frame(width: 40, height: 40)
             Circle()
-                .fill(isPeer ? .white : .green)
+                .fill(isPeer ? .white : .accent)
                 .frame(width: 36, height: 36)
         }
         .shadow(color: .black.opacity(0.1), radius: 10)
@@ -144,7 +144,7 @@ extension MainLocationView {
                 HStack {
                     Text("나와 \(pearName)의")
                     Text("위치를 확인하세요")
-                        .foregroundStyle(.green)
+                        .foregroundStyle(.accent)
                 }
             }
             .foregroundStyle(.white)

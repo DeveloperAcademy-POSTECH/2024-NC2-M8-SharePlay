@@ -12,8 +12,9 @@ import ARKit
 
 @Observable
 class NISessionManager: NSObject {
-    var connectedPeerName: String = ""
-    var latestNearbyObject: NINearbyObject?
+    var connectedPeerName: String? = nil
+    var distance: Float? = nil
+    var horizontalAngle: Float? = nil
     
     /// Nearby Interaction 지원 상태
     @ObservationIgnored private let niStatus: NIStatus
@@ -73,7 +74,6 @@ class NISessionManager: NSObject {
 extension NISessionManager {
     func startup() {
         // TODO: - View initialize
-//        near
         resetPeerData()
         startNISession()
         startMPCSession()
@@ -170,7 +170,7 @@ extension NISessionManager {
         }
 
         guard connectedPeer == nil else {
-            NSLog("Already connected to a peer.")
+            log("이미 연결된 Peer와 연결되어 있습니다.")
             return
         }
 
@@ -184,6 +184,7 @@ extension NISessionManager {
         // TODO: - 여럿이 되면 여기를 배열로 변경?
         
         // TODO: - connected Peer 정보 View 업데이트
+        connectedPeerName = connectedPeer?.displayName
     }
     
     /// MPCSession에서 Peer와 연결이 끊어졌을 때 실행할 클로저
@@ -192,6 +193,7 @@ extension NISessionManager {
         // TODO: - 여러 Peer와 연결될 경우, 배열에서 삭제하는 로직으로 수정
         if connectedPeer == peer {
             resetPeerData()
+            connectedPeerName = nil
         }
     }
     
@@ -230,7 +232,7 @@ extension NISessionManager {
     ///   - token: 전송한 token description
     private func peerDidShareDiscoveryToken(peer: MCPeerID, token: NIDiscoveryToken) {
         guard connectedPeer == peer else {
-            NSLog("Received a token from an unexpected peer.")
+            log("Received a token from an unexpected peer.")
             return
         }
         
@@ -242,31 +244,9 @@ extension NISessionManager {
             
             let config = NINearbyPeerConfiguration(peerToken: token)
             config.isCameraAssistanceEnabled = true
+            config.isExtendedDistanceMeasurementEnabled = true
             
-            // Use extended distance measurement (EDM) for visitor finding.
-            // if either device can't use EDM, don't range them.
-            if niStatus == .extended {
-                if #available(iOS 17.0, watchOS 10.0, *) {
-                    guard self.isSupportU2 else {
-                        NSLog("This device isn't capable of using U2")
-                        return
-                    }
-                    
-                    guard token.deviceCapabilities.supportsExtendedDistanceMeasurement else {
-                        NSLog("Peer device \(peer.displayName) isn't capable of using U2.")
-                        return
-                    }
-                    
-                    // EDM을 사용하능할 때 옵션 추가
-                    config.isExtendedDistanceMeasurementEnabled = true
-                    NSLog("The Nearby Interaction session uses extended distance measurement.")
-                    
-                } else {
-                    NSLog("This version of iOS isn't capable of finding visitors.")
-                }
-            }
-            
-            NSLog("Start ranging with \(peer.displayName).")
+            log("\(peer.displayName) 위치 인식 시작")
             
             // NISession 시작
             self.niSession?.run(config)
@@ -308,6 +288,9 @@ extension NISessionManager: NISessionDelegate {
 
         // Update and compute with updated `nearbyObject`.
         currentNearbyObject = peerObj
+        
+        distance = peerObj.distance
+        horizontalAngle = peerObj.horizontalAngle
     }
     
     /// 1개 이상의 NearBy 객체가 제거될 때 호출
@@ -411,6 +394,9 @@ extension NISessionManager {
         // Update and compute with updated algorithm `convergence` and `nearbyObject`.
         currentNearbyObject = nearbyObject
         convergenceContext = convergence
+        
+        distance = nearbyObject.distance
+        horizontalAngle = nearbyObject.horizontalAngle
     }
 }
 
@@ -419,5 +405,11 @@ extension NISessionManager: ARSessionDelegate {
     /// Returns `false` as required by the `NISession.setARSession(_:)` documentation.
     func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
         return false
+    }
+}
+
+extension NISessionManager {
+    private func log(_ message: String) {
+        HSLog(from: "\(Self.self)", with: message)
     }
 }

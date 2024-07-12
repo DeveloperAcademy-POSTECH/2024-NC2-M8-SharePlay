@@ -18,17 +18,14 @@ extension MainView {
 
 struct MainView: View {
     let arViewController: NIARViewController
-    let niSessionManager: NISessionManager
+    @Bindable var niSessionManager: NISessionManager
     
-    @State private var viewState: ViewState = .home
+    @State private var viewState: ViewState = .distance
+    @State private var lastViewState: ViewState = .distance
     @State private var activityManager = GroupActivityManager()
     
     var body: some View {
         VStack {
-            Text(activityManager.statusDescription)
-                .font(.largeTitle.bold())
-                .foregroundStyle(.red)
-            
             switch viewState {
             case .home:
                 MainHomeView(
@@ -38,6 +35,8 @@ struct MainView: View {
                 )
             case .distance:
                 MainDistanceView(
+                    niSessionManager: niSessionManager,
+                    arViewController: arViewController,
                     modeChangeHandler: { updateViewState(to: .location) }
                 )
             case .location:
@@ -53,6 +52,24 @@ struct MainView: View {
         .onAppear {
             activityManager.sharePlayJoinedHandler = { updateViewState(to: .distance) }
             activityManager.sharePlayInvalidateHandler = { updateViewState(to: .home) }
+        }
+        .onChange(of: viewState) { _, newValue in
+            switch newValue {
+            case .home, .distance, .location:
+                lastViewState = newValue
+            case .nearby:
+                break
+            }
+        }
+        .onChange(of: niSessionManager.distance) {
+            guard let distance = niSessionManager.distance else { return }
+            
+            switch distance {
+            case 0..<ThreshHold.nearByDistance:
+                updateViewState(to: .nearby)
+            default:
+                updateViewState(to: lastViewState)
+            }
         }
     }
 }

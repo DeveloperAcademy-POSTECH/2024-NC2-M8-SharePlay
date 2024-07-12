@@ -79,7 +79,7 @@ extension LocationManager: CLLocationManagerDelegate {
 
 extension LocationManager {
     private func log(_ message: String) {
-        NSLog("[LocationManager]: \(message)")
+        HSLog(from: "\(Self.self)", with: message)
     }
 }
 

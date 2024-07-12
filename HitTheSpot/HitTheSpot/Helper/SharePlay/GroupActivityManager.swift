@@ -141,8 +141,8 @@ extension GroupActivityManager {
 }
 
 extension GroupActivityManager {
-    func log(_ message: String) {
-        NSLog("[GroupActivityManager]: " + message)
+    private func log(_ message: String) {
+        HSLog(from: "\(Self.self)", with: message)
         statusDescription = message
     }
 }

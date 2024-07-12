@@ -12,11 +12,11 @@ class MeasurementQualityEstimator {
     /// 허용되는 타임 윈도우
     let freshnessWindow = TimeInterval(floatLiteral: 2.0)
     /// 최소 샘플 수
-    let minSamples: Int = 8
+    let minSamples: Int = ThreshHold.minSamples
     /// 최대 거리, 미터 단위
-    let maxDistance: Float = 50
+    let maxDistance: Float = ThreshHold.maxDistacne
     /// 최소 거리, 미터 단위
-    let closeDistance: Float = 10
+    let closeDistance: Float = ThreshHold.nearByDistance
     
     // A buffer to hold the individual quality measurements.
     private var measurements: [TimedNIObject] = []
