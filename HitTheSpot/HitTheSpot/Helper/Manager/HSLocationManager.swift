@@ -10,8 +10,8 @@ import CoreLocation
 
 class HSLocationManager: NSObject {
     private let _manager: CLLocationManager
-    private var _location: CLLocation?
-    private var _isUpdating: Bool = false
+    private var location: CLLocation?
+    private var isUpdating: Bool = false
     private var curLocationCompletion: ((CLLocation?) -> Void)?
     
     weak var delegate: HSLocationDelegate?
@@ -42,15 +42,15 @@ extension HSLocationManager {
     }
     
     public func stopUpdating() {
-        _isUpdating = false
-        _location = nil
+        isUpdating = false
+        location = nil
         _manager.stopUpdatingLocation()
         log("사용자의 위치 업데이트를 중지합니다.")
     }
     
     public func loadCurLocation(_ completion: @escaping (CLLocation?) -> Void) {
-        if _isUpdating {
-            completion(_location)
+        if isUpdating {
+            completion(location)
         } else {
             curLocationCompletion = { [weak self] location in
                 completion(location)
@@ -67,7 +67,7 @@ extension HSLocationManager {
     }
     
     private func startUpdatingLocation() {
-        _isUpdating = true
+        isUpdating = true
         _manager.startUpdatingLocation()
         log("사용자의 위치 업데이트를 시작합니다.")
     }
@@ -81,7 +81,7 @@ extension HSLocationManager: CLLocationManagerDelegate {
     ) {
         guard let latestLocation = locations.last else { return }
     
-        _location = latestLocation
+        location = latestLocation
         delegate?.didLocationUpdate(latestLocation)
         curLocationCompletion?(latestLocation)
     }
