@@ -8,8 +8,8 @@
 import Foundation
 
 enum HSShareLocationMessage: Codable {
+    case HSProfile
     case NIToken
-    case NIProfile
     case NIObejct
     case CLLocation
 }
