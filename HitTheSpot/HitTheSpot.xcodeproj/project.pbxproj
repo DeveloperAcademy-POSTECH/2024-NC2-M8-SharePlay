@@ -36,6 +36,8 @@
 		4287B76B2C4215AF00E58A60 /* HSLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */; };
 		4287B76F2C42268100E58A60 /* HSLocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B76E2C42268100E58A60 /* HSLocationDelegate.swift */; };
 		4287B7712C4226AF00E58A60 /* CLAuthorizationStatus+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7702C4226AF00E58A60 /* CLAuthorizationStatus+.swift */; };
+		4287B7732C42271F00E58A60 /* HSGroupActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7722C42271F00E58A60 /* HSGroupActivityManager.swift */; };
+		4287B7752C43B66E00E58A60 /* HSGroupSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7742C43B66E00E58A60 /* HSGroupSessionDelegate.swift */; };
 		428ED0492C34048600DDD4A8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 428ED0482C34048600DDD4A8 /* Lottie */; };
 		428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ED04A2C34058600DDD4A8 /* LottieView.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
@@ -79,6 +81,8 @@
 		4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLocationManager.swift; sourceTree = "<group>"; };
 		4287B76E2C42268100E58A60 /* HSLocationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLocationDelegate.swift; sourceTree = "<group>"; };
 		4287B7702C4226AF00E58A60 /* CLAuthorizationStatus+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLAuthorizationStatus+.swift"; sourceTree = "<group>"; };
+		4287B7722C42271F00E58A60 /* HSGroupActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSGroupActivityManager.swift; sourceTree = "<group>"; };
+		4287B7742C43B66E00E58A60 /* HSGroupSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSGroupSessionDelegate.swift; sourceTree = "<group>"; };
 		428ED04A2C34058600DDD4A8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 			children = (
 				4287B76D2C42266B00E58A60 /* Delegate */,
 				4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */,
+				4287B7722C42271F00E58A60 /* HSGroupActivityManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				4287B76E2C42268100E58A60 /* HSLocationDelegate.swift */,
+				4287B7742C43B66E00E58A60 /* HSGroupSessionDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 				4250FA7D2C1F220A006E83C0 /* ContentView.swift in Sources */,
 				4250FA9E2C21A10C006E83C0 /* ShareLocationActivity.swift in Sources */,
 				429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */,
+				4287B7732C42271F00E58A60 /* HSGroupActivityManager.swift in Sources */,
 				4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */,
 				4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */,
 				429ACA522C24B73F00B0276E /* FontSetting.swift in Sources */,
@@ -406,6 +413,7 @@
 				4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */,
 				4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */,
 				428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */,
+				4287B7752C43B66E00E58A60 /* HSGroupSessionDelegate.swift in Sources */,
 				425A4B082C340EAD004D7CCF /* ImageLiteral.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
