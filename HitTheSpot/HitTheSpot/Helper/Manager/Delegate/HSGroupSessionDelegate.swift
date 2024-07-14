@@ -10,10 +10,10 @@ import GroupActivities
 
 protocol HSGroupSessionDelegate: AnyObject {
     // MARK: - Monitoring Session
-    func didInvalidated(_ session: GroupSession<some GroupActivity>)
-    func didJoined(_ session: GroupSession<some GroupActivity>)
-    func waiting(_ session: GroupSession<some GroupActivity>)
+    func didInvalidated(_ session: GroupSession<HSShareLocationActivity>)
+    func didJoined(_ session: GroupSession<HSShareLocationActivity>)
+    func waiting(_ session: GroupSession<HSShareLocationActivity>)
     
     // MARK: - Messaging
-    func receive(_ message: Codable)
+    func receive(_ message: HSShareLocationMessage)
 }

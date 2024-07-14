@@ -9,12 +9,12 @@ import Foundation
 import GroupActivities
 import Combine
 
-class HSGroupActivityManager<Activity: GroupActivity, Message: Codable> {
-    typealias SessionState = GroupSession<Activity>.State
+class HSGroupActivityManager {
+    typealias SessionState = GroupSession<HSShareLocationActivity>.State
     
     private let groupStateObserver = GroupStateObserver()
-    private var activity: Activity
-    private var session: GroupSession<Activity>?
+    private var activity: HSShareLocationActivity
+    private var session: GroupSession<HSShareLocationActivity>?
     private var messenger: GroupSessionMessenger?
     
     private var cancellables = Set<AnyCancellable>()
@@ -24,8 +24,8 @@ class HSGroupActivityManager<Activity: GroupActivity, Message: Codable> {
     
     weak var delegate: HSGroupSessionDelegate?
     
-    init(activity: Activity) {
-        self.activity = activity
+    init() {
+        self.activity = .init()
         self.monitorNewGroupActivity()
     }
 }
@@ -66,7 +66,7 @@ extension HSGroupActivityManager {
 extension HSGroupActivityManager {
     private func monitorNewGroupActivity() {
         Task.detached { [weak self] in
-            for await session in Activity.sessions() {
+            for await session in HSShareLocationActivity.sessions() {
                 self?.log("새로운 활동 세션 감지됨")
                 self?.session = session
                 self?.messenger = GroupSessionMessenger(session: session)
@@ -77,7 +77,7 @@ extension HSGroupActivityManager {
         }
     }
     
-    private func join(_ session: GroupSession<Activity>) {
+    private func join(_ session: GroupSession<HSShareLocationActivity>) {
         if session.state != .joined {
             session.join()
         }
@@ -116,7 +116,7 @@ extension HSGroupActivityManager {
 
 // MARK: - Messaging
 extension HSGroupActivityManager {
-    public func send(_ message: Codable) async throws {
+    public func send(_ message: HSShareLocationMessage) async throws {
         do {
             try await messenger?.send(message)
         } catch {
@@ -128,17 +128,11 @@ extension HSGroupActivityManager {
         guard let messenger else { return }
         
         Task.detached {
-            for await message in messenger.messages(of: Message.self) {
+            for await message in messenger.messages(of: HSShareLocationMessage.self) {
                 self.delegate?.receive(message.0)
             }
         }
     }
-}
-
-enum GroupActivationStatus {
-    case preferred
-    case disabled
-    case needToAsk
 }
 
 // MARK: - Log
