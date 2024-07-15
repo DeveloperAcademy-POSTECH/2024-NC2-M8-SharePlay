@@ -8,12 +8,12 @@
 import Foundation
 import GroupActivities
 
+// MARK: - Monitoring Session
 protocol HSGroupSessionDelegate: AnyObject {
-    // MARK: - Monitoring Session
-    func didInvalidated(_ session: GroupSession<HSShareLocationActivity>)
-    func didJoined(_ session: GroupSession<HSShareLocationActivity>)
-    func waiting(_ session: GroupSession<HSShareLocationActivity>)
+    typealias Session = GroupSession<HSShareLocationActivity>
     
-    // MARK: - Messaging
-    func receive(_ message: HSShareLocationMessage)
+    func didInvalidated(_ session: Session, reason: Error)
+    func didJoined(_ session: Session)
+    func waiting(_ session: Session)
 }
+

@@ -40,6 +40,8 @@
 		4287B7752C43B66E00E58A60 /* HSGroupSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7742C43B66E00E58A60 /* HSGroupSessionDelegate.swift */; };
 		4287B7782C43BABB00E58A60 /* HSShareLocationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7772C43BABB00E58A60 /* HSShareLocationActivity.swift */; };
 		4287B77A2C43BAFC00E58A60 /* HSShareLocationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7792C43BAFC00E58A60 /* HSShareLocationMessage.swift */; };
+		4287B77F2C43BF2200E58A60 /* SharePlayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B77E2C43BF2200E58A60 /* SharePlayUseCase.swift */; };
+		4287B7812C43C59500E58A60 /* HSMessagingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7802C43C59500E58A60 /* HSMessagingDelegate.swift */; };
 		428ED0492C34048600DDD4A8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 428ED0482C34048600DDD4A8 /* Lottie */; };
 		428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ED04A2C34058600DDD4A8 /* LottieView.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
@@ -87,6 +89,8 @@
 		4287B7742C43B66E00E58A60 /* HSGroupSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSGroupSessionDelegate.swift; sourceTree = "<group>"; };
 		4287B7772C43BABB00E58A60 /* HSShareLocationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSShareLocationActivity.swift; sourceTree = "<group>"; };
 		4287B7792C43BAFC00E58A60 /* HSShareLocationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSShareLocationMessage.swift; sourceTree = "<group>"; };
+		4287B77E2C43BF2200E58A60 /* SharePlayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayUseCase.swift; sourceTree = "<group>"; };
+		4287B7802C43C59500E58A60 /* HSMessagingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSMessagingDelegate.swift; sourceTree = "<group>"; };
 		428ED04A2C34058600DDD4A8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 		4287B76C2C42266300E58A60 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				4287B77D2C43BF0800E58A60 /* UseCase */,
 				4287B7762C43BAA600E58A60 /* Model */,
 				4287B76D2C42266B00E58A60 /* Delegate */,
 				4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */,
@@ -286,6 +291,7 @@
 			children = (
 				4287B76E2C42268100E58A60 /* HSLocationDelegate.swift */,
 				4287B7742C43B66E00E58A60 /* HSGroupSessionDelegate.swift */,
+				4287B7802C43C59500E58A60 /* HSMessagingDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -297,6 +303,14 @@
 				4287B7792C43BAFC00E58A60 /* HSShareLocationMessage.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4287B77D2C43BF0800E58A60 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				4287B77E2C43BF2200E58A60 /* SharePlayUseCase.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 		428ED04C2C34063100DDD4A8 /* Lottie */ = {
@@ -406,6 +420,7 @@
 				4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */,
 				4287B76F2C42268100E58A60 /* HSLocationDelegate.swift in Sources */,
 				4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */,
+				4287B77F2C43BF2200E58A60 /* SharePlayUseCase.swift in Sources */,
 				4250FAD92C231A4A006E83C0 /* ShareLocationMessage.swift in Sources */,
 				4250FA942C209322006E83C0 /* Constant.swift in Sources */,
 				4250FA982C218F7B006E83C0 /* MainHomeView.swift in Sources */,
@@ -428,6 +443,7 @@
 				4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */,
 				4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */,
 				428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */,
+				4287B7812C43C59500E58A60 /* HSMessagingDelegate.swift in Sources */,
 				4287B7752C43B66E00E58A60 /* HSGroupSessionDelegate.swift in Sources */,
 				425A4B082C340EAD004D7CCF /* ImageLiteral.swift in Sources */,
 				4287B7782C43BABB00E58A60 /* HSShareLocationActivity.swift in Sources */,

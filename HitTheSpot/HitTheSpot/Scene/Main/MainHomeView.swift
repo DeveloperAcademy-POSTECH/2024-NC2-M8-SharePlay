@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct MainHomeView: View {
+    @Bindable var sharePlayUseCase: SharePlayUseCase
     @Binding var viewState: MainView.ViewState
-    @State private var isSharePlayPresented = false
-    
-    let activityManager: GroupActivityManager
     let arViewController: NIARViewController
     
     var body: some View {
@@ -42,21 +40,19 @@ struct MainHomeView: View {
                 Spacer()
                 
                 SharePlayButton {
-                    Task {
-                        // SharePlay 혹은 FaceTime 연결여부 확인
-                        // 1. SharePlay 중 -> .preferred: 새 그룹 활동으로 대치
-                        // 2. FaceTime 중 -> .preferred: SharePlay 시작
-                        // 3. local -> .local: SharePlay는 참여 안함/취소
-                        // 4. None -> .needToAsk: SharePlay VC Sheet 호출
-                        let outcome = await activityManager.askStatusForSharePlay()
-                        isSharePlayPresented = outcome.isNeedToAsk
-                    }
+                    sharePlayUseCase.effect(.startSharePlayBtnTap)
                 }
                 .padding(.bottom, 80)
             }
             .padding(.horizontal, 24)
         }
-        .sheet(isPresented: $isSharePlayPresented) {
+        .sheet(isPresented:
+                .init(
+                    get: { sharePlayUseCase.state.isSheetPresented },
+                    set: { _ in sharePlayUseCase.effect(.bindIsSheetPresented) }
+                )
+            )
+        {
             GroupActivityShareSheet {
                 ShareLocationActivity()
             }
@@ -93,8 +89,10 @@ extension MainHomeView {
 
 #Preview {
     MainHomeView(
-        viewState: .constant(.home), 
-        activityManager: GroupActivityManager(),
+        sharePlayUseCase: SharePlayUseCase(
+            manager: HSGroupActivityManager()
+        ),
+        viewState: .constant(.home),
         arViewController: NIARViewController()
     )
     .preferredColorScheme(.dark)

@@ -20,17 +20,19 @@ struct MainView: View {
     let arViewController: NIARViewController
     @Bindable var niSessionManager: NISessionManager
     
-    @State private var viewState: ViewState = .distance
-    @State private var lastViewState: ViewState = .distance
+    @State private var viewState: ViewState = .home
+    @State private var lastViewState: ViewState = .home
     @State private var activityManager = GroupActivityManager()
+    
+    @Bindable private var sharePlayUseCase = SharePlayUseCase(manager: HSGroupActivityManager())
     
     var body: some View {
         VStack {
             switch viewState {
             case .home:
                 MainHomeView(
+                    sharePlayUseCase: sharePlayUseCase,
                     viewState: $viewState,
-                    activityManager: activityManager,
                     arViewController: arViewController
                 )
             case .distance:

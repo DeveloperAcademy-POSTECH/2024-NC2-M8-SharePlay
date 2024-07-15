@@ -22,7 +22,8 @@ class HSGroupActivityManager {
     var isGroupActivityAvailable: Bool { groupStateObserver.isEligibleForGroupSession }
     var sessionState: SessionState { session?.state ?? .invalidated(reason: NSError()) }
     
-    weak var delegate: HSGroupSessionDelegate?
+    weak var sessionDelegate: HSGroupSessionDelegate?
+    weak var messageDelegate: HSMessagingDelegate?
     
     init() {
         self.activity = .init()
@@ -91,20 +92,20 @@ extension HSGroupActivityManager {
                 guard let self else { return }
                 
                 switch state {
-                case .invalidated:
+                case .invalidated(let error):
                     self.log("stop GroupSession")
                     self.session = nil
                     self.messenger = nil
-                    self.delegate?.didInvalidated(session)
+                    self.sessionDelegate?.didInvalidated(session, reason: error)
                     
                 case .joined:
                     self.log("Join to GroupSession")
                     self.session.map(self.join(_:))
-                    self.delegate?.didJoined(session)
+                    self.sessionDelegate?.didJoined(session)
                     
                 case .waiting:
                     self.log("Waiting to GroupSession")
-                    self.delegate?.waiting(session)
+                    self.sessionDelegate?.waiting(session)
                     
                 default:
                     break
@@ -129,7 +130,7 @@ extension HSGroupActivityManager {
         
         Task.detached {
             for await message in messenger.messages(of: HSShareLocationMessage.self) {
-                self.delegate?.receive(message.0)
+                self.messageDelegate?.receive(message.0)
             }
         }
     }
