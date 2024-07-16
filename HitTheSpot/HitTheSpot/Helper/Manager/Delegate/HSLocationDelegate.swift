@@ -6,8 +6,7 @@
 //
 
 import Foundation
-import CoreLocation
 
 protocol HSLocationDelegate: AnyObject {
-    func didLocationUpdate(_ location: CLLocation)
+    func didLocationUpdate(_ location: HSLocation)
 }

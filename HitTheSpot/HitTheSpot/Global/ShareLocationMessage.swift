@@ -11,10 +11,10 @@ import CoreLocation
 struct ShareLocationMessage: Codable, Identifiable {
     var id = UUID()
     var userName: String
-    let location: LocationCoordinate
+    let location: HSLocation
 }
 
-struct LocationCoordinate: Codable {
+struct HSLocation: Codable {
     let latitude: Double
     let longitude: Double
     
@@ -29,12 +29,12 @@ struct LocationCoordinate: Codable {
     }
 }
 
-extension LocationCoordinate {
+extension HSLocation {
     func toCLLocation() -> CLLocation {
         .init(latitude: self.latitude, longitude: self.longitude)
     }
     
-    func distance(from location: LocationCoordinate) -> CLLocationDistance {
+    func distance(from location: HSLocation) -> CLLocationDistance {
         let fromLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
         let toLocation = CLLocation(latitude: self.latitude, longitude: self.longitude)
         

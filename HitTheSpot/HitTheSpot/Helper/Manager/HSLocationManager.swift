@@ -82,7 +82,7 @@ extension HSLocationManager: CLLocationManagerDelegate {
         guard let latestLocation = locations.last else { return }
     
         location = latestLocation
-        delegate?.didLocationUpdate(latestLocation)
+        delegate?.didLocationUpdate(.init(latestLocation))
         curLocationCompletion?(latestLocation)
     }
     

@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 extension CLLocationCoordinate2D {
-    init(_ coordinate: LocationCoordinate) {
+    init(_ coordinate: HSLocation) {
         self.init(latitude: coordinate.latitude, longitude: coordinate.longitude)
     }
 }

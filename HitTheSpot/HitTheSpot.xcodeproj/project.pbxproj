@@ -42,6 +42,8 @@
 		4287B77A2C43BAFC00E58A60 /* HSShareLocationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7792C43BAFC00E58A60 /* HSShareLocationMessage.swift */; };
 		4287B77F2C43BF2200E58A60 /* SharePlayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B77E2C43BF2200E58A60 /* SharePlayUseCase.swift */; };
 		4287B7812C43C59500E58A60 /* HSMessagingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7802C43C59500E58A60 /* HSMessagingDelegate.swift */; };
+		4287B7832C45600200E58A60 /* MyInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7822C45600200E58A60 /* MyInfoUseCase.swift */; };
+		4287B7852C46BA6B00E58A60 /* HSUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */; };
 		428ED0492C34048600DDD4A8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 428ED0482C34048600DDD4A8 /* Lottie */; };
 		428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ED04A2C34058600DDD4A8 /* LottieView.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
@@ -91,6 +93,8 @@
 		4287B7792C43BAFC00E58A60 /* HSShareLocationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSShareLocationMessage.swift; sourceTree = "<group>"; };
 		4287B77E2C43BF2200E58A60 /* SharePlayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayUseCase.swift; sourceTree = "<group>"; };
 		4287B7802C43C59500E58A60 /* HSMessagingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSMessagingDelegate.swift; sourceTree = "<group>"; };
+		4287B7822C45600200E58A60 /* MyInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoUseCase.swift; sourceTree = "<group>"; };
+		4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSUserProfile.swift; sourceTree = "<group>"; };
 		428ED04A2C34058600DDD4A8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 			children = (
 				4287B7772C43BABB00E58A60 /* HSShareLocationActivity.swift */,
 				4287B7792C43BAFC00E58A60 /* HSShareLocationMessage.swift */,
+				4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				4287B77E2C43BF2200E58A60 /* SharePlayUseCase.swift */,
+				4287B7822C45600200E58A60 /* MyInfoUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 				4250FA942C209322006E83C0 /* Constant.swift in Sources */,
 				4250FA982C218F7B006E83C0 /* MainHomeView.swift in Sources */,
 				4287B7712C4226AF00E58A60 /* CLAuthorizationStatus+.swift in Sources */,
+				4287B7832C45600200E58A60 /* MyInfoUseCase.swift in Sources */,
 				4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */,
 				4250FA7D2C1F220A006E83C0 /* ContentView.swift in Sources */,
 				4250FA9E2C21A10C006E83C0 /* ShareLocationActivity.swift in Sources */,
@@ -433,6 +440,7 @@
 				4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */,
 				4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */,
 				429ACA522C24B73F00B0276E /* FontSetting.swift in Sources */,
+				4287B7852C46BA6B00E58A60 /* HSUserProfile.swift in Sources */,
 				4250FAD62C2317F5006E83C0 /* LocationManager.swift in Sources */,
 				4250FAA12C21A79F006E83C0 /* NIStatus.swift in Sources */,
 				4250FA7B2C1F220A006E83C0 /* HitTheSpotApp.swift in Sources */,

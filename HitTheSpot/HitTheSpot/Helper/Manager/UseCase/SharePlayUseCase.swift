@@ -7,7 +7,6 @@
 
 import Foundation
 import GroupActivities
-import CoreLocation
 
 @Observable
 class SharePlayUseCase {
