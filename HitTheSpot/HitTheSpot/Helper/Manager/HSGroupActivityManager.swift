@@ -117,7 +117,7 @@ extension HSGroupActivityManager {
 
 // MARK: - Messaging
 extension HSGroupActivityManager {
-    public func send(_ message: HSShareLocationMessage) async throws {
+    public func send(_ message: HSPeerInfoMessage) async throws {
         do {
             try await messenger?.send(message)
         } catch {
@@ -129,7 +129,7 @@ extension HSGroupActivityManager {
         guard let messenger else { return }
         
         Task.detached {
-            for await message in messenger.messages(of: HSShareLocationMessage.self) {
+            for await message in messenger.messages(of: HSPeerInfoMessage.self) {
                 self.messageDelegate?.receive(message.0)
             }
         }

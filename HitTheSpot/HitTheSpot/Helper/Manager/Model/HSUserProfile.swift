@@ -7,8 +7,8 @@
 
 import UIKit
 
-struct HSUserProfile {
-    let id: UUID = UUID()
+struct HSUserProfile: Codable {
+    var id: UUID = UUID()
     let name: String
-    let image: UIImage?
+    let image: Data?
 }

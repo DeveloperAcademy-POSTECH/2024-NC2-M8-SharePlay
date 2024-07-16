@@ -23,7 +23,7 @@ class MyInfoUseCase {
     struct State {
         var profile: HSUserProfile
         var location: HSLocation? = nil
-        var niToken: NIDiscoveryToken? = nil
+        var token: NIDiscoveryToken? = nil
     }
     
     private let manager: HSLocationManager
