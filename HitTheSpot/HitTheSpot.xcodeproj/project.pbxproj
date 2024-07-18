@@ -45,6 +45,7 @@
 		4287B7832C45600200E58A60 /* MyInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7822C45600200E58A60 /* MyInfoUseCase.swift */; };
 		4287B7852C46BA6B00E58A60 /* HSUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */; };
 		4287B7872C46BF2800E58A60 /* PeerInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7862C46BF2800E58A60 /* PeerInfoUseCase.swift */; };
+		4287B78D2C46C9BD00E58A60 /* HSNIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */; };
 		428ED0492C34048600DDD4A8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 428ED0482C34048600DDD4A8 /* Lottie */; };
 		428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ED04A2C34058600DDD4A8 /* LottieView.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
@@ -97,6 +98,7 @@
 		4287B7822C45600200E58A60 /* MyInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoUseCase.swift; sourceTree = "<group>"; };
 		4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSUserProfile.swift; sourceTree = "<group>"; };
 		4287B7862C46BF2800E58A60 /* PeerInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerInfoUseCase.swift; sourceTree = "<group>"; };
+		4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSNIManager.swift; sourceTree = "<group>"; };
 		428ED04A2C34058600DDD4A8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				4287B76D2C42266B00E58A60 /* Delegate */,
 				4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */,
 				4287B7722C42271F00E58A60 /* HSGroupActivityManager.swift */,
+				4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */,
 				4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */,
 				4287B76F2C42268100E58A60 /* HSLocationDelegate.swift in Sources */,
+				4287B78D2C46C9BD00E58A60 /* HSNIManager.swift in Sources */,
 				4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */,
 				4287B77F2C43BF2200E58A60 /* SharePlayUseCase.swift in Sources */,
 				4250FAD92C231A4A006E83C0 /* ShareLocationMessage.swift in Sources */,
