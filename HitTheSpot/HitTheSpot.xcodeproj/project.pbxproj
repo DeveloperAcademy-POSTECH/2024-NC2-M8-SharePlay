@@ -21,7 +21,7 @@
 		4250FA982C218F7B006E83C0 /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA972C218F7B006E83C0 /* MainHomeView.swift */; };
 		4250FA9C2C21A0DD006E83C0 /* GroupActivityShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA9B2C21A0DD006E83C0 /* GroupActivityShareSheet.swift */; };
 		4250FA9E2C21A10C006E83C0 /* ShareLocationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */; };
-		4250FAA12C21A79F006E83C0 /* NIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA02C21A79F006E83C0 /* NIStatus.swift */; };
+		4250FAA12C21A79F006E83C0 /* HSNIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA02C21A79F006E83C0 /* HSNIStatus.swift */; };
 		4250FAA32C21D52F006E83C0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA22C21D52F006E83C0 /* MainView.swift */; };
 		4250FAA52C21D641006E83C0 /* MainDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA42C21D641006E83C0 /* MainDistanceView.swift */; };
 		4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA62C21D64F006E83C0 /* MainLocationView.swift */; };
@@ -47,6 +47,7 @@
 		4287B7872C46BF2800E58A60 /* PeerInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7862C46BF2800E58A60 /* PeerInfoUseCase.swift */; };
 		4287B78D2C46C9BD00E58A60 /* HSNIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */; };
 		4287B78F2C49282600E58A60 /* HSMessagingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B78E2C49282600E58A60 /* HSMessagingError.swift */; };
+		4287B7982C492D2400E58A60 /* HSLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7972C492D2400E58A60 /* HSLocation.swift */; };
 		428ED0492C34048600DDD4A8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 428ED0482C34048600DDD4A8 /* Lottie */; };
 		428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ED04A2C34058600DDD4A8 /* LottieView.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
@@ -75,7 +76,7 @@
 		4250FA9B2C21A0DD006E83C0 /* GroupActivityShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivityShareSheet.swift; sourceTree = "<group>"; };
 		4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLocationActivity.swift; sourceTree = "<group>"; };
 		4250FA9F2C21A37E006E83C0 /* HitTheSpot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HitTheSpot.entitlements; sourceTree = "<group>"; };
-		4250FAA02C21A79F006E83C0 /* NIStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIStatus.swift; sourceTree = "<group>"; };
+		4250FAA02C21A79F006E83C0 /* HSNIStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSNIStatus.swift; sourceTree = "<group>"; };
 		4250FAA22C21D52F006E83C0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4250FAA42C21D641006E83C0 /* MainDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDistanceView.swift; sourceTree = "<group>"; };
 		4250FAA62C21D64F006E83C0 /* MainLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocationView.swift; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		4287B7862C46BF2800E58A60 /* PeerInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerInfoUseCase.swift; sourceTree = "<group>"; };
 		4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSNIManager.swift; sourceTree = "<group>"; };
 		4287B78E2C49282600E58A60 /* HSMessagingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSMessagingError.swift; sourceTree = "<group>"; };
+		4287B7972C492D2400E58A60 /* HSLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLocation.swift; sourceTree = "<group>"; };
 		428ED04A2C34058600DDD4A8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
@@ -142,9 +144,10 @@
 			isa = PBXGroup;
 			children = (
 				4250FAAA2C21DACA006E83C0 /* App */,
-				4250FAB02C21DB54006E83C0 /* Global */,
 				4250FAB32C21DBBA006E83C0 /* Resources */,
-				4250FAB12C21DB62006E83C0 /* Helper */,
+				4250FAB02C21DB54006E83C0 /* Global */,
+				4287B76C2C42266300E58A60 /* Domain */,
+				4287B7912C492C5400E58A60 /* Service */,
 				4250FAAC2C21DAE6006E83C0 /* Scene */,
 				4250FA802C1F220B006E83C0 /* Preview Content */,
 			);
@@ -212,31 +215,11 @@
 		4250FAB02C21DB54006E83C0 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */,
-				4250FAA02C21A79F006E83C0 /* NIStatus.swift */,
-				4250FA932C209322006E83C0 /* Constant.swift */,
-				4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */,
-				4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */,
-				429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */,
-				429ACA532C24C35C00B0276E /* Color+.swift */,
-				429ACA512C24B73F00B0276E /* FontSetting.swift */,
-				425A4B072C340EAD004D7CCF /* ImageLiteral.swift */,
-				425A4B092C344372004D7CCF /* HSLog.swift */,
-				4287B7702C4226AF00E58A60 /* CLAuthorizationStatus+.swift */,
+				4287B7952C492CC700E58A60 /* Utils */,
+				4287B7942C492CAF00E58A60 /* Literal */,
+				4287B7932C492C9A00E58A60 /* Extension */,
 			);
 			path = Global;
-			sourceTree = "<group>";
-		};
-		4250FAB12C21DB62006E83C0 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				4287B76C2C42266300E58A60 /* Manager */,
-				4250FAD72C2317FA006E83C0 /* CoreLocation */,
-				4250FAB62C226DD2006E83C0 /* SharePlay */,
-				4250FAB42C21DD13006E83C0 /* NearbyInteraction */,
-				4250FAB52C21DD27006E83C0 /* MultipeerConnectivity */,
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		4250FAB32C21DBBA006E83C0 /* Resources */ = {
@@ -284,17 +267,13 @@
 			path = CoreLocation;
 			sourceTree = "<group>";
 		};
-		4287B76C2C42266300E58A60 /* Manager */ = {
+		4287B76C2C42266300E58A60 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				4287B77D2C43BF0800E58A60 /* UseCase */,
 				4287B7762C43BAA600E58A60 /* Model */,
-				4287B76D2C42266B00E58A60 /* Delegate */,
-				4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */,
-				4287B7722C42271F00E58A60 /* HSGroupActivityManager.swift */,
-				4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */,
 			);
-			path = Manager;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		4287B76D2C42266B00E58A60 /* Delegate */ = {
@@ -310,10 +289,13 @@
 		4287B7762C43BAA600E58A60 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4287B7962C492D0500E58A60 /* Deprecated */,
 				4287B7772C43BABB00E58A60 /* HSShareLocationActivity.swift */,
 				4287B7792C43BAFC00E58A60 /* HSPeerInfoMessage.swift */,
 				4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */,
 				4287B78E2C49282600E58A60 /* HSMessagingError.swift */,
+				4287B7972C492D2400E58A60 /* HSLocation.swift */,
+				4250FAA02C21A79F006E83C0 /* HSNIStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -326,6 +308,67 @@
 				4287B7862C46BF2800E58A60 /* PeerInfoUseCase.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		4287B7912C492C5400E58A60 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4287B7922C492C6800E58A60 /* Deprecated */,
+				4287B76D2C42266B00E58A60 /* Delegate */,
+				4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */,
+				4287B7722C42271F00E58A60 /* HSGroupActivityManager.swift */,
+				4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		4287B7922C492C6800E58A60 /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				4250FAD72C2317FA006E83C0 /* CoreLocation */,
+				4250FAB62C226DD2006E83C0 /* SharePlay */,
+				4250FAB42C21DD13006E83C0 /* NearbyInteraction */,
+				4250FAB52C21DD27006E83C0 /* MultipeerConnectivity */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
+		4287B7932C492C9A00E58A60 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				429ACA532C24C35C00B0276E /* Color+.swift */,
+				429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */,
+				4287B7702C4226AF00E58A60 /* CLAuthorizationStatus+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		4287B7942C492CAF00E58A60 /* Literal */ = {
+			isa = PBXGroup;
+			children = (
+				4250FA932C209322006E83C0 /* Constant.swift */,
+				429ACA512C24B73F00B0276E /* FontSetting.swift */,
+				425A4B072C340EAD004D7CCF /* ImageLiteral.swift */,
+			);
+			path = Literal;
+			sourceTree = "<group>";
+		};
+		4287B7952C492CC700E58A60 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				425A4B092C344372004D7CCF /* HSLog.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		4287B7962C492D0500E58A60 /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */,
+				4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */,
+				4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */,
+			);
+			path = Deprecated;
 			sourceTree = "<group>";
 		};
 		428ED04C2C34063100DDD4A8 /* Lottie */ = {
@@ -453,7 +496,7 @@
 				429ACA522C24B73F00B0276E /* FontSetting.swift in Sources */,
 				4287B7852C46BA6B00E58A60 /* HSUserProfile.swift in Sources */,
 				4250FAD62C2317F5006E83C0 /* LocationManager.swift in Sources */,
-				4250FAA12C21A79F006E83C0 /* NIStatus.swift in Sources */,
+				4250FAA12C21A79F006E83C0 /* HSNIStatus.swift in Sources */,
 				4250FA7B2C1F220A006E83C0 /* HitTheSpotApp.swift in Sources */,
 				4287B77A2C43BAFC00E58A60 /* HSPeerInfoMessage.swift in Sources */,
 				4250FAA52C21D641006E83C0 /* MainDistanceView.swift in Sources */,
@@ -463,6 +506,7 @@
 				4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */,
 				4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */,
 				428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */,
+				4287B7982C492D2400E58A60 /* HSLocation.swift in Sources */,
 				4287B7812C43C59500E58A60 /* HSMessagingDelegate.swift in Sources */,
 				4287B7752C43B66E00E58A60 /* HSGroupSessionDelegate.swift in Sources */,
 				425A4B082C340EAD004D7CCF /* ImageLiteral.swift in Sources */,

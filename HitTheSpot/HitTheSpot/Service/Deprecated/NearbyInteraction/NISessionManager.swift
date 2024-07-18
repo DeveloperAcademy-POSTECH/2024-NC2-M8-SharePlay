@@ -17,7 +17,7 @@ class NISessionManager: NSObject {
     var horizontalAngle: Float? = nil
     
     /// Nearby Interaction 지원 상태
-    @ObservationIgnored private let niStatus: NIStatus
+    @ObservationIgnored private let niStatus: HSNIStatus
     
     /// NISession의 세션 동기화 작업을 위한 Queue
     @ObservationIgnored private let niSessionQueue = DispatchQueue(
@@ -58,7 +58,7 @@ class NISessionManager: NSObject {
     /// Nearby Interaction EDM(Extended Distance Measurement) 기능 지원 여부
     @ObservationIgnored private var isSupportU2: Bool { niStatus == .extended }
     
-    init(niStatus: NIStatus) {
+    init(niStatus: HSNIStatus) {
         self.niStatus = niStatus
         self.qualityEstimator = niStatus == .extended ? MeasurementQualityEstimator() : nil
         super.init()

@@ -12,9 +12,9 @@ struct ContentView: View {
     private let arViewController = NIARViewController()
     private let niSessionManager: NISessionManager
     
-    let niStatus: NIStatus
+    let niStatus: HSNIStatus
     
-    init(niStatus: NIStatus) {
+    init(niStatus: HSNIStatus) {
         self.niStatus = niStatus
         self.niSessionManager = NISessionManager(niStatus: niStatus)
     }

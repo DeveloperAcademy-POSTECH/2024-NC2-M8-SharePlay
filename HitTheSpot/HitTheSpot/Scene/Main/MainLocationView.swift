@@ -223,7 +223,8 @@ extension MainLocationView {
     MainLocationView(
         myInfoUseCase: MyInfoUseCase(
             myProfile: HSUserProfile(name: "나", image: nil),
-            manager: HSLocationManager()
+            activityManager: HSGroupActivityManager(),
+            locationManager: HSLocationManager()
         ),
         activityManager: GroupActivityManager(),
         arViewController: NIARViewController()

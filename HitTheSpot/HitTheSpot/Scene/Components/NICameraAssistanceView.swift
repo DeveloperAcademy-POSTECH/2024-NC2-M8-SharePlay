@@ -10,7 +10,7 @@ import SwiftUI
 struct NICameraAssistanceView: View {
     var niSessionManager: NISessionManager
     
-    let niStatus: NIStatus
+    let niStatus: HSNIStatus
     
     var body: some View {
         NIARView(

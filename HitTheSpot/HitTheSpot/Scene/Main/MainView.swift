@@ -25,9 +25,11 @@ struct MainView: View {
     @State private var activityManager = GroupActivityManager()
     
     @Bindable private var sharePlayUseCase = SharePlayUseCase(manager: HSGroupActivityManager())
+    
     @Bindable private var locationUseCase = MyInfoUseCase(
         myProfile: HSUserProfile(name: "나", image: nil),
-        manager: HSLocationManager()
+        activityManager: HSGroupActivityManager(),
+        locationManager: HSLocationManager()
     )
     
     var body: some View {

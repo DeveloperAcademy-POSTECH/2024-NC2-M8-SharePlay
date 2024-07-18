@@ -13,12 +13,12 @@ import UIKit
 
 struct NIARView: UIViewRepresentable {
     @State private var arViewController: NIARViewController
-    private let niStatus: NIStatus
+    private let niStatus: HSNIStatus
     private var niSessionManager: NISessionManager
     
     init(
         arViewController: NIARViewController,
-        niStatus: NIStatus,
+        niStatus: HSNIStatus,
         niSessionManager: NISessionManager
     ) {
         self.arViewController = arViewController
