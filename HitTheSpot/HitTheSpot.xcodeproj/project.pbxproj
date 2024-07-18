@@ -46,6 +46,7 @@
 		4287B7852C46BA6B00E58A60 /* HSUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */; };
 		4287B7872C46BF2800E58A60 /* PeerInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7862C46BF2800E58A60 /* PeerInfoUseCase.swift */; };
 		4287B78D2C46C9BD00E58A60 /* HSNIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */; };
+		4287B78F2C49282600E58A60 /* HSMessagingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B78E2C49282600E58A60 /* HSMessagingError.swift */; };
 		428ED0492C34048600DDD4A8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 428ED0482C34048600DDD4A8 /* Lottie */; };
 		428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ED04A2C34058600DDD4A8 /* LottieView.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
@@ -99,6 +100,7 @@
 		4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSUserProfile.swift; sourceTree = "<group>"; };
 		4287B7862C46BF2800E58A60 /* PeerInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerInfoUseCase.swift; sourceTree = "<group>"; };
 		4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSNIManager.swift; sourceTree = "<group>"; };
+		4287B78E2C49282600E58A60 /* HSMessagingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSMessagingError.swift; sourceTree = "<group>"; };
 		428ED04A2C34058600DDD4A8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				4287B7772C43BABB00E58A60 /* HSShareLocationActivity.swift */,
 				4287B7792C43BAFC00E58A60 /* HSPeerInfoMessage.swift */,
 				4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */,
+				4287B78E2C49282600E58A60 /* HSMessagingError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				4287B77A2C43BAFC00E58A60 /* HSPeerInfoMessage.swift in Sources */,
 				4250FAA52C21D641006E83C0 /* MainDistanceView.swift in Sources */,
 				4250FA9C2C21A0DD006E83C0 /* GroupActivityShareSheet.swift in Sources */,
+				4287B78F2C49282600E58A60 /* HSMessagingError.swift in Sources */,
 				4250FAA32C21D52F006E83C0 /* MainView.swift in Sources */,
 				4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */,
 				4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */,

@@ -18,6 +18,11 @@ class MyInfoUseCase {
         case stopMonitorLocation
         case didProfileUpdated(profile: HSUserProfile)
         case didGPSUpdated(location: HSLocation)
+        
+        case sendProfile(profile: HSUserProfile)
+        case sendToken(token: NIDiscoveryToken)
+        case sendLocation(location: HSLocation)
+        case sendError(error: Error)
     }
     
     struct State {
@@ -26,28 +31,72 @@ class MyInfoUseCase {
         var token: NIDiscoveryToken? = nil
     }
     
-    private let manager: HSLocationManager
+    private let activityManager: HSGroupActivityManager
+    private let locationManager: HSLocationManager
     private(set) var state: State
     
-    init(myProfile: HSUserProfile, manager: HSLocationManager) {
+    init(
+        myProfile: HSUserProfile,
+        activityManager: HSGroupActivityManager,
+        locationManager: HSLocationManager
+    ) {
         self.state = .init(profile: myProfile)
-        self.manager = manager
-        self.manager.delegate = self
+        self.activityManager = activityManager
+        self.locationManager = locationManager
+        self.locationManager.delegate = self
     }
     
     public func effect(_ action: Action) {
         switch action {
         case .startMonitorLocation:
-            manager.startUpdating()
+            locationManager.startUpdating()
         case .stopMonitorLocation:
-            manager.stopUpdating()
+            locationManager.stopUpdating()
         case .didProfileUpdated(let profile):
             state.profile = profile
         case .didGPSUpdated(let location):
             state.location = location
+        case .sendProfile(let profile):
+            Task {
+                do {
+                    try await activityManager.send(.profile(profile))
+                } catch {
+                    effect(.sendError(error: error))
+                }
+            }
+        case .sendToken(let token):
+            Task {
+                do {
+                    try await activityManager.send(.token(encode(token)))
+                } catch {
+                    effect(.sendError(error: error))
+                }
+            }
+        case .sendLocation(let location):
+            Task {
+                do {
+                    try await activityManager.send(.location(location))
+                } catch {
+                    effect(.sendError(error: error))
+                }
+            }
+        case .sendError: 
+            break
         }
     }
+    
+    private func encode<T: NSObject & NSSecureCoding>(_ object: T) throws -> Data {
+        guard let encodedData = try? NSKeyedArchiver.archivedData(
+            withRootObject: object,
+            requiringSecureCoding: true
+        ) else {
+            throw HSMessagingError.encodingError
+        }
+        
+        return encodedData
+    }
 }
+
 
 extension MyInfoUseCase: HSLocationDelegate {
     func didLocationUpdate(_ location: HSLocation) {

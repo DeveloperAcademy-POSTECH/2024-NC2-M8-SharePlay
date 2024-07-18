@@ -10,7 +10,7 @@ import NearbyInteraction
 import CoreLocation
 
 enum HSPeerInfoMessage: Codable {
-    case profile(profile: HSUserProfile)
-    case location(location: HSLocation)
-    case token(token: Data)
+    case profile(_ profile: HSUserProfile)
+    case location(_ location: HSLocation)
+    case token(_ token: Data)
 }

@@ -13,6 +13,12 @@ import NearbyInteraction
 class PeerInfoUseCase {
     enum Action {
         case didMessageReceived(message: HSPeerInfoMessage)
+        case didNIObjectUpdated(object: NINearbyObject)
+        case didNIObjectRemoved(object: NINearbyObject)
+        case didConvergenceUpdated(
+            convergence: NIAlgorithmConvergence,
+            object: NINearbyObject
+        )
     }
     
     struct State {
@@ -20,20 +26,33 @@ class PeerInfoUseCase {
         var location: HSLocation? = nil
         var token: NIDiscoveryToken? = nil
         var nearbyObject: NINearbyObject? = nil
+        var convergence: NIAlgorithmConvergence? = nil
     }
     
-    private let manager: HSGroupActivityManager
+    private let activityManager: HSGroupActivityManager
+    private let niManager: HSNearbyInteractManager
     private(set) var state: State = .init()
     
-    init(manager: HSGroupActivityManager) {
-        self.manager = manager
-        self.manager.messageDelegate = self
+    init(
+        activityManager: HSGroupActivityManager,
+        niManager: HSNearbyInteractManager
+    ) {
+        self.activityManager = activityManager
+        self.niManager = niManager
+        self.activityManager.messageDelegate = self
+        self.niManager.delegate = self
     }
     
     public func effect(_ action: Action) {
         switch action {
         case .didMessageReceived(let message):
             didMessageReceivedEffect(message: message)
+        case .didNIObjectUpdated(let object):
+            state.nearbyObject = object
+        case .didNIObjectRemoved(let object):
+            didEffect(of: object) { state.nearbyObject = nil }
+        case .didConvergenceUpdated(let convergence, let object):
+            didEffect(of: object) { state.convergence = convergence }
         }
     }
     
@@ -45,6 +64,12 @@ class PeerInfoUseCase {
             state.location = location
         case .token(let data):
             state.token = decode(data: data)
+        }
+    }
+    
+    private func didEffect(of object: NINearbyObject, effect: () -> Void) {
+        if state.nearbyObject?.discoveryToken == object.discoveryToken {
+            effect()
         }
     }
     
@@ -62,5 +87,19 @@ class PeerInfoUseCase {
 extension PeerInfoUseCase: HSMessagingDelegate {
     func receive(_ message: HSPeerInfoMessage) {
         effect(.didMessageReceived(message: message))
+    }
+}
+
+extension PeerInfoUseCase: HSNearbyInteractionDelegate {
+    func didNIObjectUpdated(object: NINearbyObject) {
+        effect(.didNIObjectUpdated(object: object))
+    }
+    
+    func didNIObjectRemoved(object: NINearbyObject) {
+        effect(.didNIObjectRemoved(object: object))
+    }
+    
+    func didUpdateConvergence(convergence: NIAlgorithmConvergence, object: NINearbyObject) {
+        effect(.didConvergenceUpdated(convergence: convergence, object: object))
     }
 }
