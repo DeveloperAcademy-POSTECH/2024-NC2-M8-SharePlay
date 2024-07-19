@@ -101,7 +101,7 @@ extension ProfileSettingView {
     func ProfilePicker() -> some View {
         PhotosPicker(
             selection: $selectedItem,
-            matching: .any(of: [.images, .not(.livePhotos)])
+            matching: .all(of: [.images, .not(.livePhotos)])
         ) {
             ZStack(alignment: .bottomTrailing) {
                 if let imgData,
