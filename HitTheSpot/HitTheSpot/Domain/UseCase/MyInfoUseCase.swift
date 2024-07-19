@@ -23,6 +23,7 @@ class MyInfoUseCase {
         case sendToken(token: NIDiscoveryToken)
         case sendLocation(location: HSLocation)
         case sendError(error: Error)
+        case saveError
     }
     
     struct State {
@@ -39,7 +40,12 @@ class MyInfoUseCase {
         activityManager: HSGroupActivityManager,
         locationManager: HSLocationManager
     ) {
-        self.state = .init()
+        if let savedProfile = UserDefaults.standard.data(forKey: "profile"),
+            let profile = try? JSONDecoder().decode(HSUserProfile.self, from: savedProfile) {
+            self.state = .init(profile: profile)
+        } else {
+            self.state = .init()
+        }
         self.activityManager = activityManager
         self.locationManager = locationManager
         self.locationManager.delegate = self
@@ -52,6 +58,7 @@ class MyInfoUseCase {
         case .stopMonitorLocation:
             locationManager.stopUpdating()
         case .updateProfile(let profile):
+            save(profile)
             state.profile = profile
         case .didGPSUpdated(let location):
             state.location = location
@@ -81,6 +88,8 @@ class MyInfoUseCase {
             }
         case .sendError: 
             break
+        case .saveError:
+            HSLog(from: "MyInfoUseCase", with: "Profile Save Error")
         }
     }
     
@@ -93,6 +102,15 @@ class MyInfoUseCase {
         }
         
         return encodedData
+    }
+    
+    private func save(_ profile: HSUserProfile) {
+        guard let encodedProfile = try? JSONEncoder().encode(profile) else {
+            effect(.saveError)
+            return
+        }
+            
+        UserDefaults.standard.set(encodedProfile, forKey: "profile")
     }
 }
 

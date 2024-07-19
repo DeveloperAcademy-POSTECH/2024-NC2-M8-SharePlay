@@ -29,6 +29,12 @@ struct HomeView: View {
         .sheet(isPresented: $isPresented) {
             ProfileSettingView(myProfileUseCase: myInfoUseCase)
         }
+        .onAppear {
+            arUseCase.effect(.startSession)
+        }
+        .onDisappear {
+            arUseCase.effect(.stopSession)
+        }
     }
 }
 

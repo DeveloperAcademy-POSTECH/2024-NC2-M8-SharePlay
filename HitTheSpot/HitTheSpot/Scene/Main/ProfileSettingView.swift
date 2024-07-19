@@ -50,18 +50,13 @@ struct ProfileSettingView: View {
                 
                 Spacer()
                 
-                VStack(spacing: 16) {
-                    CompleteButton {
-                        myProfileUseCase.effect(
-                            .updateProfile(.init(name: name, imgData: imgData))
-                        )
-                        dismiss()
-                    }
-                    
-                    LaterButton {
-                        dismiss()
-                    }
+                CompleteButton {
+                    myProfileUseCase.effect(
+                        .updateProfile(.init(name: name, imgData: imgData))
+                    )
+                    dismiss()
                 }
+                .padding(.bottom, 24)
             }
             .padding(.horizontal, 24)
         }
@@ -173,18 +168,6 @@ extension ProfileSettingView {
             text: "완료"
         ) {
             action()
-        }
-    }
-    
-    @ViewBuilder
-    func LaterButton(action: @escaping () -> Void) -> some View {
-        Button {
-            action()
-        } label: {
-            Text("나중에 하기")
-                .font(.pretendard16)
-                .foregroundStyle(.white)
-                .underline()
         }
     }
 }
