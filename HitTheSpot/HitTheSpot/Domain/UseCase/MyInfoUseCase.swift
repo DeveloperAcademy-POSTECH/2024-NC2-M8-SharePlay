@@ -26,7 +26,7 @@ class MyInfoUseCase {
     }
     
     struct State {
-        var profile: HSUserProfile
+        var profile: HSUserProfile? = nil
         var location: HSLocation? = nil
         var token: NIDiscoveryToken? = nil
     }
@@ -36,11 +36,10 @@ class MyInfoUseCase {
     private(set) var state: State
     
     init(
-        myProfile: HSUserProfile,
         activityManager: HSGroupActivityManager,
         locationManager: HSLocationManager
     ) {
-        self.state = .init(profile: myProfile)
+        self.state = .init()
         self.activityManager = activityManager
         self.locationManager = locationManager
         self.locationManager.delegate = self

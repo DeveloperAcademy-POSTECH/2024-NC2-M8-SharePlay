@@ -48,6 +48,8 @@
 		4287B78D2C46C9BD00E58A60 /* HSNIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */; };
 		4287B78F2C49282600E58A60 /* HSMessagingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B78E2C49282600E58A60 /* HSMessagingError.swift */; };
 		4287B7982C492D2400E58A60 /* HSLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7972C492D2400E58A60 /* HSLocation.swift */; };
+		4287B79A2C493C6D00E58A60 /* ARUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7992C493C6D00E58A60 /* ARUseCase.swift */; };
+		4287B79C2C4AAC3500E58A60 /* HSARManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B79B2C4AAC3500E58A60 /* HSARManager.swift */; };
 		428ED0492C34048600DDD4A8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 428ED0482C34048600DDD4A8 /* Lottie */; };
 		428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ED04A2C34058600DDD4A8 /* LottieView.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
@@ -103,6 +105,8 @@
 		4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSNIManager.swift; sourceTree = "<group>"; };
 		4287B78E2C49282600E58A60 /* HSMessagingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSMessagingError.swift; sourceTree = "<group>"; };
 		4287B7972C492D2400E58A60 /* HSLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLocation.swift; sourceTree = "<group>"; };
+		4287B7992C493C6D00E58A60 /* ARUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARUseCase.swift; sourceTree = "<group>"; };
+		4287B79B2C4AAC3500E58A60 /* HSARManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSARManager.swift; sourceTree = "<group>"; };
 		428ED04A2C34058600DDD4A8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				4287B77E2C43BF2200E58A60 /* SharePlayUseCase.swift */,
 				4287B7822C45600200E58A60 /* MyInfoUseCase.swift */,
 				4287B7862C46BF2800E58A60 /* PeerInfoUseCase.swift */,
+				4287B7992C493C6D00E58A60 /* ARUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 				4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */,
 				4287B7722C42271F00E58A60 /* HSGroupActivityManager.swift */,
 				4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */,
+				4287B79B2C4AAC3500E58A60 /* HSARManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -478,6 +484,7 @@
 				4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */,
 				4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */,
 				4287B76F2C42268100E58A60 /* HSLocationDelegate.swift in Sources */,
+				4287B79C2C4AAC3500E58A60 /* HSARManager.swift in Sources */,
 				4287B78D2C46C9BD00E58A60 /* HSNIManager.swift in Sources */,
 				4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */,
 				4287B77F2C43BF2200E58A60 /* SharePlayUseCase.swift in Sources */,
@@ -508,6 +515,7 @@
 				428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */,
 				4287B7982C492D2400E58A60 /* HSLocation.swift in Sources */,
 				4287B7812C43C59500E58A60 /* HSMessagingDelegate.swift in Sources */,
+				4287B79A2C493C6D00E58A60 /* ARUseCase.swift in Sources */,
 				4287B7752C43B66E00E58A60 /* HSGroupSessionDelegate.swift in Sources */,
 				425A4B082C340EAD004D7CCF /* ImageLiteral.swift in Sources */,
 				4287B7782C43BABB00E58A60 /* HSShareLocationActivity.swift in Sources */,

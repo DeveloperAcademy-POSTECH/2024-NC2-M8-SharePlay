@@ -10,7 +10,7 @@ import SwiftUI
 struct MainHomeView: View {
     @Bindable var sharePlayUseCase: SharePlayUseCase
     @Binding var viewState: MainView.ViewState
-    let arViewController: NIARViewController
+    let arViewController: HSARManager
     
     var body: some View {
         ZStack {
@@ -93,7 +93,7 @@ extension MainHomeView {
             manager: HSGroupActivityManager()
         ),
         viewState: .constant(.home),
-        arViewController: NIARViewController()
+        arViewController: HSARManager()
     )
     .preferredColorScheme(.dark)
 }

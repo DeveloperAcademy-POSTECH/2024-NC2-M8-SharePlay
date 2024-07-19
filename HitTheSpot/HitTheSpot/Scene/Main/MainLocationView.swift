@@ -18,7 +18,7 @@ struct MainLocationView: View {
     )
     @State private var workItem: DispatchWorkItem?
     
-    let arViewController: NIARViewController
+    let arViewController: HSARManager
     var modeChangeHandler: (() -> Void)?
     
     var body: some View {
@@ -222,11 +222,10 @@ extension MainLocationView {
 #Preview {
     MainLocationView(
         myInfoUseCase: MyInfoUseCase(
-            myProfile: HSUserProfile(name: "나", image: nil),
             activityManager: HSGroupActivityManager(),
             locationManager: HSLocationManager()
         ),
         activityManager: GroupActivityManager(),
-        arViewController: NIARViewController()
+        arViewController: HSARManager()
     )
 }

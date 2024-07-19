@@ -17,7 +17,7 @@ extension MainView {
 }
 
 struct MainView: View {
-    let arViewController: NIARViewController
+    let arViewController: HSARManager
     @Bindable var niSessionManager: NISessionManager
     
     @State private var viewState: ViewState = .home
@@ -27,7 +27,6 @@ struct MainView: View {
     @Bindable private var sharePlayUseCase = SharePlayUseCase(manager: HSGroupActivityManager())
     
     @Bindable private var locationUseCase = MyInfoUseCase(
-        myProfile: HSUserProfile(name: "나", image: nil),
         activityManager: HSGroupActivityManager(),
         locationManager: HSLocationManager()
     )
@@ -93,7 +92,7 @@ extension MainView {
 
 #Preview {
     MainView(
-        arViewController: NIARViewController(),
+        arViewController: HSARManager(),
         niSessionManager: NISessionManager(niStatus: .extended)
     )
     .preferredColorScheme(.dark)

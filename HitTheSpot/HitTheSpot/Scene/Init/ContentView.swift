@@ -9,9 +9,9 @@ import SwiftUI
 import NearbyInteraction
 
 struct ContentView: View {
-    private let arViewController = NIARViewController()
+    private let arViewController = HSARManager()
     private let niSessionManager: NISessionManager
-    
+    private let arUseCase: ARUseCase = .init(niManager: .init(), arManager: .init())
     let niStatus: HSNIStatus
     
     init(niStatus: HSNIStatus) {
@@ -21,12 +21,8 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            NIARView(
-                arViewController: arViewController,
-                niStatus: niStatus,
-                niSessionManager: niSessionManager
-            )
-            .ignoresSafeArea()
+            NIARView(arUseCase: arUseCase)
+                .ignoresSafeArea()
             
             MainView(
                 arViewController: arViewController,
