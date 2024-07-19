@@ -11,7 +11,7 @@ struct NICameraAssistanceView: View {
     let arUseCase: ARUseCase
     
     var body: some View {
-        NIARView(arUseCase: arUseCase)
+        HSARView(arUseCase: arUseCase)
     }
 }
 

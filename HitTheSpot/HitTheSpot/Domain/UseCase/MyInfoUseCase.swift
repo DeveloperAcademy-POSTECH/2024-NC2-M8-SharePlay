@@ -16,7 +16,7 @@ class MyInfoUseCase {
     enum Action {
         case startMonitorLocation
         case stopMonitorLocation
-        case didProfileUpdated(profile: HSUserProfile)
+        case didProfileUpdated(_ profile: HSUserProfile)
         case didGPSUpdated(location: HSLocation)
         
         case sendProfile(profile: HSUserProfile)

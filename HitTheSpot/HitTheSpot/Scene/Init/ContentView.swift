@@ -1,43 +1,50 @@
+////
+////  ContentView.swift
+////  HitTheSpot
+////
+////  Created by 남유성 on 6/16/24.
+////
 //
-//  ContentView.swift
-//  HitTheSpot
+//import SwiftUI
+//import NearbyInteraction
 //
-//  Created by 남유성 on 6/16/24.
+//struct ContentView: View {
+//    private let sharePlayUseCase: SharePlayUseCase
+//    private let myInfoUseCase: MyInfoUseCase
+//    private let peerInfoUseCase: PeerInfoUseCase
+//    private let arUseCase: ARUseCase
+//    
+//    init(
+//        sharePlayUseCase: SharePlayUseCase,
+//        myInfoUseCase: MyInfoUseCase,
+//        peerInfoUseCase: PeerInfoUseCase,
+//        arUseCase: ARUseCase
+//    ) {
+//        self.sharePlayUseCase = sharePlayUseCase
+//        self.myInfoUseCase = myInfoUseCase
+//        self.peerInfoUseCase = peerInfoUseCase
+//        self.arUseCase = arUseCase
+//    }
+//    
+//    var body: some View {
+//        ZStack {
+//            NIARView(arUseCase: arUseCase)
+//                .ignoresSafeArea()
+//            
+//            MainView(
+//                arViewController: arViewController,
+//                niSessionManager: niSessionManager
+//            )
+//        }
+//        .onAppear {
+//            arViewController.startSession()
+//        }
+//        .onDisappear {
+//            arViewController.pauseSession()
+//        }
+//    }
+//}
 //
-
-import SwiftUI
-import NearbyInteraction
-
-struct ContentView: View {
-    private let arViewController = HSARManager()
-    private let niSessionManager: NISessionManager
-    private let arUseCase: ARUseCase = .init(niManager: .init(), arManager: .init())
-    let niStatus: HSNIStatus
-    
-    init(niStatus: HSNIStatus) {
-        self.niStatus = niStatus
-        self.niSessionManager = NISessionManager(niStatus: niStatus)
-    }
-    
-    var body: some View {
-        ZStack {
-            NIARView(arUseCase: arUseCase)
-                .ignoresSafeArea()
-            
-            MainView(
-                arViewController: arViewController,
-                niSessionManager: niSessionManager
-            )
-        }
-        .onAppear {
-            arViewController.startSession()
-        }
-        .onDisappear {
-            arViewController.pauseSession()
-        }
-    }
-}
-
-#Preview {
-    ContentView(niStatus: .extended)
-}
+//#Preview {
+////    ContentView(niStatus: .extended)
+//}

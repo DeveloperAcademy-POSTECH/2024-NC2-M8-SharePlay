@@ -19,6 +19,7 @@ enum Literal {
         static let xmark = Image(systemName: "xmark.circle")
         
         static let sharePlay = Image(systemName: "shareplay")
+        static let profile = Image(systemName: "person.crop.circle")
         static let location = Image(systemName: "smallcircle.filled.circle")
         static let distance = Image(systemName: "arrow.up.circle")
     }

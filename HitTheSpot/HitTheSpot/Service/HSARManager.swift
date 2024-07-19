@@ -33,7 +33,7 @@ class HSARManager {
     }
 }
 
-extension NIARView.Coordinator {
+extension HSARView.Coordinator {
     func placeSpheresInView(
         _ arView: ARView,
         _ worldTransform: simd_float4x4

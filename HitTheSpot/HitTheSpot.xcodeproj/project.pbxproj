@@ -14,11 +14,10 @@
 		4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */; };
 		4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */; };
 		4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8C2C20566C006E83C0 /* NISessionManager.swift */; };
-		4250FA8F2C206AE6006E83C0 /* NIARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8E2C206AE6006E83C0 /* NIARView.swift */; };
+		4250FA8F2C206AE6006E83C0 /* HSARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA8E2C206AE6006E83C0 /* HSARView.swift */; };
 		4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA912C2077ED006E83C0 /* MPCSession.swift */; };
 		4250FA942C209322006E83C0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA932C209322006E83C0 /* Constant.swift */; };
 		4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */; };
-		4250FA982C218F7B006E83C0 /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA972C218F7B006E83C0 /* MainHomeView.swift */; };
 		4250FA9C2C21A0DD006E83C0 /* GroupActivityShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA9B2C21A0DD006E83C0 /* GroupActivityShareSheet.swift */; };
 		4250FA9E2C21A10C006E83C0 /* ShareLocationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */; };
 		4250FAA12C21A79F006E83C0 /* HSNIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA02C21A79F006E83C0 /* HSNIStatus.swift */; };
@@ -50,6 +49,7 @@
 		4287B7982C492D2400E58A60 /* HSLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7972C492D2400E58A60 /* HSLocation.swift */; };
 		4287B79A2C493C6D00E58A60 /* ARUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7992C493C6D00E58A60 /* ARUseCase.swift */; };
 		4287B79C2C4AAC3500E58A60 /* HSARManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B79B2C4AAC3500E58A60 /* HSARManager.swift */; };
+		4287B79F2C4AB87900E58A60 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B79E2C4AB87900E58A60 /* HomeView.swift */; };
 		428ED0492C34048600DDD4A8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 428ED0482C34048600DDD4A8 /* Lottie */; };
 		428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ED04A2C34058600DDD4A8 /* LottieView.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
@@ -69,12 +69,11 @@
 		4250FA882C2051FB006E83C0 /* NINotSupportedDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NINotSupportedDeviceView.swift; sourceTree = "<group>"; };
 		4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NICameraAssistanceView.swift; sourceTree = "<group>"; };
 		4250FA8C2C20566C006E83C0 /* NISessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NISessionManager.swift; sourceTree = "<group>"; };
-		4250FA8E2C206AE6006E83C0 /* NIARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIARView.swift; sourceTree = "<group>"; };
+		4250FA8E2C206AE6006E83C0 /* HSARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSARView.swift; sourceTree = "<group>"; };
 		4250FA902C2072FE006E83C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4250FA912C2077ED006E83C0 /* MPCSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCSession.swift; sourceTree = "<group>"; };
 		4250FA932C209322006E83C0 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementQualityEstimator.swift; sourceTree = "<group>"; };
-		4250FA972C218F7B006E83C0 /* MainHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeView.swift; sourceTree = "<group>"; };
 		4250FA9B2C21A0DD006E83C0 /* GroupActivityShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivityShareSheet.swift; sourceTree = "<group>"; };
 		4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLocationActivity.swift; sourceTree = "<group>"; };
 		4250FA9F2C21A37E006E83C0 /* HitTheSpot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HitTheSpot.entitlements; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		4287B7972C492D2400E58A60 /* HSLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLocation.swift; sourceTree = "<group>"; };
 		4287B7992C493C6D00E58A60 /* ARUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARUseCase.swift; sourceTree = "<group>"; };
 		4287B79B2C4AAC3500E58A60 /* HSARManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSARManager.swift; sourceTree = "<group>"; };
+		4287B79E2C4AB87900E58A60 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		428ED04A2C34058600DDD4A8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 			children = (
 				4250FA9B2C21A0DD006E83C0 /* GroupActivityShareSheet.swift */,
 				4250FA8A2C205342006E83C0 /* NICameraAssistanceView.swift */,
-				4250FA8E2C206AE6006E83C0 /* NIARView.swift */,
+				4250FA8E2C206AE6006E83C0 /* HSARView.swift */,
 				428ED04A2C34058600DDD4A8 /* LottieView.swift */,
 			);
 			path = Components;
@@ -198,8 +198,8 @@
 		4250FAAE2C21DB2E006E83C0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				4250FAA22C21D52F006E83C0 /* MainView.swift */,
-				4250FA972C218F7B006E83C0 /* MainHomeView.swift */,
+				4287B79D2C4AB85900E58A60 /* Deprecated */,
+				4287B79E2C4AB87900E58A60 /* HomeView.swift */,
 				4250FAA42C21D641006E83C0 /* MainDistanceView.swift */,
 				4250FAA62C21D64F006E83C0 /* MainLocationView.swift */,
 				4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */,
@@ -377,6 +377,14 @@
 			path = Deprecated;
 			sourceTree = "<group>";
 		};
+		4287B79D2C4AB85900E58A60 /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				4250FAA22C21D52F006E83C0 /* MainView.swift */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
 		428ED04C2C34063100DDD4A8 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,7 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4250FA8F2C206AE6006E83C0 /* NIARView.swift in Sources */,
+				4250FA8F2C206AE6006E83C0 /* HSARView.swift in Sources */,
 				4287B76B2C4215AF00E58A60 /* HSLocationManager.swift in Sources */,
 				4287B7872C46BF2800E58A60 /* PeerInfoUseCase.swift in Sources */,
 				429ACA542C24C35C00B0276E /* Color+.swift in Sources */,
@@ -490,9 +498,9 @@
 				4287B77F2C43BF2200E58A60 /* SharePlayUseCase.swift in Sources */,
 				4250FAD92C231A4A006E83C0 /* ShareLocationMessage.swift in Sources */,
 				4250FA942C209322006E83C0 /* Constant.swift in Sources */,
-				4250FA982C218F7B006E83C0 /* MainHomeView.swift in Sources */,
 				4287B7712C4226AF00E58A60 /* CLAuthorizationStatus+.swift in Sources */,
 				4287B7832C45600200E58A60 /* MyInfoUseCase.swift in Sources */,
+				4287B79F2C4AB87900E58A60 /* HomeView.swift in Sources */,
 				4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */,
 				4250FA7D2C1F220A006E83C0 /* ContentView.swift in Sources */,
 				4250FA9E2C21A10C006E83C0 /* ShareLocationActivity.swift in Sources */,

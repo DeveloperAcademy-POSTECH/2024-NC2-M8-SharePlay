@@ -9,7 +9,7 @@ import SwiftUI
 import ARKit
 import RealityKit
 
-struct NIARView: UIViewRepresentable {
+struct HSARView: UIViewRepresentable {
     let arUseCase: ARUseCase
     
     init(arUseCase: ARUseCase) {
@@ -17,7 +17,7 @@ struct NIARView: UIViewRepresentable {
     }
 }
 
-extension NIARView {
+extension HSARView {
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
         
@@ -43,16 +43,16 @@ extension NIARView {
     }
     
     class Coordinator: NSObject {
-        var parent: NIARView
+        var parent: HSARView
         
-        init(_ parent: NIARView) {
+        init(_ parent: HSARView) {
             self.parent = parent
         }
     }
 }
 
 #Preview {
-    NIARView(arUseCase: 
+    HSARView(arUseCase: 
         .init(
             niManager: HSNearbyInteractManager(),
             arManager: HSARManager()
