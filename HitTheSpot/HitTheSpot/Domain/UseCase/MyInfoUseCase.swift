@@ -16,7 +16,7 @@ class MyInfoUseCase {
     enum Action {
         case startMonitorLocation
         case stopMonitorLocation
-        case didProfileUpdated(_ profile: HSUserProfile)
+        case updateProfile(_ profile: HSUserProfile)
         case didGPSUpdated(location: HSLocation)
         
         case sendProfile(profile: HSUserProfile)
@@ -51,7 +51,7 @@ class MyInfoUseCase {
             locationManager.startUpdating()
         case .stopMonitorLocation:
             locationManager.stopUpdating()
-        case .didProfileUpdated(let profile):
+        case .updateProfile(let profile):
             state.profile = profile
         case .didGPSUpdated(let location):
             state.location = location

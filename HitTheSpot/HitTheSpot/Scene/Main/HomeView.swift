@@ -22,11 +22,12 @@ struct HomeView: View {
             
             Content(
                 sharePlayUseCase: sharePlayUseCase,
+                myInfoUseCase: myInfoUseCase,
                 isPresented: $isPresented
             )
         }
         .sheet(isPresented: $isPresented) {
-            Text("1")
+            ProfileSettingView(myProfileUseCase: myInfoUseCase)
         }
     }
 }
@@ -35,6 +36,7 @@ struct HomeView: View {
 extension HomeView {
     struct Content: View {
         @Bindable var sharePlayUseCase: SharePlayUseCase
+        @Bindable var myInfoUseCase: MyInfoUseCase
         @Binding var isPresented: Bool
         
         var body: some View {
@@ -58,7 +60,10 @@ extension HomeView {
                     }
                     
                     VStack(spacing: 16) {
-                        SharePlayButton {
+                        HSButton(
+                            text: "SharePlay로 친구 찾기",
+                            icon: Literal.Icon.sharePlay
+                        ) {
                             sharePlayUseCase.effect(.startSharePlayBtnTap)
                         }
                         
@@ -107,29 +112,24 @@ extension HomeView.Content {
         Button {
             action()
         } label: {
-            Literal.Icon.profile
-                .resizable()
-                .frame(width: 36, height: 36)
-                .foregroundStyle(.white)
-        }
-    }
-    
-    @ViewBuilder
-    func SharePlayButton(action: @escaping () -> Void) -> some View {
-        Button {
-            action()
-        } label: {
-            RoundedRectangle(cornerRadius: 50)
-                .frame(height: 58)
-                .foregroundColor(.accentColor)
-                .overlay(
-                    Label(
-                        title: { Text("SharePlay로 친구 찾기") },
-                        icon: { Literal.Icon.sharePlay }
-                    )
-                    .font(.pretendard20)
-                    .foregroundColor(.black)
-                )
+            VStack {
+                if let imgData = myInfoUseCase.state.profile?.imgData,
+                   let uiImage = UIImage(data: imgData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .frame(width: 36, height: 36)
+                        .clipShape(Circle())
+                } else {
+                    Literal.HSImage.profile
+                        .resizable()
+                        .frame(width: 36, height: 36)
+                        .foregroundStyle(.white)
+                }
+                
+                Text(myInfoUseCase.state.profile?.name ?? " ")
+                    .foregroundStyle(.white)
+                    .font(.pretendard16)
+            }
         }
     }
 }
