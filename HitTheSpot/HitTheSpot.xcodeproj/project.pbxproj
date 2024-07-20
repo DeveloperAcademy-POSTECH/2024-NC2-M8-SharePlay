@@ -33,6 +33,7 @@
 		425A4B082C340EAD004D7CCF /* ImageLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425A4B072C340EAD004D7CCF /* ImageLiteral.swift */; };
 		425A4B0A2C344372004D7CCF /* HSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425A4B092C344372004D7CCF /* HSLog.swift */; };
 		427E02D22C4AD86700B597A2 /* HSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E02D12C4AD86700B597A2 /* HSButton.swift */; };
+		427E02D62C4AF38D00B597A2 /* WaitingPeerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E02D52C4AF38D00B597A2 /* WaitingPeerView.swift */; };
 		4287B76B2C4215AF00E58A60 /* HSLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */; };
 		4287B76F2C42268100E58A60 /* HSLocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B76E2C42268100E58A60 /* HSLocationDelegate.swift */; };
 		4287B7712C4226AF00E58A60 /* CLAuthorizationStatus+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7702C4226AF00E58A60 /* CLAuthorizationStatus+.swift */; };
@@ -51,7 +52,7 @@
 		4287B79A2C493C6D00E58A60 /* ARUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7992C493C6D00E58A60 /* ARUseCase.swift */; };
 		4287B79C2C4AAC3500E58A60 /* HSARManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B79B2C4AAC3500E58A60 /* HSARManager.swift */; };
 		4287B79F2C4AB87900E58A60 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B79E2C4AB87900E58A60 /* HomeView.swift */; };
-		4287B7A12C4ACC8200E58A60 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7A02C4ACC8200E58A60 /* ProfileSettingView.swift */; };
+		4287B7A12C4ACC8200E58A60 /* ProfileSettingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7A02C4ACC8200E58A60 /* ProfileSettingSheet.swift */; };
 		428ED0492C34048600DDD4A8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 428ED0482C34048600DDD4A8 /* Lottie */; };
 		428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ED04A2C34058600DDD4A8 /* LottieView.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
@@ -92,6 +93,7 @@
 		425A4B072C340EAD004D7CCF /* ImageLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiteral.swift; sourceTree = "<group>"; };
 		425A4B092C344372004D7CCF /* HSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLog.swift; sourceTree = "<group>"; };
 		427E02D12C4AD86700B597A2 /* HSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSButton.swift; sourceTree = "<group>"; };
+		427E02D52C4AF38D00B597A2 /* WaitingPeerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingPeerView.swift; sourceTree = "<group>"; };
 		4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLocationManager.swift; sourceTree = "<group>"; };
 		4287B76E2C42268100E58A60 /* HSLocationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLocationDelegate.swift; sourceTree = "<group>"; };
 		4287B7702C4226AF00E58A60 /* CLAuthorizationStatus+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLAuthorizationStatus+.swift"; sourceTree = "<group>"; };
@@ -110,7 +112,7 @@
 		4287B7992C493C6D00E58A60 /* ARUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARUseCase.swift; sourceTree = "<group>"; };
 		4287B79B2C4AAC3500E58A60 /* HSARManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSARManager.swift; sourceTree = "<group>"; };
 		4287B79E2C4AB87900E58A60 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		4287B7A02C4ACC8200E58A60 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
+		4287B7A02C4ACC8200E58A60 /* ProfileSettingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingSheet.swift; sourceTree = "<group>"; };
 		428ED04A2C34058600DDD4A8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
@@ -205,7 +207,8 @@
 			children = (
 				4287B79D2C4AB85900E58A60 /* Deprecated */,
 				4287B79E2C4AB87900E58A60 /* HomeView.swift */,
-				4287B7A02C4ACC8200E58A60 /* ProfileSettingView.swift */,
+				4287B7A02C4ACC8200E58A60 /* ProfileSettingSheet.swift */,
+				427E02D52C4AF38D00B597A2 /* WaitingPeerView.swift */,
 				4250FAA42C21D641006E83C0 /* MainDistanceView.swift */,
 				4250FAA62C21D64F006E83C0 /* MainLocationView.swift */,
 				4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */,
@@ -514,7 +517,7 @@
 				429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */,
 				4287B7732C42271F00E58A60 /* HSGroupActivityManager.swift in Sources */,
 				4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */,
-				4287B7A12C4ACC8200E58A60 /* ProfileSettingView.swift in Sources */,
+				4287B7A12C4ACC8200E58A60 /* ProfileSettingSheet.swift in Sources */,
 				4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */,
 				429ACA522C24B73F00B0276E /* FontSetting.swift in Sources */,
 				4287B7852C46BA6B00E58A60 /* HSUserProfile.swift in Sources */,
@@ -534,6 +537,7 @@
 				4287B79A2C493C6D00E58A60 /* ARUseCase.swift in Sources */,
 				4287B7752C43B66E00E58A60 /* HSGroupSessionDelegate.swift in Sources */,
 				425A4B082C340EAD004D7CCF /* ImageLiteral.swift in Sources */,
+				427E02D62C4AF38D00B597A2 /* WaitingPeerView.swift in Sources */,
 				4287B7782C43BABB00E58A60 /* HSShareLocationActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

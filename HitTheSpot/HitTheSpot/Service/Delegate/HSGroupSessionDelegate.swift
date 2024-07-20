@@ -15,5 +15,7 @@ protocol HSGroupSessionDelegate: AnyObject {
     func didInvalidated(_ session: Session, reason: Error)
     func didJoined(_ session: Session)
     func waiting(_ session: Session)
+    
+    func didPeerCountUpdated(_ session: Session, count: Int)
 }
 

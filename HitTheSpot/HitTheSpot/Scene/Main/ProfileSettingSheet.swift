@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct ProfileSettingView: View {
+struct ProfileSettingSheet: View {
     @Environment(\.dismiss) var dismiss
     
     let myProfileUseCase: MyInfoUseCase
@@ -80,7 +80,7 @@ struct ProfileSettingView: View {
     }
 }
 
-extension ProfileSettingView {
+extension ProfileSettingSheet {
     enum NameState {
         case valid
         case inValid
@@ -96,7 +96,7 @@ extension ProfileSettingView {
     }
 }
 
-extension ProfileSettingView {
+extension ProfileSettingSheet {
     @ViewBuilder
     func ProfilePicker() -> some View {
         PhotosPicker(
@@ -109,6 +109,7 @@ extension ProfileSettingView {
                 {
                     Image(uiImage: uiImage)
                         .resizable()
+                        .scaledToFill()
                         .frame(width: 100, height: 100)
                         .clipShape(Circle())
                 } else {
@@ -173,5 +174,5 @@ extension ProfileSettingView {
 }
 
 #Preview {
-    ProfileSettingView(myProfileUseCase: .init(activityManager: .init(), locationManager: .init()))
+    ProfileSettingSheet(myProfileUseCase: .init(activityManager: .init(), locationManager: .init()))
 }

@@ -18,12 +18,14 @@ class MyInfoUseCase {
         case stopMonitorLocation
         case updateProfile(_ profile: HSUserProfile)
         case didGPSUpdated(location: HSLocation)
+        case didPeerJoined
         
         case sendProfile(profile: HSUserProfile)
         case sendToken(token: NIDiscoveryToken)
         case sendLocation(location: HSLocation)
         case sendError(error: Error)
         case saveError
+        case noProfileError
     }
     
     struct State {
@@ -62,10 +64,16 @@ class MyInfoUseCase {
             state.profile = profile
         case .didGPSUpdated(let location):
             state.location = location
+        case .didPeerJoined:
+            guard let profile = state.profile else {
+                effect(.noProfileError)
+                return
+            }
+            effect(.sendProfile(profile: profile))
         case .sendProfile(let profile):
             Task {
                 do {
-                    try await activityManager.send(.profile(profile))
+                    try await activityManager.send(profile)
                 } catch {
                     effect(.sendError(error: error))
                 }
@@ -90,6 +98,8 @@ class MyInfoUseCase {
             break
         case .saveError:
             HSLog(from: "MyInfoUseCase", with: "Profile Save Error")
+        case .noProfileError:
+            break
         }
     }
     
@@ -104,16 +114,34 @@ class MyInfoUseCase {
         return encodedData
     }
     
-    private func save(_ profile: HSUserProfile) {
-        guard let encodedProfile = try? JSONEncoder().encode(profile) else {
+    private func save(_ profile: HSUserProfile) {        
+        guard let compressedImgData = compressImage(imgData: profile.imgData, to: 1024),
+              let encodedProfile = try? JSONEncoder().encode(HSUserProfile(name: profile.name, imgData: compressedImgData))
+        else {
             effect(.saveError)
             return
         }
-            
+        
         UserDefaults.standard.set(encodedProfile, forKey: "profile")
     }
-}
+        
+    private func compressImage(imgData: Data?, to maxSizeInBytes: Int) -> Data? {
+        guard let imgData,
+              let uiImage = UIImage(data: imgData) 
+        else { return nil }
+        
+        var compression: CGFloat = 1.0
+        var compressedData = uiImage.jpegData(compressionQuality: compression)
 
+        while let data = compressedData,
+              data.count > maxSizeInBytes && compression > 0 {
+            compression -= 0.1
+            compressedData = uiImage.jpegData(compressionQuality: compression)
+        }
+
+        return compressedData
+    }
+}
 
 extension MyInfoUseCase: HSLocationDelegate {
     func didLocationUpdate(_ location: HSLocation) {

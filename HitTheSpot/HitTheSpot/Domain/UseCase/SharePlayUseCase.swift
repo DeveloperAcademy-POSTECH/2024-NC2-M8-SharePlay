@@ -15,23 +15,27 @@ class SharePlayUseCase {
     
     enum Action {
         case startSharePlayBtnTap
-        case bindIsSheetPresented
+        case didSheetPresented(_ isPresented: Bool)
+        case didParticipantCountUpdated(_ count: Int)
         case sessionJoined
         case sessionWaiting
         case sessionInvalidated(reason: Error)
     }
     
     struct State {
+        var activity: HSShareLocationActivity
+        var participantCount: Int = 0
         var sessionState: SessionState = .invalidated(reason: NSError())
         var isActivated: Bool = false
-        var isSheetPresented: Bool = false
+        var isSharePlaySheetPresented: Bool = false
     }
     
     private let manager: HSGroupActivityManager
-    private(set) var state: State = .init()
+    private(set) var state: State
     
     init(manager: HSGroupActivityManager) {
         self.manager = manager
+        self.state = .init(activity: manager.activity)
         self.manager.sessionDelegate = self
     }
 }
@@ -44,11 +48,13 @@ extension SharePlayUseCase {
                 if manager.isGroupActivityAvailable {
                     state.isActivated = await manager.requestStartGroupActivity()
                 } else {
-                    state.isSheetPresented = true
+                    state.isSharePlaySheetPresented = true
                 }
             }
-        case .bindIsSheetPresented:
-            state.isSheetPresented.toggle()
+        case .didSheetPresented(let isPresented):
+            state.isSharePlaySheetPresented = isPresented
+        case .didParticipantCountUpdated(let count):
+            state.participantCount = count
         case .sessionJoined:
             state.sessionState = .joined
         case .sessionWaiting:
@@ -60,6 +66,10 @@ extension SharePlayUseCase {
 }
 
 extension SharePlayUseCase: HSGroupSessionDelegate {
+    func didPeerCountUpdated(_ session: Session, count: Int) {
+        effect(.didParticipantCountUpdated(count))
+    }
+    
     func didInvalidated(_ session: GroupSession<Activity>, reason: Error) {
         effect(.sessionInvalidated(reason: reason))
     }

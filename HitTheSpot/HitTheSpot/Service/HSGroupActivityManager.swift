@@ -13,9 +13,10 @@ class HSGroupActivityManager {
     typealias SessionState = GroupSession<HSShareLocationActivity>.State
     
     private let groupStateObserver = GroupStateObserver()
-    private var activity: HSShareLocationActivity
+    private(set) var activity: HSShareLocationActivity
     private var session: GroupSession<HSShareLocationActivity>?
     private var messenger: GroupSessionMessenger?
+    private var journal: GroupSessionJournal?
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -73,6 +74,7 @@ extension HSGroupActivityManager {
                 self?.messenger = GroupSessionMessenger(session: session)
                 self?.join(session)
                 self?.monitorSessionState()
+                self?.monitorPeerCount()
                 self?.monitorMessage()
             }
         }
@@ -113,13 +115,33 @@ extension HSGroupActivityManager {
             }
             .store(in: &cancellables)
     }
+    
+    private func monitorPeerCount() {
+        guard let session else { return }
+        
+        session
+            .$activeParticipants
+            .sink { [weak self] in
+                guard let self else { return }
+                self.sessionDelegate?.didPeerCountUpdated(session, count: $0.count)
+            }
+            .store(in: &cancellables)
+    }
 }
 
 // MARK: - Messaging
 extension HSGroupActivityManager {
     public func send(_ message: HSPeerInfoMessage) async throws {
         do {
-            try await messenger?.send(message)
+            switch message {
+            case .profile(let profile):
+                try await messenger?.send(profile)
+            case .location(let location):
+                try await messenger?.send(location)
+            case .token(let tokenData):
+                try await messenger?.send(tokenData)
+            }
+            
         } catch {
             log(error.localizedDescription)
         }
@@ -129,8 +151,20 @@ extension HSGroupActivityManager {
         guard let messenger else { return }
         
         Task.detached {
-            for await message in messenger.messages(of: HSPeerInfoMessage.self) {
-                self.messageDelegate?.receive(message.0)
+            for await message in messenger.messages(of: HSUserProfile.self) {
+                self.messageDelegate?.receive(.profile(message.0))
+            }
+        }
+        
+        Task.detached {
+            for await message in messenger.messages(of: HSLocation.self) {
+                self.messageDelegate?.receive(.location(message.0))
+            }
+        }
+        
+        Task.detached {
+            for await message in messenger.messages(of: Data.self) {
+                self.messageDelegate?.receive(.token(message.0))
             }
         }
     }

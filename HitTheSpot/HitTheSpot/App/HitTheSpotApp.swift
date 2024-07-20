@@ -42,13 +42,13 @@ struct HitTheSpotApp: App {
     var body: some Scene {
         WindowGroup {
             if #available(iOS 17.0, watchOS 10.0, *), isSupportU2 {
-                HomeView(
-                    myInfoUseCase: myInfoUseCase,
+                // iPhone 15, iOS 17 이상
+                ContentView(
                     sharePlayUseCase: sharePlayUseCase,
+                    myInfoUseCase: myInfoUseCase,
                     peerInfoUseCase: peerInfoUseCase,
                     arUseCase: arUseCase
                 )
-                // iPhone 15, iOS 17 이상
             } else {
                 // 지원 대상 아님
                 NINotSupportedDeviceView()

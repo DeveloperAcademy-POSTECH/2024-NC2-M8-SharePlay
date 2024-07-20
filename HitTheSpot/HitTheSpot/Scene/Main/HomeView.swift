@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @Bindable var myInfoUseCase: MyInfoUseCase
-    @State private var isPresented: Bool = false
+    @State private var isProfileSheetPresented: Bool = false
     
     let sharePlayUseCase: SharePlayUseCase
     let peerInfoUseCase: PeerInfoUseCase
@@ -23,11 +23,19 @@ struct HomeView: View {
             Content(
                 sharePlayUseCase: sharePlayUseCase,
                 myInfoUseCase: myInfoUseCase,
-                isPresented: $isPresented
+                isPresented: $isProfileSheetPresented
             )
         }
-        .sheet(isPresented: $isPresented) {
-            ProfileSettingView(myProfileUseCase: myInfoUseCase)
+        .sheet(isPresented: .init(
+            get: { sharePlayUseCase.state.isSharePlaySheetPresented },
+            set: { isPresented in sharePlayUseCase.effect(.didSheetPresented(isPresented)) })
+        ) {
+            GroupActivityShareSheet {
+                sharePlayUseCase.state.activity
+            }
+        }
+        .sheet(isPresented: $isProfileSheetPresented) {
+            ProfileSettingSheet(myProfileUseCase: myInfoUseCase)
         }
         .onAppear {
             arUseCase.effect(.startSession)
@@ -105,7 +113,7 @@ extension HomeView.Content {
             
             HStack {
                 Literal.HSImage.titleWithLogo
-                    .frame(height: 234)
+                    .resizable()
                     .scaledToFit()
                 
                 Spacer()
@@ -123,6 +131,7 @@ extension HomeView.Content {
                    let uiImage = UIImage(data: imgData) {
                     Image(uiImage: uiImage)
                         .resizable()
+                        .scaledToFill()
                         .frame(width: 36, height: 36)
                         .clipShape(Circle())
                 } else {
