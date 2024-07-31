@@ -73,7 +73,7 @@ class MyInfoUseCase {
         case .sendProfile(let profile):
             Task {
                 do {
-                    try await activityManager.send(profile)
+                    try await activityManager.send(.profile(profile))
                 } catch {
                     effect(.sendError(error: error))
                 }
