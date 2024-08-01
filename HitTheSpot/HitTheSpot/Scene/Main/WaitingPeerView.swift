@@ -27,10 +27,23 @@ struct WaitingPeerView: View {
             Background()
             
             VStack(spacing: 40) {
-                ParticipantCountView()
+                ParticipantCountView(count: sharePlayUseCase.state.participantCount)
                 
-                MyProfile()
+                MyProfile(
+                    imgData: myInfoUseCase.state.profile?.imgData,
+                    name: myInfoUseCase.state.profile?.name
+                )
             }
+            
+            VStack {
+                Spacer()
+                
+                StopSharePlayBtn {
+                    sharePlayUseCase.effect(.stopSharePlayBtnTap)
+                }
+            }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 80)
         }
     }
 }
@@ -46,21 +59,21 @@ extension WaitingPeerView {
     }
     
     @ViewBuilder
-    func ParticipantCountView() -> some View {
+    func ParticipantCountView(count: Int) -> some View {
         HStack {
             Literal.Icon.sharePlay
                 .font(.system(size: 20))
             
-            Text("\(sharePlayUseCase.state.participantCount)명 참여 중")
+            Text("\(count)명 참여 중")
                 .font(.pretendard20)
         }
         .foregroundStyle(.white)
     }
     
     @ViewBuilder
-    func MyProfile() -> some View {
+    func MyProfile(imgData: Data?, name: String?) -> some View {
         VStack(spacing: 16) {
-            if let imgData = myInfoUseCase.state.profile?.imgData,
+            if let imgData = imgData,
                let uiImage = UIImage(data: imgData) {
                 Image(uiImage: uiImage)
                     .resizable()
@@ -72,7 +85,7 @@ extension WaitingPeerView {
                     .frame(width: 91, height: 91)
             }
             
-            Text(myInfoUseCase.state.profile?.name ?? "None")
+            Text(name ?? "None")
                 .font(.pretendard20)
                 .foregroundStyle(.white)
             
@@ -89,6 +102,17 @@ extension WaitingPeerView {
         .padding(.horizontal, 37)
         .background(RoundedRectangle(cornerRadius: 20))
     }
+    
+    @ViewBuilder
+    func StopSharePlayBtn(action: @escaping () -> Void) -> some View {
+        HSButton(
+            text: "SharePlay 종료하기",
+            icon: Literal.Icon.sharePlay,
+            tint: .red1
+        ) {
+            action()
+        }
+    }
 }
 
 #Preview {
@@ -100,4 +124,5 @@ extension WaitingPeerView {
             locationManager: .init()
         ),
         peerInfoUseCase: .init(activityManager: .init(), niManager: .init()))
+    
 }

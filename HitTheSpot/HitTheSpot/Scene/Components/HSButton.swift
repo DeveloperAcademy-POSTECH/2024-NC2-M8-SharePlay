@@ -12,17 +12,20 @@ struct HSButton: View {
     
     let text: String
     var icon: Image?
+    let tint: Color
     let action: () -> Void
     
     init(
         isActive: Binding<Bool> = .constant(true),
         text: String,
         icon: Image? = nil,
+        tint: Color = .accentColor,
         action: @escaping () -> Void
     ) {
         self._isActive = isActive
         self.text = text
         self.icon = icon
+        self.tint = tint
         self.action = action
     }
     
@@ -32,7 +35,7 @@ struct HSButton: View {
         } label: {
             RoundedRectangle(cornerRadius: 50)
                 .frame(height: 58)
-                .foregroundColor(isActive ? .accentColor : .gray1)
+                .foregroundColor(isActive ? tint : .gray1)
                 .overlay(
                     Label(
                         title: { Text(text) },

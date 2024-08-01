@@ -20,6 +20,7 @@ class SharePlayUseCase {
     
     enum Action {
         case startSharePlayBtnTap
+        case stopSharePlayBtnTap
         case didSheetPresented(_ isPresented: Bool)
         case didSharePlayStateUpdated(_ sharePlayState: SharePlayState, _ count: Int)
     }
@@ -53,6 +54,8 @@ extension SharePlayUseCase {
                     state.isSharePlaySheetPresented = true
                 }
             }
+        case .stopSharePlayBtnTap:
+            manager.leaveGroupActivity() 
         case .didSheetPresented(let isPresented):
             state.isSharePlaySheetPresented = isPresented
         case .didSharePlayStateUpdated(let sharePlayState, let count):

@@ -39,8 +39,12 @@ extension HSGroupActivityManager {
         switch result {
         case .activationPreferred:
             do {
-                _ = try await activity.activate()
-                log("새로운 Group Activity 활성화")
+                if let session {
+                    session.join()
+                } else {
+                    _ = try await activity.activate()
+                    log("새로운 Group Activity 활성화")
+                }
             } catch {
                 return false // (Error) .activationPreferred
             }
@@ -58,7 +62,7 @@ extension HSGroupActivityManager {
         case .invalidated:
             break
         default:
-            session.leave()
+            session.end()
         }
     }
 }
