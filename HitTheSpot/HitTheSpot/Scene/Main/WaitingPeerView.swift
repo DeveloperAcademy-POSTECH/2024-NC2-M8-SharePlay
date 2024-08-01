@@ -27,22 +27,9 @@ struct WaitingPeerView: View {
             Background()
             
             VStack(spacing: 40) {
-                HStack {
-                    Literal.Icon.sharePlay
-                        .font(.system(size: 20))
-                    
-                    Text("\(sharePlayUseCase.state.participantCount)명 참여 중")
-                        .font(.pretendard20)
-                }
-                .foregroundStyle(.white)
+                ParticipantCountView()
                 
-                HStack {
-                    MyProfile()
-                    
-                    if let profile = peerInfoUseCase.state.profile {
-                        PeerProfile(profile: profile)
-                    }
-                }
+                MyProfile()
             }
         }
     }
@@ -59,30 +46,15 @@ extension WaitingPeerView {
     }
     
     @ViewBuilder
-    func PeerProfile(profile: HSUserProfile) -> some View {
-        VStack(spacing: 16) {
-            if let imgData = profile.imgData,
-               let uiImage = UIImage(data: imgData) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 91, height: 91)
-                    .clipShape(Circle())
-            } else {
-                Literal.HSImage.profile
-                    .resizable()
-                    .frame(width: 91, height: 91)
-            }
+    func ParticipantCountView() -> some View {
+        HStack {
+            Literal.Icon.sharePlay
+                .font(.system(size: 20))
             
-            Text(profile.name)
+            Text("\(sharePlayUseCase.state.participantCount)명 참여 중")
                 .font(.pretendard20)
-                .foregroundStyle(.white)
-            
-//            MyConnectionStateView(peerInfoUseCase.state.sessionState)
         }
-        .padding(.vertical, 20)
-        .padding(.horizontal, 37)
-        .background(RoundedRectangle(cornerRadius: 20))
+        .foregroundStyle(.white)
     }
     
     @ViewBuilder
@@ -104,30 +76,18 @@ extension WaitingPeerView {
                 .font(.pretendard20)
                 .foregroundStyle(.white)
             
-            MyConnectionStateView(sharePlayUseCase.state.sharePlayState)
+            HStack {
+                Literal.Icon.sharePlay
+                    .font(.system(size: 20))
+                
+                Text("참여 중")
+                    .font(.pretendard16)
+            }
+            .foregroundStyle(.accent)
         }
         .padding(.vertical, 20)
         .padding(.horizontal, 37)
         .background(RoundedRectangle(cornerRadius: 20))
-    }
-    
-    @ViewBuilder
-    func MyConnectionStateView(_ state: SharePlayUseCase.SharePlayState) -> some View {
-        HStack {
-            Literal.Icon.sharePlay
-                .font(.system(size: 20))
-            
-            Group {
-                switch state {
-                case .notJoined:
-                    Text("대기 중")
-                default:
-                    Text("참여 중")
-                }
-            }
-            .font(.pretendard16)
-        }
-        .foregroundStyle(state == .notJoined ? .gray1 : .accent)
     }
 }
 

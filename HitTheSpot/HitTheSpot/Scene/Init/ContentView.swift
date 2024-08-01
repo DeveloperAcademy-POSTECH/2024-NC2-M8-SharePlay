@@ -8,17 +8,8 @@
 import SwiftUI
 import NearbyInteraction
 
-enum ViewState {
-    case home
-    case waiting
-    case distance
-    case location
-    case nearby
-}
-
 struct ContentView: View {
     @Bindable var sharePlayUseCase: SharePlayUseCase
-    @State private var viewState: ViewState = .home
     
     private let myInfoUseCase: MyInfoUseCase
     private let peerInfoUseCase: PeerInfoUseCase
@@ -37,12 +28,6 @@ struct ContentView: View {
     }
     
     var body: some View {
-        
-        // localJoined and Active Participant >= 2 >> MainDistanceView
-        // localJoined and Active Participant == 1 >> WaitingView
-        // localWaiting, localInvalidated >> HomeView
-        
-        
         Group {
             switch sharePlayUseCase.state.sharePlayState {
             case .notJoined:
@@ -69,7 +54,3 @@ struct ContentView: View {
         }
     }
 }
-
-//#Preview {
-//    ContentView(niStatus: .extended)
-//}
