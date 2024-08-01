@@ -11,23 +11,25 @@ import GroupActivities
 @Observable
 class SharePlayUseCase {
     typealias Activity = HSShareLocationActivity
-    typealias SessionState = GroupSession<Activity>.State
+    
+    enum SharePlayState {
+        case notJoined
+        case onlyLocal
+        case localWithPeer
+    }
     
     enum Action {
         case startSharePlayBtnTap
         case didSheetPresented(_ isPresented: Bool)
-        case didParticipantCountUpdated(_ count: Int)
-        case sessionJoined
-        case sessionWaiting
-        case sessionInvalidated(reason: Error)
+        case didSharePlayStateUpdated(_ sharePlayState: SharePlayState, _ count: Int)
     }
     
     struct State {
         var activity: HSShareLocationActivity
-        var participantCount: Int = 0
-        var sessionState: SessionState = .invalidated(reason: NSError())
         var isActivated: Bool = false
         var isSharePlaySheetPresented: Bool = false
+        var participantCount: Int = 0
+        var sharePlayState: SharePlayState = .notJoined
     }
     
     private let manager: HSGroupActivityManager
@@ -53,32 +55,36 @@ extension SharePlayUseCase {
             }
         case .didSheetPresented(let isPresented):
             state.isSharePlaySheetPresented = isPresented
-        case .didParticipantCountUpdated(let count):
+        case .didSharePlayStateUpdated(let sharePlayState, let count):
+            state.sharePlayState = sharePlayState
             state.participantCount = count
-        case .sessionJoined:
-            state.sessionState = .joined
-        case .sessionWaiting:
-            state.sessionState = .waiting
-        case .sessionInvalidated(let reason):
-            state.sessionState = .invalidated(reason: reason)
         }
     }
 }
 
 extension SharePlayUseCase: HSGroupSessionDelegate {
-    func didPeerCountUpdated(_ session: Session, count: Int) {
-        effect(.didParticipantCountUpdated(count))
+    func didInvalidated(_ session: Session, reason: any Error) {
+        effect(.didSharePlayStateUpdated(.notJoined, 0))
     }
     
-    func didInvalidated(_ session: GroupSession<Activity>, reason: Error) {
-        effect(.sessionInvalidated(reason: reason))
-    }
+    func didLocalJoined(_ session: Session) {}
+    func didLocalWaiting(_ session: Session) {}
     
-    func didJoined(_ session: GroupSession<Activity>) {
-        effect(.sessionJoined)
-    }
-    
-    func waiting(_ session: GroupSession<Activity>) {
-        effect(.sessionWaiting)
+    func didParticipantsUpdated(
+        _ session: Session,
+        local: Participant,
+        activeParticipants: Set<Participant>
+    ) {
+        let count = activeParticipants.count
+        let isLocalJoined = activeParticipants.contains(local)
+        
+        switch (isLocalJoined, count) {
+        case (true, 1):
+            effect(.didSharePlayStateUpdated(.onlyLocal, 1))
+        case (true, _):
+            effect(.didSharePlayStateUpdated(.localWithPeer, count))
+        default:
+            effect(.didSharePlayStateUpdated(.notJoined, count))
+        }
     }
 }

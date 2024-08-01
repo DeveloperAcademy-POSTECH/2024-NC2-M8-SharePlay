@@ -104,7 +104,7 @@ extension WaitingPeerView {
                 .font(.pretendard20)
                 .foregroundStyle(.white)
             
-            MyConnectionStateView(sharePlayUseCase.state.sessionState)
+            MyConnectionStateView(sharePlayUseCase.state.sharePlayState)
         }
         .padding(.vertical, 20)
         .padding(.horizontal, 37)
@@ -112,25 +112,22 @@ extension WaitingPeerView {
     }
     
     @ViewBuilder
-    func MyConnectionStateView(_ state: SharePlayUseCase.SessionState) -> some View {
+    func MyConnectionStateView(_ state: SharePlayUseCase.SharePlayState) -> some View {
         HStack {
             Literal.Icon.sharePlay
                 .font(.system(size: 20))
             
             Group {
                 switch state {
-                case .joined:
-                    Text("참여 중")
-                case .waiting:
+                case .notJoined:
                     Text("대기 중")
                 default:
-                    // TODO: - 수정하기
-                    Text("끊김")
+                    Text("참여 중")
                 }
             }
             .font(.pretendard16)
         }
-        .foregroundStyle(state == .joined ? .accent : .gray1)
+        .foregroundStyle(state == .notJoined ? .gray1 : .accent)
     }
 }
 

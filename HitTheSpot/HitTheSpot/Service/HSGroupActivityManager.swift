@@ -16,7 +16,6 @@ class HSGroupActivityManager {
     private(set) var activity: HSShareLocationActivity
     private var session: GroupSession<HSShareLocationActivity>?
     private var messenger: GroupSessionMessenger?
-    private var journal: GroupSessionJournal?
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -74,7 +73,7 @@ extension HSGroupActivityManager {
                 self?.messenger = GroupSessionMessenger(session: session)
                 self?.join(session)
                 self?.monitorSessionState()
-                self?.monitorPeerCount()
+                self?.monitorActiveParticipants()
                 self?.monitorMessage()
             }
         }
@@ -103,11 +102,11 @@ extension HSGroupActivityManager {
                 case .joined:
                     self.log("Join to GroupSession")
                     self.session.map(self.join(_:))
-                    self.sessionDelegate?.didJoined(session)
+                    self.sessionDelegate?.didLocalJoined(session)
                     
                 case .waiting:
                     self.log("Waiting to GroupSession")
-                    self.sessionDelegate?.waiting(session)
+                    self.sessionDelegate?.didLocalWaiting(session)
                     
                 default:
                     break
@@ -116,14 +115,18 @@ extension HSGroupActivityManager {
             .store(in: &cancellables)
     }
     
-    private func monitorPeerCount() {
+    private func monitorActiveParticipants() {
         guard let session else { return }
         
         session
             .$activeParticipants
             .sink { [weak self] in
                 guard let self else { return }
-                self.sessionDelegate?.didPeerCountUpdated(session, count: $0.count)
+                self.sessionDelegate?.didParticipantsUpdated(
+                    session,
+                    local: session.localParticipant,
+                    activeParticipants: $0
+                )
             }
             .store(in: &cancellables)
     }

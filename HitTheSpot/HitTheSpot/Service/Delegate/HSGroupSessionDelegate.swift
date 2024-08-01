@@ -13,9 +13,13 @@ protocol HSGroupSessionDelegate: AnyObject {
     typealias Session = GroupSession<HSShareLocationActivity>
     
     func didInvalidated(_ session: Session, reason: Error)
-    func didJoined(_ session: Session)
-    func waiting(_ session: Session)
+    func didLocalJoined(_ session: Session)
+    func didLocalWaiting(_ session: Session)
     
-    func didPeerCountUpdated(_ session: Session, count: Int)
+    func didParticipantsUpdated(
+        _ session: Session,
+        local: Participant,
+        activeParticipants: Set<Participant>
+    )
 }
 
