@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainDistanceView: View {
     @Bindable var niSessionManager: NISessionManager
-    let arViewController: NIARViewController
+    let arViewController: HSARManager
     
     var modeChangeHandler: (() -> Void)?
     
@@ -119,7 +119,7 @@ extension MainDistanceView {
 #Preview {
     MainDistanceView(
         niSessionManager: NISessionManager(niStatus: .extended),
-        arViewController: NIARViewController()
+        arViewController: HSARManager()
     )
     .preferredColorScheme(.dark)
 }

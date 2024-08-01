@@ -9,39 +9,48 @@ import SwiftUI
 import NearbyInteraction
 
 struct ContentView: View {
-    private let arViewController = NIARViewController()
-    private let niSessionManager: NISessionManager
+    @Bindable var sharePlayUseCase: SharePlayUseCase
     
-    let niStatus: NIStatus
+    private let myInfoUseCase: MyInfoUseCase
+    private let peerInfoUseCase: PeerInfoUseCase
+    private let arUseCase: ARUseCase
     
-    init(niStatus: NIStatus) {
-        self.niStatus = niStatus
-        self.niSessionManager = NISessionManager(niStatus: niStatus)
+    init(
+        sharePlayUseCase: SharePlayUseCase,
+        myInfoUseCase: MyInfoUseCase,
+        peerInfoUseCase: PeerInfoUseCase,
+        arUseCase: ARUseCase
+    ) {
+        self.sharePlayUseCase = sharePlayUseCase
+        self.myInfoUseCase = myInfoUseCase
+        self.peerInfoUseCase = peerInfoUseCase
+        self.arUseCase = arUseCase
     }
     
     var body: some View {
-        ZStack {
-            NIARView(
-                arViewController: arViewController,
-                niStatus: niStatus,
-                niSessionManager: niSessionManager
-            )
-            .ignoresSafeArea()
-            
-            MainView(
-                arViewController: arViewController,
-                niSessionManager: niSessionManager
-            )
+        Group {
+            switch sharePlayUseCase.state.sharePlayState {
+            case .notJoined:
+                HomeView(
+                    myInfoUseCase: myInfoUseCase,
+                    sharePlayUseCase: sharePlayUseCase,
+                    peerInfoUseCase: peerInfoUseCase,
+                    arUseCase: arUseCase
+                )
+            case .onlyLocal:
+                WaitingPeerView(
+                    sharePlayUseCase: sharePlayUseCase,
+                    myInfoUseCase: myInfoUseCase,
+                    peerInfoUseCase: peerInfoUseCase
+                )
+            case .localWithPeer:
+                Text("Connected")
+            }
         }
-        .onAppear {
-            arViewController.startSession()
-        }
-        .onDisappear {
-            arViewController.pauseSession()
+        .onChange(of: sharePlayUseCase.state.sharePlayState) { oldValue, newValue in
+            if newValue == .localWithPeer {
+                myInfoUseCase.effect(.didPeerJoined)
+            }
         }
     }
-}
-
-#Preview {
-    ContentView(niStatus: .extended)
 }

@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct MainLocationView: View {
+    @Bindable var myInfoUseCase: MyInfoUseCase
     @Bindable var activityManager: GroupActivityManager
     @State private var locationManager = LocationManager()
     @State private var cameraPosition: MapCameraPosition = .userLocation(
@@ -17,14 +18,15 @@ struct MainLocationView: View {
     )
     @State private var workItem: DispatchWorkItem?
     
-    let arViewController: NIARViewController
+    let arViewController: HSARManager
     var modeChangeHandler: (() -> Void)?
     
     var body: some View {
         ZStack {
             Map(position: $cameraPosition) {
-                if let myLocation = locationManager.lastLocation {
-                    Annotation("나", coordinate: myLocation.coordinate) {
+                
+                if let myLocation = myInfoUseCase.state.location {
+                    Annotation("나", coordinate: .init(myLocation)) {
                         Marker()
                     }
                 }
@@ -219,7 +221,12 @@ extension MainLocationView {
 
 #Preview {
     MainLocationView(
+        myInfoUseCase: MyInfoUseCase(
+            activityManager: HSGroupActivityManager(),
+            niManager: HSNearbyInteractManager(),
+            locationManager: HSLocationManager()
+        ),
         activityManager: GroupActivityManager(),
-        arViewController: NIARViewController()
+        arViewController: HSARManager()
     )
 }

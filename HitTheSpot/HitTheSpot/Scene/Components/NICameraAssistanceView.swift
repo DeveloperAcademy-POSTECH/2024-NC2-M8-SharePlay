@@ -8,22 +8,18 @@
 import SwiftUI
 
 struct NICameraAssistanceView: View {
-    var niSessionManager: NISessionManager
-    
-    let niStatus: NIStatus
+    let arUseCase: ARUseCase
     
     var body: some View {
-        NIARView(
-            arViewController: NIARViewController(),
-            niStatus: niStatus,
-            niSessionManager: niSessionManager
-        )
+        HSARView(arUseCase: arUseCase)
     }
 }
 
 #Preview {
-    NICameraAssistanceView(
-        niSessionManager: NISessionManager(niStatus: .extended),
-        niStatus: .extended
+    NICameraAssistanceView(arUseCase:
+        .init(
+            niManager: HSNearbyInteractManager(),
+            arManager: HSARManager()
+        )
     )
 }

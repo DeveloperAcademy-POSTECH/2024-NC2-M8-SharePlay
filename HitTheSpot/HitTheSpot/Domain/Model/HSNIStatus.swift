@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NIStatus {
+enum HSNIStatus {
     case notSupported
     case precise
     case extended

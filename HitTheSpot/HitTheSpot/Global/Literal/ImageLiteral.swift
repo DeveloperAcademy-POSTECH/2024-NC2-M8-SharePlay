@@ -13,12 +13,14 @@ enum Literal {
         static let titleWithLogo = Image("TitleWithLogo")
         static let mainHomeBg = Image("MainHomeBg")
         static let arrow = Image("DirectionArrow")
+        static let profile = Image("Profile")
     }
     
     enum Icon {
         static let xmark = Image(systemName: "xmark.circle")
         
         static let sharePlay = Image(systemName: "shareplay")
+        static let photo = Image(systemName: "photo")
         static let location = Image(systemName: "smallcircle.filled.circle")
         static let distance = Image(systemName: "arrow.up.circle")
     }
