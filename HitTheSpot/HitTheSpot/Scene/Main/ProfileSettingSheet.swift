@@ -174,5 +174,5 @@ extension ProfileSettingSheet {
 }
 
 #Preview {
-    ProfileSettingSheet(myProfileUseCase: .init(activityManager: .init(), locationManager: .init()))
+    ProfileSettingSheet(myProfileUseCase: .init(activityManager: .init(), niManager: .init(), locationManager: .init()))
 }

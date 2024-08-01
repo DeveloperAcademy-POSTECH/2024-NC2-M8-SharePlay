@@ -151,7 +151,12 @@ extension HomeView.Content {
 
 #Preview {
     HomeView(
-        myInfoUseCase: .init(activityManager: .init(), locationManager: .init()), sharePlayUseCase: .init(manager: .init()),
+        myInfoUseCase: .init(
+            activityManager: .init(),
+            niManager: .init(),
+            locationManager: .init()
+        ),
+        sharePlayUseCase: .init(manager: .init()),
         peerInfoUseCase: .init(activityManager: .init(), niManager: .init()),
         arUseCase: .init(niManager: .init(), arManager: .init())
     )

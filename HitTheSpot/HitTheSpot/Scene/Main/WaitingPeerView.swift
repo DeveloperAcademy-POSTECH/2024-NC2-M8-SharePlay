@@ -94,6 +94,10 @@ extension WaitingPeerView {
 #Preview {
     WaitingPeerView(
         sharePlayUseCase: .init(manager: .init()),
-        myInfoUseCase: .init(activityManager: .init(), locationManager: .init()),
+        myInfoUseCase: .init(
+            activityManager: .init(),
+            niManager: .init(),
+            locationManager: .init()
+        ),
         peerInfoUseCase: .init(activityManager: .init(), niManager: .init()))
 }

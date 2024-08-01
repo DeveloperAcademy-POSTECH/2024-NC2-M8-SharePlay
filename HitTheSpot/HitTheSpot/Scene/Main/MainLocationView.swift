@@ -223,6 +223,7 @@ extension MainLocationView {
     MainLocationView(
         myInfoUseCase: MyInfoUseCase(
             activityManager: HSGroupActivityManager(),
+            niManager: HSNearbyInteractManager(),
             locationManager: HSLocationManager()
         ),
         activityManager: GroupActivityManager(),

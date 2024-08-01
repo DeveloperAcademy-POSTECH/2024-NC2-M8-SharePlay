@@ -24,7 +24,8 @@ struct HitTheSpotApp: App {
         sharePlayUseCase = .init(manager: activityManager)
         
         myInfoUseCase = .init(
-            activityManager: activityManager,
+            activityManager: activityManager, 
+            niManager: niManager,
             locationManager: HSLocationManager()
         )
         

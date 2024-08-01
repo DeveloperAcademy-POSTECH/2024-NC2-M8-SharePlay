@@ -28,8 +28,14 @@ class HSNearbyInteractManager: NSObject {
     private var arSession: ARSession?
     
     private var peerToken: NIDiscoveryToken?
+    var token: NIDiscoveryToken? { niSession?.discoveryToken }
     
     weak var delegate: HSNearbyInteractionDelegate?
+    
+    override init() {
+        super.init()
+        startup()
+    }
 }
 
 extension HSNearbyInteractManager {

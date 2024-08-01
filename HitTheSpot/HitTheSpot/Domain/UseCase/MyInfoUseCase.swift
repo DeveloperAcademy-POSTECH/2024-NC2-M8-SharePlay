@@ -35,11 +35,13 @@ class MyInfoUseCase {
     }
     
     private let activityManager: HSGroupActivityManager
+    private let niManager: HSNearbyInteractManager
     private let locationManager: HSLocationManager
     private(set) var state: State
     
     init(
         activityManager: HSGroupActivityManager,
+        niManager: HSNearbyInteractManager,
         locationManager: HSLocationManager
     ) {
         if let savedProfile = UserDefaults.standard.data(forKey: "profile"),
@@ -49,6 +51,7 @@ class MyInfoUseCase {
             self.state = .init()
         }
         self.activityManager = activityManager
+        self.niManager = niManager
         self.locationManager = locationManager
         self.locationManager.delegate = self
     }
@@ -64,12 +67,15 @@ class MyInfoUseCase {
             state.profile = profile
         case .didGPSUpdated(let location):
             state.location = location
+        
         case .didPeerJoined:
-            guard let profile = state.profile else {
-                effect(.noProfileError)
-                return
-            }
+            guard let profile = state.profile,
+                  let token = niManager.token
+            else { effect(.noProfileError); return }
+            
             effect(.sendProfile(profile: profile))
+            effect(.sendToken(token: token))
+            
         case .sendProfile(let profile):
             Task {
                 do {
