@@ -218,9 +218,9 @@
 				4287B7A02C4ACC8200E58A60 /* ProfileSettingSheet.swift */,
 				427E02D52C4AF38D00B597A2 /* WaitingPeerView.swift */,
 				429260DD2C5D2B2E00E025A6 /* MainView.swift */,
+				429260E12C5D2D4600E025A6 /* MainDirectionView.swift */,
 				429260E32C5D2D4E00E025A6 /* MainLocationView.swift */,
 				429260E52C5D2D5700E025A6 /* MainNearbyView.swift */,
-				429260E12C5D2D4600E025A6 /* MainDirectionView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";

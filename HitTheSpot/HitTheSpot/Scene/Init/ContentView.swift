@@ -44,7 +44,11 @@ struct ContentView: View {
                     peerInfoUseCase: peerInfoUseCase
                 )
             case .localWithPeer:
-                MainView()
+                MainView(
+                    peerInfoUseCase: peerInfoUseCase,
+                    myInfoUseCase: myInfoUseCase,
+                    arUseCase: arUseCase
+                )
             }
         }
         .onChange(of: sharePlayUseCase.state.sharePlayState) { oldValue, newValue in
