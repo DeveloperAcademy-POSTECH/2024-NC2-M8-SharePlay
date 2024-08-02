@@ -30,7 +30,7 @@ struct MainView: View {
                 modeChangeHandler: { updateViewState(to: .direction) }
             )
         case .nearby:
-            MainNearbyView()
+            MainNearbyView(peerInfoUseCase: peerInfoUseCase)
         }
     }
 }
