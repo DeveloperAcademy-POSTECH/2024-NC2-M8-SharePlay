@@ -23,7 +23,12 @@ struct MainView: View {
                 modeChangeHandler: { updateViewState(to: .location) }
             )
         case .location:
-            MainLocationView()
+            MainLocationView(
+                myInfoUseCase: myInfoUseCase,
+                peerInfoUseCase: peerInfoUseCase,
+                arUseCase: arUseCase,
+                modeChangeHandler: { updateViewState(to: .direction) }
+            )
         case .nearby:
             MainNearbyView()
         }
