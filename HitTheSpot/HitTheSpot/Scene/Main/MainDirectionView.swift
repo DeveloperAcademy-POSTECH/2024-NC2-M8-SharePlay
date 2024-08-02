@@ -1,5 +1,5 @@
 //
-//  MainNearbyView.swift
+//  MainDistanceView.swift
 //  HitTheSpot
 //
 //  Created by 남유성 on 8/3/24.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct MainNearbyView: View {
+struct MainDirectionView: View {
     var body: some View {
-        Text("Nearby")
+        Text("Direction")
     }
 }
 
 #Preview {
-    MainNearbyView()
+    MainDirectionView()
 }

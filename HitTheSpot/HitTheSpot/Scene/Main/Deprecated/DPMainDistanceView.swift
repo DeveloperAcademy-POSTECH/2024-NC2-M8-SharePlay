@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainDistanceView: View {
+struct DPMainDistanceView: View {
     @Bindable var niSessionManager: NISessionManager
     let arViewController: HSARManager
     
@@ -44,7 +44,7 @@ struct MainDistanceView: View {
     }
 }
 
-extension MainDistanceView {
+extension DPMainDistanceView {
     @ViewBuilder
     func ArrowOverlay() -> some View {
         ZStack {
@@ -117,7 +117,7 @@ extension MainDistanceView {
 }
 
 #Preview {
-    MainDistanceView(
+    DPMainDistanceView(
         niSessionManager: NISessionManager(niStatus: .extended),
         arViewController: HSARManager()
     )

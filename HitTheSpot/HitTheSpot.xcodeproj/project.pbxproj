@@ -21,10 +21,10 @@
 		4250FA9C2C21A0DD006E83C0 /* GroupActivityShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA9B2C21A0DD006E83C0 /* GroupActivityShareSheet.swift */; };
 		4250FA9E2C21A10C006E83C0 /* ShareLocationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */; };
 		4250FAA12C21A79F006E83C0 /* HSNIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA02C21A79F006E83C0 /* HSNIStatus.swift */; };
-		4250FAA32C21D52F006E83C0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA22C21D52F006E83C0 /* MainView.swift */; };
-		4250FAA52C21D641006E83C0 /* MainDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA42C21D641006E83C0 /* MainDistanceView.swift */; };
-		4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA62C21D64F006E83C0 /* MainLocationView.swift */; };
-		4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */; };
+		4250FAA32C21D52F006E83C0 /* DPMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA22C21D52F006E83C0 /* DPMainView.swift */; };
+		4250FAA52C21D641006E83C0 /* DPMainDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA42C21D641006E83C0 /* DPMainDistanceView.swift */; };
+		4250FAA72C21D64F006E83C0 /* DPMainLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA62C21D64F006E83C0 /* DPMainLocationView.swift */; };
+		4250FAA92C21D65B006E83C0 /* DPMainNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA82C21D65B006E83C0 /* DPMainNearbyView.swift */; };
 		4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */; };
 		4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */; };
 		4250FAD62C2317F5006E83C0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAD52C2317F5006E83C0 /* LocationManager.swift */; };
@@ -55,6 +55,10 @@
 		4287B7A12C4ACC8200E58A60 /* ProfileSettingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7A02C4ACC8200E58A60 /* ProfileSettingSheet.swift */; };
 		428ED0492C34048600DDD4A8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 428ED0482C34048600DDD4A8 /* Lottie */; };
 		428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ED04A2C34058600DDD4A8 /* LottieView.swift */; };
+		429260DE2C5D2B2E00E025A6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429260DD2C5D2B2E00E025A6 /* MainView.swift */; };
+		429260E22C5D2D4600E025A6 /* MainDirectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429260E12C5D2D4600E025A6 /* MainDirectionView.swift */; };
+		429260E42C5D2D4E00E025A6 /* MainLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429260E32C5D2D4E00E025A6 /* MainLocationView.swift */; };
+		429260E62C5D2D5700E025A6 /* MainNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429260E52C5D2D5700E025A6 /* MainNearbyView.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
 		429ACA4D2C24B6FC00B0276E /* Syncopate-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */; };
 		429ACA4E2C24B6FC00B0276E /* Syncopate-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 429ACA4C2C24B6FC00B0276E /* Syncopate-Bold.ttf */; };
@@ -81,10 +85,10 @@
 		4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLocationActivity.swift; sourceTree = "<group>"; };
 		4250FA9F2C21A37E006E83C0 /* HitTheSpot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HitTheSpot.entitlements; sourceTree = "<group>"; };
 		4250FAA02C21A79F006E83C0 /* HSNIStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSNIStatus.swift; sourceTree = "<group>"; };
-		4250FAA22C21D52F006E83C0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		4250FAA42C21D641006E83C0 /* MainDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDistanceView.swift; sourceTree = "<group>"; };
-		4250FAA62C21D64F006E83C0 /* MainLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocationView.swift; sourceTree = "<group>"; };
-		4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNearbyView.swift; sourceTree = "<group>"; };
+		4250FAA22C21D52F006E83C0 /* DPMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPMainView.swift; sourceTree = "<group>"; };
+		4250FAA42C21D641006E83C0 /* DPMainDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPMainDistanceView.swift; sourceTree = "<group>"; };
+		4250FAA62C21D64F006E83C0 /* DPMainLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPMainLocationView.swift; sourceTree = "<group>"; };
+		4250FAA82C21D65B006E83C0 /* DPMainNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPMainNearbyView.swift; sourceTree = "<group>"; };
 		4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivityManager.swift; sourceTree = "<group>"; };
 		4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusForSharePlay.swift; sourceTree = "<group>"; };
 		4250FAD52C2317F5006E83C0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -114,6 +118,10 @@
 		4287B79E2C4AB87900E58A60 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4287B7A02C4ACC8200E58A60 /* ProfileSettingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingSheet.swift; sourceTree = "<group>"; };
 		428ED04A2C34058600DDD4A8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		429260DD2C5D2B2E00E025A6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		429260E12C5D2D4600E025A6 /* MainDirectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDirectionView.swift; sourceTree = "<group>"; };
+		429260E32C5D2D4E00E025A6 /* MainLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocationView.swift; sourceTree = "<group>"; };
+		429260E52C5D2D5700E025A6 /* MainNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNearbyView.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
 		429ACA4C2C24B6FC00B0276E /* Syncopate-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Bold.ttf"; sourceTree = "<group>"; };
@@ -209,9 +217,10 @@
 				4287B79E2C4AB87900E58A60 /* HomeView.swift */,
 				4287B7A02C4ACC8200E58A60 /* ProfileSettingSheet.swift */,
 				427E02D52C4AF38D00B597A2 /* WaitingPeerView.swift */,
-				4250FAA42C21D641006E83C0 /* MainDistanceView.swift */,
-				4250FAA62C21D64F006E83C0 /* MainLocationView.swift */,
-				4250FAA82C21D65B006E83C0 /* MainNearbyView.swift */,
+				429260DD2C5D2B2E00E025A6 /* MainView.swift */,
+				429260E32C5D2D4E00E025A6 /* MainLocationView.swift */,
+				429260E52C5D2D5700E025A6 /* MainNearbyView.swift */,
+				429260E12C5D2D4600E025A6 /* MainDirectionView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -389,7 +398,10 @@
 		4287B79D2C4AB85900E58A60 /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
-				4250FAA22C21D52F006E83C0 /* MainView.swift */,
+				4250FAA22C21D52F006E83C0 /* DPMainView.swift */,
+				4250FAA42C21D641006E83C0 /* DPMainDistanceView.swift */,
+				4250FAA62C21D64F006E83C0 /* DPMainLocationView.swift */,
+				4250FAA82C21D65B006E83C0 /* DPMainNearbyView.swift */,
 			);
 			path = Deprecated;
 			sourceTree = "<group>";
@@ -493,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4250FA8F2C206AE6006E83C0 /* HSARView.swift in Sources */,
+				429260E62C5D2D5700E025A6 /* MainNearbyView.swift in Sources */,
 				4287B76B2C4215AF00E58A60 /* HSLocationManager.swift in Sources */,
 				4287B7872C46BF2800E58A60 /* PeerInfoUseCase.swift in Sources */,
 				429ACA542C24C35C00B0276E /* Color+.swift in Sources */,
@@ -506,6 +519,7 @@
 				4287B78D2C46C9BD00E58A60 /* HSNIManager.swift in Sources */,
 				4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */,
 				4287B77F2C43BF2200E58A60 /* SharePlayUseCase.swift in Sources */,
+				429260E42C5D2D4E00E025A6 /* MainLocationView.swift in Sources */,
 				4250FAD92C231A4A006E83C0 /* ShareLocationMessage.swift in Sources */,
 				4250FA942C209322006E83C0 /* Constant.swift in Sources */,
 				4287B7712C4226AF00E58A60 /* CLAuthorizationStatus+.swift in Sources */,
@@ -517,19 +531,21 @@
 				429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */,
 				4287B7732C42271F00E58A60 /* HSGroupActivityManager.swift in Sources */,
 				4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */,
+				429260DE2C5D2B2E00E025A6 /* MainView.swift in Sources */,
 				4287B7A12C4ACC8200E58A60 /* ProfileSettingSheet.swift in Sources */,
-				4250FAA92C21D65B006E83C0 /* MainNearbyView.swift in Sources */,
+				4250FAA92C21D65B006E83C0 /* DPMainNearbyView.swift in Sources */,
 				429ACA522C24B73F00B0276E /* FontSetting.swift in Sources */,
 				4287B7852C46BA6B00E58A60 /* HSUserProfile.swift in Sources */,
 				4250FAD62C2317F5006E83C0 /* LocationManager.swift in Sources */,
 				4250FAA12C21A79F006E83C0 /* HSNIStatus.swift in Sources */,
 				4250FA7B2C1F220A006E83C0 /* HitTheSpotApp.swift in Sources */,
 				4287B77A2C43BAFC00E58A60 /* HSPeerInfoMessage.swift in Sources */,
-				4250FAA52C21D641006E83C0 /* MainDistanceView.swift in Sources */,
+				4250FAA52C21D641006E83C0 /* DPMainDistanceView.swift in Sources */,
 				4250FA9C2C21A0DD006E83C0 /* GroupActivityShareSheet.swift in Sources */,
 				4287B78F2C49282600E58A60 /* HSMessagingError.swift in Sources */,
-				4250FAA32C21D52F006E83C0 /* MainView.swift in Sources */,
-				4250FAA72C21D64F006E83C0 /* MainLocationView.swift in Sources */,
+				4250FAA32C21D52F006E83C0 /* DPMainView.swift in Sources */,
+				429260E22C5D2D4600E025A6 /* MainDirectionView.swift in Sources */,
+				4250FAA72C21D64F006E83C0 /* DPMainLocationView.swift in Sources */,
 				4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */,
 				428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */,
 				4287B7982C492D2400E58A60 /* HSLocation.swift in Sources */,
