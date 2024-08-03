@@ -36,10 +36,10 @@ extension MainNearbyView {
     @ViewBuilder
     func Title() -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("\(peerInfoUseCase.state.profile?.name ?? "")와 가까워졌어요")
+            Text("\(peerInfoUseCase.state.profile?.name ?? "친구")와 가까워졌어요")
             HStack {
                 Text("주변에서")
-                Text("\(peerInfoUseCase.state.profile?.name ?? "")를 찾아보세요!")
+                Text("\(peerInfoUseCase.state.profile?.name ?? "친구")를 찾아보세요!")
                     .foregroundStyle(.accent)
                 
                 Spacer()

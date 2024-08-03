@@ -39,12 +39,8 @@ extension HSGroupActivityManager {
         switch result {
         case .activationPreferred:
             do {
-                if let session {
-                    session.join()
-                } else {
-                    _ = try await activity.activate()
-                    log("새로운 Group Activity 활성화")
-                }
+                _ = try await activity.activate()
+                log("새로운 Group Activity 활성화")
             } catch {
                 return false // (Error) .activationPreferred
             }

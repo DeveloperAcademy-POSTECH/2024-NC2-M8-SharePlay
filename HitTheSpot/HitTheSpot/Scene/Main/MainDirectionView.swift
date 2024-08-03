@@ -27,6 +27,9 @@ struct MainDirectionView: View {
     
     var body: some View {
         ZStack {
+            HSARView(arUseCase: arUseCase)
+                .ignoresSafeArea()
+            
             VStack {
                 TitleLabel(
                     peerName: peerInfoUseCase.state.profile?.name ?? "",

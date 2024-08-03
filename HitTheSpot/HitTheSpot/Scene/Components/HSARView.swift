@@ -22,6 +22,7 @@ extension HSARView {
         let arView = ARView(frame: .zero)
         
         arUseCase.effect(.setARView(arView))
+        arUseCase.effect(.setARSession(arView))
     
         let blurView = UIVisualEffectView(
             effect: UIBlurEffect(
