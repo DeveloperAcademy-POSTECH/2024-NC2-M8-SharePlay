@@ -15,13 +15,14 @@ struct MainLocationView: View {
         followsHeading: true,
         fallback: .automatic
     )
-    @State private var workItem: DispatchWorkItem?
+    @Namespace var mapScope
+    
     let arUseCase: ARUseCase
     let modeChangeHandler: () -> Void
     
     var body: some View {
         ZStack {
-            Map(position: $cameraPosition) {
+            Map(position: $cameraPosition, scope: mapScope) {
                 
                 if let myLocation = myInfoUseCase.state.location {
                     Annotation("나", coordinate: .init(myLocation)) {
@@ -40,6 +41,7 @@ struct MainLocationView: View {
                     }
                 }
             }
+            .mapControlVisibility(.hidden)
             
             Group {
                 RadialGradientCover()
@@ -57,40 +59,37 @@ struct MainLocationView: View {
                     
                     Spacer()
                     
-                    ShowDistanceViewButton {
-                        modeChangeHandler()
+                    HStack(alignment: .bottom) {
+                        Color.clear
+                            .frame(width: 50, height: 50)
+                        
+                        Spacer()
+                        
+                        ShowDistanceViewButton {
+                            modeChangeHandler()
+                        }
+                        
+                        Spacer()
+                        
+                        VStack(alignment: .trailing, spacing: 16) {
+                            Group {
+                                MapCompass(scope: mapScope)
+                                
+                                MapPitchToggle(scope: mapScope)
+                                
+                                MapUserLocationButton(scope: mapScope)
+                                    .buttonBorderShape(.buttonBorder)
+                                    .clipShape(Circle())
+                            }
+                            .frame(width: 50, height: 50)
+                        }
                     }
+                    .padding(.horizontal, 24)
                 }
                 .padding(.vertical, 60)
             }
         }
-        .onAppear {
-//            locationManager.updateLocationHandler = { location in
-//                Task {
-//                    do {
-//                        try await activityManager.send(ShareLocationMessage(userName: "이거 나임", location: .init(location)))
-//                    } catch {
-//                        print(#fileID, #function, #line, "\(error)")
-//                    }
-//                }
-//            }
-//            locationManager.requestAuthorization()
-            arUseCase.effect(.stopSession)
-        }
-        .onDisappear {
-//            locationManager.stopUpdatingLocation()
-            arUseCase.effect(.startSession)
-        }
-        .onMapCameraChange(frequency: .continuous) {
-            let peerLocation = peerInfoUseCase.state.location
-            
-            schedule(
-                task: {
-                    updateCameraPostion(for: [peerLocation?.toCLLocation()].compactMap { $0 })
-                },
-                after: .now() + 1
-            )
-        }
+        .mapScope(mapScope)
     }
 }
 
@@ -174,49 +173,6 @@ extension MainLocationView {
             .padding(.horizontal, 20)
             .background(.white)
             .clipShape(Capsule())
-        }
-    }
-}
-
-extension MainLocationView {
-    private func schedule(
-        task: @escaping () -> Void,
-        after: DispatchTime = .now() + 1
-    ) {
-        workItem?.cancel()
-        let item = DispatchWorkItem { task() }
-        workItem = item
-        DispatchQueue.main.asyncAfter(deadline: after, execute: item)
-    }
-    
-    private func updateCameraPostion(for locations: [CLLocation] = []) {
-        guard let myLocation = myInfoUseCase.state.location else { return }
-        
-        guard !locations.isEmpty else {
-            let camPostion = MapCameraPosition.region(
-                .init(
-                    center: .init(myLocation),
-                    span: .init(latitudeDelta: 0.02, longitudeDelta: 0.02) // 기본값으로 0.02로 설정
-                )
-            )
-            
-            moveCamera(to: camPostion)
-            return
-        }
-        
-        guard let maxDistance = locations.map({ $0.distance(from: myLocation.toCLLocation()) }).max() else { return }
-        
-        let span = MKCoordinateSpan(
-            latitudeDelta: maxDistance * 2 * 1.2, // 기본값으로 1.2 만큼 확장되도록 설정
-            longitudeDelta: maxDistance * 2 * 1.2
-        )
-        
-        moveCamera(to: .region(.init(center: .init(myLocation), span: span)))
-    }
-    
-    private func moveCamera(to position: MapCameraPosition) {
-        withAnimation {
-            cameraPosition = .userLocation(followsHeading: true, fallback: position)
         }
     }
 }

@@ -14,23 +14,33 @@ struct MainView: View {
     let arUseCase: ARUseCase
     
     var body: some View {
-        switch state {
-        case .direction:
-            MainDirectionView(
-                myInfoUseCase: myInfoUseCase,
-                peerInfoUseCase: peerInfoUseCase,
-                arUseCase: arUseCase, 
-                modeChangeHandler: { updateViewState(to: .location) }
-            )
-        case .location:
-            MainLocationView(
-                myInfoUseCase: myInfoUseCase,
-                peerInfoUseCase: peerInfoUseCase,
-                arUseCase: arUseCase,
-                modeChangeHandler: { updateViewState(to: .direction) }
-            )
-        case .nearby:
-            MainNearbyView(peerInfoUseCase: peerInfoUseCase)
+        Group {
+            
+            
+            switch state {
+            case .direction:
+                MainDirectionView(
+                    myInfoUseCase: myInfoUseCase,
+                    peerInfoUseCase: peerInfoUseCase,
+                    arUseCase: arUseCase,
+                    modeChangeHandler: { updateViewState(to: .location) }
+                )
+            case .location:
+                MainLocationView(
+                    myInfoUseCase: myInfoUseCase,
+                    peerInfoUseCase: peerInfoUseCase,
+                    arUseCase: arUseCase,
+                    modeChangeHandler: { updateViewState(to: .direction) }
+                )
+            case .nearby:
+                MainNearbyView(peerInfoUseCase: peerInfoUseCase)
+            }
+        }
+        .onAppear {
+            myInfoUseCase.effect(.startMonitorLocation)
+        }
+        .onDisappear {
+            myInfoUseCase.effect(.stopMonitorLocation)
         }
     }
 }

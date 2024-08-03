@@ -66,8 +66,9 @@ class MyInfoUseCase {
             save(profile)
             state.profile = profile
         case .didGPSUpdated(let location):
+            effect(.sendLocation(location: location))
             state.location = location
-        
+            
         case .didPeerJoined:
             guard let profile = state.profile,
                   let token = niManager.token

@@ -51,7 +51,6 @@ struct MainDirectionView: View {
         }
         .onAppear {
             arUseCase.effect(.startSession)
-//            niSessionManager.startup()
         }
         .onDisappear {
             arUseCase.effect(.stopSession)
