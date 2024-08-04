@@ -22,67 +22,24 @@ struct MainLocationView: View {
     
     var body: some View {
         ZStack {
-            Map(position: $cameraPosition, scope: mapScope) {
-                
-                if let myLocation = myInfoUseCase.state.location {
-                    Annotation("나", coordinate: .init(myLocation)) {
-                        Marker()
-                    }
-                }
-                
-                if let peerInfo = peerInfoUseCase.state.profile,
-                   let peerLocation = peerInfoUseCase.state.location
-                {
-                    Annotation(
-                        peerInfo.name,
-                        coordinate: .init(peerLocation)
-                    ) {
-                        Marker(isPeer: true)
-                    }
-                }
-            }
-            .mapControlVisibility(.hidden)
+            HSMap(position: $cameraPosition, scope: mapScope)
             
             Group {
                 RadialGradientCover()
                     .allowsHitTesting(false)
                 
                 VStack {
-                    Group {
-                        if let peerInfo = peerInfoUseCase.state.profile {
-                            TitleLabel(pearName: peerInfo.name)
-                        } else {
-                            TitleLabel(pearName: "친구")
-                        }
-                    }
-                    .allowsTightening(false)
+                    TitleLabel(pearName: peerInfoUseCase.state.profile?.name ?? "친구")
+                        .allowsTightening(false)
                     
                     Spacer()
                     
                     HStack(alignment: .bottom) {
-                        Color.clear
-                            .frame(width: 50, height: 50)
-                        
+                        Color.clear.frame(width: 50, height: 50)
                         Spacer()
-                        
-                        ShowDistanceViewButton {
-                            modeChangeHandler()
-                        }
-                        
+                        ShowDistanceViewButton { modeChangeHandler() }
                         Spacer()
-                        
-                        VStack(alignment: .trailing, spacing: 16) {
-                            Group {
-                                MapCompass(scope: mapScope)
-                                
-                                MapPitchToggle(scope: mapScope)
-                                
-                                MapUserLocationButton(scope: mapScope)
-                                    .buttonBorderShape(.buttonBorder)
-                                    .clipShape(Circle())
-                            }
-                            .frame(width: 50, height: 50)
-                        }
+                        HSMapControls(scope: mapScope)
                     }
                     .padding(.horizontal, 24)
                 }
@@ -94,6 +51,43 @@ struct MainLocationView: View {
 }
 
 extension MainLocationView {
+    @ViewBuilder
+    func HSMap(position: Binding<MapCameraPosition>, scope: Namespace.ID) -> some View {
+        Map(position: position, scope: scope) {
+            
+            if let myLocation = myInfoUseCase.state.location {
+                Annotation("나", coordinate: .init(myLocation)) {
+                    Marker()
+                }
+            }
+            
+            if let peerInfo = peerInfoUseCase.state.profile,
+               let peerLocation = peerInfoUseCase.state.location
+            {
+                Annotation(peerInfo.name, coordinate: .init(peerLocation)) {
+                    Marker(isPeer: true)
+                }
+            }
+        }
+        .mapControlVisibility(.hidden)
+    }
+
+    @ViewBuilder
+    func HSMapControls(scope: Namespace.ID) -> some View {
+        VStack(alignment: .trailing, spacing: 16) {
+            Group {
+                MapCompass(scope: scope)
+                
+                MapPitchToggle(scope: scope)
+                
+                MapUserLocationButton(scope: scope)
+                    .buttonBorderShape(.buttonBorder)
+                    .clipShape(Circle())
+            }
+            .frame(width: 50, height: 50)
+        }
+    }
+    
     @ViewBuilder
     func Marker(isPeer: Bool = false) -> some View {
         ZStack {

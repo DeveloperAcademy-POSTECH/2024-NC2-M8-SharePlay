@@ -15,8 +15,6 @@ struct MainView: View {
     
     var body: some View {
         Group {
-            
-            
             switch state {
             case .direction:
                 MainDirectionView(
