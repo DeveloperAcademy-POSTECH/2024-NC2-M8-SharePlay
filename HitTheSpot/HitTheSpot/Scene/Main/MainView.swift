@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @State private var state: ViewState = .direction
+    @State private var lastViewState: ViewState = .direction
 //    @State private var niSessionManager = NISessionManager(niStatus: .extended)
     let peerInfoUseCase: PeerInfoUseCase
     let myInfoUseCase: MyInfoUseCase
@@ -47,6 +48,24 @@ struct MainView: View {
         }
         .onDisappear {
             myInfoUseCase.effect(.stopMonitorLocation)
+        }
+        .onChange(of: state) { _, newValue in
+            switch newValue {
+            case .direction, .location:
+                lastViewState = newValue
+            case .nearby:
+                break
+            }
+        }
+        .onChange(of: peerInfoUseCase.state.nearbyObject) {
+            guard let distance = peerInfoUseCase.state.nearbyObject?.distance else { return }
+            
+            switch distance {
+            case 0..<ThreshHold.nearByDistance:
+                updateViewState(to: .nearby)
+            default:
+                updateViewState(to: lastViewState)
+            }
         }
     }
 }

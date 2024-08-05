@@ -19,16 +19,7 @@
 		4250FA942C209322006E83C0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA932C209322006E83C0 /* Constant.swift */; };
 		4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */; };
 		4250FA9C2C21A0DD006E83C0 /* GroupActivityShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA9B2C21A0DD006E83C0 /* GroupActivityShareSheet.swift */; };
-		4250FA9E2C21A10C006E83C0 /* ShareLocationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */; };
 		4250FAA12C21A79F006E83C0 /* HSNIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA02C21A79F006E83C0 /* HSNIStatus.swift */; };
-		4250FAA32C21D52F006E83C0 /* DPMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA22C21D52F006E83C0 /* DPMainView.swift */; };
-		4250FAA52C21D641006E83C0 /* DPMainDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA42C21D641006E83C0 /* DPMainDistanceView.swift */; };
-		4250FAA72C21D64F006E83C0 /* DPMainLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA62C21D64F006E83C0 /* DPMainLocationView.swift */; };
-		4250FAA92C21D65B006E83C0 /* DPMainNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAA82C21D65B006E83C0 /* DPMainNearbyView.swift */; };
-		4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */; };
-		4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */; };
-		4250FAD62C2317F5006E83C0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAD52C2317F5006E83C0 /* LocationManager.swift */; };
-		4250FAD92C231A4A006E83C0 /* ShareLocationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */; };
 		425A4B052C3406CA004D7CCF /* NearbyEffect.json in Resources */ = {isa = PBXBuildFile; fileRef = 425A4B032C3406C9004D7CCF /* NearbyEffect.json */; };
 		425A4B082C340EAD004D7CCF /* ImageLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425A4B072C340EAD004D7CCF /* ImageLiteral.swift */; };
 		425A4B0A2C344372004D7CCF /* HSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425A4B092C344372004D7CCF /* HSLog.swift */; };
@@ -46,7 +37,6 @@
 		4287B7832C45600200E58A60 /* MyInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7822C45600200E58A60 /* MyInfoUseCase.swift */; };
 		4287B7852C46BA6B00E58A60 /* HSUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */; };
 		4287B7872C46BF2800E58A60 /* PeerInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7862C46BF2800E58A60 /* PeerInfoUseCase.swift */; };
-		4287B78D2C46C9BD00E58A60 /* HSNIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */; };
 		4287B78F2C49282600E58A60 /* HSMessagingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B78E2C49282600E58A60 /* HSMessagingError.swift */; };
 		4287B7982C492D2400E58A60 /* HSLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7972C492D2400E58A60 /* HSLocation.swift */; };
 		4287B79A2C493C6D00E58A60 /* ARUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287B7992C493C6D00E58A60 /* ARUseCase.swift */; };
@@ -82,17 +72,8 @@
 		4250FA932C209322006E83C0 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementQualityEstimator.swift; sourceTree = "<group>"; };
 		4250FA9B2C21A0DD006E83C0 /* GroupActivityShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivityShareSheet.swift; sourceTree = "<group>"; };
-		4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLocationActivity.swift; sourceTree = "<group>"; };
 		4250FA9F2C21A37E006E83C0 /* HitTheSpot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HitTheSpot.entitlements; sourceTree = "<group>"; };
 		4250FAA02C21A79F006E83C0 /* HSNIStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSNIStatus.swift; sourceTree = "<group>"; };
-		4250FAA22C21D52F006E83C0 /* DPMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPMainView.swift; sourceTree = "<group>"; };
-		4250FAA42C21D641006E83C0 /* DPMainDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPMainDistanceView.swift; sourceTree = "<group>"; };
-		4250FAA62C21D64F006E83C0 /* DPMainLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPMainLocationView.swift; sourceTree = "<group>"; };
-		4250FAA82C21D65B006E83C0 /* DPMainNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPMainNearbyView.swift; sourceTree = "<group>"; };
-		4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivityManager.swift; sourceTree = "<group>"; };
-		4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusForSharePlay.swift; sourceTree = "<group>"; };
-		4250FAD52C2317F5006E83C0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLocationMessage.swift; sourceTree = "<group>"; };
 		425A4B032C3406C9004D7CCF /* NearbyEffect.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NearbyEffect.json; sourceTree = "<group>"; };
 		425A4B072C340EAD004D7CCF /* ImageLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiteral.swift; sourceTree = "<group>"; };
 		425A4B092C344372004D7CCF /* HSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLog.swift; sourceTree = "<group>"; };
@@ -110,7 +91,6 @@
 		4287B7822C45600200E58A60 /* MyInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoUseCase.swift; sourceTree = "<group>"; };
 		4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSUserProfile.swift; sourceTree = "<group>"; };
 		4287B7862C46BF2800E58A60 /* PeerInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerInfoUseCase.swift; sourceTree = "<group>"; };
-		4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSNIManager.swift; sourceTree = "<group>"; };
 		4287B78E2C49282600E58A60 /* HSMessagingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSMessagingError.swift; sourceTree = "<group>"; };
 		4287B7972C492D2400E58A60 /* HSLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLocation.swift; sourceTree = "<group>"; };
 		4287B7992C493C6D00E58A60 /* ARUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARUseCase.swift; sourceTree = "<group>"; };
@@ -213,7 +193,6 @@
 		4250FAAE2C21DB2E006E83C0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				4287B79D2C4AB85900E58A60 /* Deprecated */,
 				4287B79E2C4AB87900E58A60 /* HomeView.swift */,
 				4287B7A02C4ACC8200E58A60 /* ProfileSettingSheet.swift */,
 				427E02D52C4AF38D00B597A2 /* WaitingPeerView.swift */,
@@ -256,37 +235,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		4250FAB42C21DD13006E83C0 /* NearbyInteraction */ = {
-			isa = PBXGroup;
-			children = (
-				4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */,
-			);
-			path = NearbyInteraction;
-			sourceTree = "<group>";
-		};
-		4250FAB52C21DD27006E83C0 /* MultipeerConnectivity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MultipeerConnectivity;
-			sourceTree = "<group>";
-		};
-		4250FAB62C226DD2006E83C0 /* SharePlay */ = {
-			isa = PBXGroup;
-			children = (
-				4250FAB72C226DE8006E83C0 /* GroupActivityManager.swift */,
-			);
-			path = SharePlay;
-			sourceTree = "<group>";
-		};
-		4250FAD72C2317FA006E83C0 /* CoreLocation */ = {
-			isa = PBXGroup;
-			children = (
-				4250FAD52C2317F5006E83C0 /* LocationManager.swift */,
-			);
-			path = CoreLocation;
-			sourceTree = "<group>";
-		};
 		4287B76C2C42266300E58A60 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,7 +257,6 @@
 		4287B7762C43BAA600E58A60 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4287B7962C492D0500E58A60 /* Deprecated */,
 				4287B7772C43BABB00E58A60 /* HSShareLocationActivity.swift */,
 				4287B7792C43BAFC00E58A60 /* HSPeerInfoMessage.swift */,
 				4287B7842C46BA6B00E58A60 /* HSUserProfile.swift */,
@@ -334,7 +281,6 @@
 		4287B7912C492C5400E58A60 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				4287B7922C492C6800E58A60 /* Deprecated */,
 				4287B76D2C42266B00E58A60 /* Delegate */,
 				4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */,
 				4287B7722C42271F00E58A60 /* HSGroupActivityManager.swift */,
@@ -344,17 +290,6 @@
 				4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */,
 			);
 			path = Service;
-			sourceTree = "<group>";
-		};
-		4287B7922C492C6800E58A60 /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-				4250FAD72C2317FA006E83C0 /* CoreLocation */,
-				4250FAB62C226DD2006E83C0 /* SharePlay */,
-				4250FAB42C21DD13006E83C0 /* NearbyInteraction */,
-				4250FAB52C21DD27006E83C0 /* MultipeerConnectivity */,
-			);
-			path = Deprecated;
 			sourceTree = "<group>";
 		};
 		4287B7932C492C9A00E58A60 /* Extension */ = {
@@ -383,27 +318,6 @@
 				425A4B092C344372004D7CCF /* HSLog.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		4287B7962C492D0500E58A60 /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-				4250FAB92C2271E6006E83C0 /* StatusForSharePlay.swift */,
-				4250FA9D2C21A10C006E83C0 /* ShareLocationActivity.swift */,
-				4250FAD82C231A4A006E83C0 /* ShareLocationMessage.swift */,
-			);
-			path = Deprecated;
-			sourceTree = "<group>";
-		};
-		4287B79D2C4AB85900E58A60 /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-				4250FAA22C21D52F006E83C0 /* DPMainView.swift */,
-				4250FAA42C21D641006E83C0 /* DPMainDistanceView.swift */,
-				4250FAA62C21D64F006E83C0 /* DPMainLocationView.swift */,
-				4250FAA82C21D65B006E83C0 /* DPMainNearbyView.swift */,
-			);
-			path = Deprecated;
 			sourceTree = "<group>";
 		};
 		428ED04C2C34063100DDD4A8 /* Lottie */ = {
@@ -512,40 +426,30 @@
 				427E02D22C4AD86700B597A2 /* HSButton.swift in Sources */,
 				425A4B0A2C344372004D7CCF /* HSLog.swift in Sources */,
 				4250FA8D2C20566C006E83C0 /* NISessionManager.swift in Sources */,
-				4250FAB82C226DE8006E83C0 /* GroupActivityManager.swift in Sources */,
-				4250FABA2C2271E6006E83C0 /* StatusForSharePlay.swift in Sources */,
 				4287B76F2C42268100E58A60 /* HSLocationDelegate.swift in Sources */,
 				4287B79C2C4AAC3500E58A60 /* HSARManager.swift in Sources */,
-				4287B78D2C46C9BD00E58A60 /* HSNIManager.swift in Sources */,
 				4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */,
 				4287B77F2C43BF2200E58A60 /* SharePlayUseCase.swift in Sources */,
 				429260E42C5D2D4E00E025A6 /* MainLocationView.swift in Sources */,
-				4250FAD92C231A4A006E83C0 /* ShareLocationMessage.swift in Sources */,
 				4250FA942C209322006E83C0 /* Constant.swift in Sources */,
 				4287B7712C4226AF00E58A60 /* CLAuthorizationStatus+.swift in Sources */,
 				4287B7832C45600200E58A60 /* MyInfoUseCase.swift in Sources */,
 				4287B79F2C4AB87900E58A60 /* HomeView.swift in Sources */,
 				4250FA892C2051FB006E83C0 /* NINotSupportedDeviceView.swift in Sources */,
 				4250FA7D2C1F220A006E83C0 /* ContentView.swift in Sources */,
-				4250FA9E2C21A10C006E83C0 /* ShareLocationActivity.swift in Sources */,
 				429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */,
 				4287B7732C42271F00E58A60 /* HSGroupActivityManager.swift in Sources */,
 				4250FA962C216E48006E83C0 /* MeasurementQualityEstimator.swift in Sources */,
 				429260DE2C5D2B2E00E025A6 /* MainView.swift in Sources */,
 				4287B7A12C4ACC8200E58A60 /* ProfileSettingSheet.swift in Sources */,
-				4250FAA92C21D65B006E83C0 /* DPMainNearbyView.swift in Sources */,
 				429ACA522C24B73F00B0276E /* FontSetting.swift in Sources */,
 				4287B7852C46BA6B00E58A60 /* HSUserProfile.swift in Sources */,
-				4250FAD62C2317F5006E83C0 /* LocationManager.swift in Sources */,
 				4250FAA12C21A79F006E83C0 /* HSNIStatus.swift in Sources */,
 				4250FA7B2C1F220A006E83C0 /* HitTheSpotApp.swift in Sources */,
 				4287B77A2C43BAFC00E58A60 /* HSPeerInfoMessage.swift in Sources */,
-				4250FAA52C21D641006E83C0 /* DPMainDistanceView.swift in Sources */,
 				4250FA9C2C21A0DD006E83C0 /* GroupActivityShareSheet.swift in Sources */,
 				4287B78F2C49282600E58A60 /* HSMessagingError.swift in Sources */,
-				4250FAA32C21D52F006E83C0 /* DPMainView.swift in Sources */,
 				429260E22C5D2D4600E025A6 /* MainDirectionView.swift in Sources */,
-				4250FAA72C21D64F006E83C0 /* DPMainLocationView.swift in Sources */,
 				4250FA922C2077ED006E83C0 /* MPCSession.swift in Sources */,
 				428ED04B2C34058600DDD4A8 /* LottieView.swift in Sources */,
 				4287B7982C492D2400E58A60 /* HSLocation.swift in Sources */,
