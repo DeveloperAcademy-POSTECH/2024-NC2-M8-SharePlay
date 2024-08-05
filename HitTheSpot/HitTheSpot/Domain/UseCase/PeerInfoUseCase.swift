@@ -30,17 +30,17 @@ class PeerInfoUseCase {
     }
     
     private let activityManager: HSGroupActivityManager
-    private let niManager: HSNearbyInteractManager
+    private let niManager: NISessionManager
     private(set) var state: State = .init()
     
     init(
         activityManager: HSGroupActivityManager,
-        niManager: HSNearbyInteractManager
+        niManager: NISessionManager
     ) {
         self.activityManager = activityManager
         self.niManager = niManager
         self.activityManager.messageDelegate = self
-        self.niManager.delegate = self
+        self.niManager.niObjectDelegate = self
     }
     
     public func effect(_ action: Action) {
@@ -62,8 +62,6 @@ class PeerInfoUseCase {
             state.profile = profile
         case .location(let location):
             state.location = location
-        case .token(let data):
-            state.token = decode(data: data)
         }
     }
     
@@ -90,7 +88,7 @@ extension PeerInfoUseCase: HSMessagingDelegate {
     }
 }
 
-extension PeerInfoUseCase: HSNearbyInteractionDelegate {
+extension PeerInfoUseCase: HSNIObjectDelegate {
     func didNIObjectUpdated(object: NINearbyObject) {
         effect(.didNIObjectUpdated(object: object))
     }

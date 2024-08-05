@@ -141,8 +141,6 @@ extension HSGroupActivityManager {
                 try await messenger?.send(profile)
             case .location(let location):
                 try await messenger?.send(location)
-            case .token(let tokenData):
-                try await messenger?.send(tokenData)
             }
             
         } catch {
@@ -162,12 +160,6 @@ extension HSGroupActivityManager {
         Task.detached {
             for await message in messenger.messages(of: HSLocation.self) {
                 self.messageDelegate?.receive(.location(message.0))
-            }
-        }
-        
-        Task.detached {
-            for await message in messenger.messages(of: Data.self) {
-                self.messageDelegate?.receive(.token(message.0))
             }
         }
     }

@@ -8,38 +8,41 @@
 import SwiftUI
 
 struct DPMainDistanceView: View {
-    @Bindable var niSessionManager: NISessionManager
-    let arViewController: HSARManager
+    @Bindable var peerInfoUseCase: PeerInfoUseCase
+    let arUseCase: ARUseCase
     
-    var modeChangeHandler: (() -> Void)?
+    let modeChangeHandler: () -> Void
     
     var body: some View {
         ZStack {
+            HSARView(arUseCase: arUseCase)
+                .ignoresSafeArea()
+            
             VStack {
                 TitleLabel(
-                    peerName: niSessionManager.connectedPeerName ?? "",
-                    distance: niSessionManager.distance ?? 0
+                    peerName: peerInfoUseCase.state.profile?.name ?? "",
+                    distance: peerInfoUseCase.state.nearbyObject?.distance ?? 0
                 )
                 
                 Spacer()
                 
                 ShowLocationViewButton {
-                    modeChangeHandler?()
+                    modeChangeHandler()
                 }
             }
             .padding(.vertical, 60)
             
             ArrowOverlay()
                 .rotationEffect(
-                    Angle(radians: Double(niSessionManager.horizontalAngle ?? 0))
+                    Angle(radians: Double(peerInfoUseCase.state.nearbyObject?.horizontalAngle ?? 0))
                 )
         }
         .onAppear {
-            arViewController.startSession()
-            niSessionManager.startup()
+            arUseCase.effect(.startSession)
+//            niSessionManager.startup()
         }
         .onDisappear {
-            arViewController.pauseSession()
+            arUseCase.effect(.stopSession)
         }
     }
 }
@@ -115,11 +118,13 @@ extension DPMainDistanceView {
         }
     }
 }
-
-#Preview {
-    DPMainDistanceView(
-        niSessionManager: NISessionManager(niStatus: .extended),
-        arViewController: HSARManager()
-    )
-    .preferredColorScheme(.dark)
-}
+//
+//#Preview {
+//    DPMainDistanceView(
+//        peerInfoUseCase: .init(activityManager: .init(), niManager: .init()),
+//        niSessionManager: NISessionManager(niStatus: .extended),
+//        arUseCase: ARUseCase(niManager: .init(), arManager: .init()),
+//        modeChangeHandler: {}
+//    )
+//    .preferredColorScheme(.dark)
+//}

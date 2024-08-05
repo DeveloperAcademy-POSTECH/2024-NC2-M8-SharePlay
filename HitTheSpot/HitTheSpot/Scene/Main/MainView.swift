@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @State private var state: ViewState = .direction
+//    @State private var niSessionManager = NISessionManager(niStatus: .extended)
     let peerInfoUseCase: PeerInfoUseCase
     let myInfoUseCase: MyInfoUseCase
     let arUseCase: ARUseCase
@@ -17,12 +18,19 @@ struct MainView: View {
         Group {
             switch state {
             case .direction:
+//                DPMainDistanceView(
+//                    peerInfoUseCase: peerInfoUseCase,
+//                    niSessionManager: niSessionManager,
+//                    arUseCase: arUseCase,
+//                    modeChangeHandler: { updateViewState(to: .location) }
+//                )
                 MainDirectionView(
                     myInfoUseCase: myInfoUseCase,
                     peerInfoUseCase: peerInfoUseCase,
                     arUseCase: arUseCase,
                     modeChangeHandler: { updateViewState(to: .location) }
                 )
+
             case .location:
                 MainLocationView(
                     myInfoUseCase: myInfoUseCase,

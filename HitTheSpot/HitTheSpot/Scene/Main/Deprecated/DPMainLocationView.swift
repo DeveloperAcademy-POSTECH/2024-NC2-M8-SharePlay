@@ -223,7 +223,7 @@ extension DPMainLocationView {
     DPMainLocationView(
         myInfoUseCase: MyInfoUseCase(
             activityManager: HSGroupActivityManager(),
-            niManager: HSNearbyInteractManager(),
+            niManager: NISessionManager(),
             locationManager: HSLocationManager()
         ),
         activityManager: GroupActivityManager(),

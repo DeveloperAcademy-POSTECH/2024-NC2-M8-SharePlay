@@ -19,7 +19,7 @@ struct HitTheSpotApp: App {
     
     init() {
         let activityManager = HSGroupActivityManager()
-        let niManager = HSNearbyInteractManager()
+        let niManager = NISessionManager()
         
         sharePlayUseCase = .init(manager: activityManager)
         

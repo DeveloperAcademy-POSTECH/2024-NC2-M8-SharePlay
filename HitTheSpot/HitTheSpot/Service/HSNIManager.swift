@@ -9,7 +9,11 @@ import Foundation
 import NearbyInteraction
 import ARKit
 
-protocol HSNearbyInteractionDelegate: AnyObject {
+protocol HSNISessionDelegate: AnyObject {
+    func didSessionRestarted(_ session: NISession)
+}
+
+protocol HSNIObjectDelegate: AnyObject {
     func didNIObjectUpdated(object: NINearbyObject)
     func didNIObjectRemoved(object: NINearbyObject)
     func didUpdateConvergence(
@@ -30,7 +34,8 @@ class HSNearbyInteractManager: NSObject {
     private var peerToken: NIDiscoveryToken?
     var token: NIDiscoveryToken? { niSession?.discoveryToken }
     
-    weak var delegate: HSNearbyInteractionDelegate?
+    weak var niSessionDelegate: HSNISessionDelegate?
+    weak var niObjectDelegate: HSNIObjectDelegate?
     
     override init() {
         super.init()
@@ -44,10 +49,9 @@ extension HSNearbyInteractManager {
         startNISession()
     }
     
-    private func invalidate() {
+    func invalidate() {
         arSession?.pause()
         niSession?.invalidate()
-        niSession = nil
     }
     
     private func startNISession() {
@@ -62,8 +66,9 @@ extension HSNearbyInteractManager {
 }
 
 extension HSNearbyInteractManager {
-    private func peerDidShareDiscoveryToken(token: NIDiscoveryToken) {
+    func run(with token: NIDiscoveryToken) {
         peerToken = token
+        print("✅ peer token: \(token)")
         
         niSessionQueue.async { [weak self] in
             guard let self = self else { return }
@@ -92,7 +97,7 @@ extension HSNearbyInteractManager: NISessionDelegate {
             $0.discoveryToken == peerToken
         }) else { return }
         
-        delegate?.didNIObjectUpdated(object: peerObj)
+        niObjectDelegate?.didNIObjectUpdated(object: peerObj)
     }
     
     func session(
@@ -101,6 +106,10 @@ extension HSNearbyInteractManager: NISessionDelegate {
         reason: NINearbyObject.RemovalReason
     ) {
         startup()
+        print("--------------")
+        print("✅ my token: \(session.discoveryToken)")
+        print("✅ object: \(nearbyObjects)")
+        print("✅ reason: \(reason)")
     }
     
     func session(
@@ -164,7 +173,7 @@ extension HSNearbyInteractManager: ARSessionDelegate {
             return
         }
 
-        delegate?.didUpdateConvergence(convergence: convergence, object: nearbyObject)
+        niObjectDelegate?.didUpdateConvergence(convergence: convergence, object: nearbyObject)
     }
     
     func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {

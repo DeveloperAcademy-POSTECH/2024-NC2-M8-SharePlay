@@ -12,6 +12,5 @@ import CoreLocation
 enum HSPeerInfoMessage {
     case profile(_ profile: HSUserProfile)
     case location(_ location: HSLocation)
-    case token(_ token: Data)
 }
 

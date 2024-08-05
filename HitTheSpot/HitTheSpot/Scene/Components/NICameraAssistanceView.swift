@@ -18,7 +18,7 @@ struct NICameraAssistanceView: View {
 #Preview {
     NICameraAssistanceView(arUseCase:
         .init(
-            niManager: HSNearbyInteractManager(),
+            niManager: NISessionManager(),
             arManager: HSARManager()
         )
     )

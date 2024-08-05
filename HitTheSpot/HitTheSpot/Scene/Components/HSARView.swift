@@ -55,7 +55,7 @@ extension HSARView {
 #Preview {
     HSARView(arUseCase: 
         .init(
-            niManager: HSNearbyInteractManager(),
+            niManager: NISessionManager(),
             arManager: HSARManager()
         )
     )
