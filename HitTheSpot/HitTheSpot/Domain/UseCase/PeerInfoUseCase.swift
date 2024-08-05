@@ -14,7 +14,6 @@ class PeerInfoUseCase {
     enum Action {
         case didMessageReceived(message: HSPeerInfoMessage)
         case didNIObjectUpdated(object: NINearbyObject)
-        case didNIObjectRemoved(object: NINearbyObject)
         case didConvergenceUpdated(
             convergence: NIAlgorithmConvergence,
             object: NINearbyObject
@@ -49,8 +48,6 @@ class PeerInfoUseCase {
             didMessageReceivedEffect(message: message)
         case .didNIObjectUpdated(let object):
             state.nearbyObject = object
-        case .didNIObjectRemoved(let object):
-            didEffect(of: object) { state.nearbyObject = nil }
         case .didConvergenceUpdated(let convergence, let object):
             didEffect(of: object) { state.convergence = convergence }
         }
@@ -70,16 +67,6 @@ class PeerInfoUseCase {
             effect()
         }
     }
-    
-    private func decode<T: NSObject & NSSecureCoding>(data: Data) -> T? {
-        guard let decodedObject = try? NSKeyedUnarchiver.unarchivedObject(
-            ofClass: T.self,
-            from: data
-        ) else {
-            return nil
-        }
-        return decodedObject
-    }
 }
 
 extension PeerInfoUseCase: HSMessagingDelegate {
@@ -91,10 +78,6 @@ extension PeerInfoUseCase: HSMessagingDelegate {
 extension PeerInfoUseCase: HSNIObjectDelegate {
     func didNIObjectUpdated(object: NINearbyObject) {
         effect(.didNIObjectUpdated(object: object))
-    }
-    
-    func didNIObjectRemoved(object: NINearbyObject) {
-        effect(.didNIObjectRemoved(object: object))
     }
     
     func didUpdateConvergence(convergence: NIAlgorithmConvergence, object: NINearbyObject) {

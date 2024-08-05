@@ -10,6 +10,14 @@ import NearbyInteraction
 import MultipeerConnectivity
 import ARKit
 
+protocol HSNIObjectDelegate: AnyObject {
+    func didNIObjectUpdated(object: NINearbyObject)
+    func didUpdateConvergence(
+        convergence: NIAlgorithmConvergence,
+        object: NINearbyObject
+    )
+}
+
 class NISessionManager: NSObject {
     /// NISession의 세션 동기화 작업을 위한 Queue
     private let niSessionQueue = DispatchQueue(

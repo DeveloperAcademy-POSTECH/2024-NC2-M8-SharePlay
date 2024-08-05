@@ -9,19 +9,6 @@ import Foundation
 import NearbyInteraction
 import ARKit
 
-protocol HSNISessionDelegate: AnyObject {
-    func didSessionRestarted(_ session: NISession)
-}
-
-protocol HSNIObjectDelegate: AnyObject {
-    func didNIObjectUpdated(object: NINearbyObject)
-    func didNIObjectRemoved(object: NINearbyObject)
-    func didUpdateConvergence(
-        convergence: NIAlgorithmConvergence,
-        object: NINearbyObject
-    )
-}
-
 class HSNearbyInteractManager: NSObject {
     private let niSessionQueue = DispatchQueue(
         label: QueueLabel.niSessionQueue,
@@ -34,7 +21,6 @@ class HSNearbyInteractManager: NSObject {
     private var peerToken: NIDiscoveryToken?
     var token: NIDiscoveryToken? { niSession?.discoveryToken }
     
-    weak var niSessionDelegate: HSNISessionDelegate?
     weak var niObjectDelegate: HSNIObjectDelegate?
     
     override init() {
@@ -68,7 +54,6 @@ extension HSNearbyInteractManager {
 extension HSNearbyInteractManager {
     func run(with token: NIDiscoveryToken) {
         peerToken = token
-        print("✅ peer token: \(token)")
         
         niSessionQueue.async { [weak self] in
             guard let self = self else { return }
@@ -106,10 +91,6 @@ extension HSNearbyInteractManager: NISessionDelegate {
         reason: NINearbyObject.RemovalReason
     ) {
         startup()
-        print("--------------")
-        print("✅ my token: \(session.discoveryToken)")
-        print("✅ object: \(nearbyObjects)")
-        print("✅ reason: \(reason)")
     }
     
     func session(

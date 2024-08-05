@@ -259,8 +259,7 @@
 		4250FAB42C21DD13006E83C0 /* NearbyInteraction */ = {
 			isa = PBXGroup;
 			children = (
-				4250FA8C2C20566C006E83C0 /* NISessionManager.swift */,
-				4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */,
+				4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */,
 			);
 			path = NearbyInteraction;
 			sourceTree = "<group>";
@@ -268,7 +267,6 @@
 		4250FAB52C21DD27006E83C0 /* MultipeerConnectivity */ = {
 			isa = PBXGroup;
 			children = (
-				4250FA912C2077ED006E83C0 /* MPCSession.swift */,
 			);
 			path = MultipeerConnectivity;
 			sourceTree = "<group>";
@@ -340,8 +338,10 @@
 				4287B76D2C42266B00E58A60 /* Delegate */,
 				4287B76A2C4215AE00E58A60 /* HSLocationManager.swift */,
 				4287B7722C42271F00E58A60 /* HSGroupActivityManager.swift */,
-				4287B78C2C46C9BD00E58A60 /* HSNIManager.swift */,
 				4287B79B2C4AAC3500E58A60 /* HSARManager.swift */,
+				4250FA912C2077ED006E83C0 /* MPCSession.swift */,
+				4250FA8C2C20566C006E83C0 /* NISessionManager.swift */,
+				4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
