@@ -48,6 +48,7 @@
 		429260E22C5D2D4600E025A6 /* MainDirectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429260E12C5D2D4600E025A6 /* MainDirectionView.swift */; };
 		429260E42C5D2D4E00E025A6 /* MainLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429260E32C5D2D4E00E025A6 /* MainLocationView.swift */; };
 		429260E62C5D2D5700E025A6 /* MainNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429260E52C5D2D5700E025A6 /* MainNearbyView.swift */; };
+		429260E82C60FE1000E025A6 /* VibrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429260E72C60FE1000E025A6 /* VibrationManager.swift */; };
 		429ACA492C2492F000B0276E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */; };
 		429ACA4D2C24B6FC00B0276E /* Syncopate-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */; };
 		429ACA4E2C24B6FC00B0276E /* Syncopate-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 429ACA4C2C24B6FC00B0276E /* Syncopate-Bold.ttf */; };
@@ -100,6 +101,7 @@
 		429260E12C5D2D4600E025A6 /* MainDirectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDirectionView.swift; sourceTree = "<group>"; };
 		429260E32C5D2D4E00E025A6 /* MainLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocationView.swift; sourceTree = "<group>"; };
 		429260E52C5D2D5700E025A6 /* MainNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNearbyView.swift; sourceTree = "<group>"; };
+		429260E72C60FE1000E025A6 /* VibrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationManager.swift; sourceTree = "<group>"; };
 		429ACA482C2492F000B0276E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		429ACA4B2C24B6FC00B0276E /* Syncopate-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Regular.ttf"; sourceTree = "<group>"; };
 		429ACA4C2C24B6FC00B0276E /* Syncopate-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syncopate-Bold.ttf"; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				4250FA912C2077ED006E83C0 /* MPCSession.swift */,
 				4250FA8C2C20566C006E83C0 /* NISessionManager.swift */,
 				4250FA952C216E47006E83C0 /* MeasurementQualityEstimator.swift */,
+				429260E72C60FE1000E025A6 /* VibrationManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				4287B79C2C4AAC3500E58A60 /* ARManager.swift in Sources */,
 				4250FA8B2C205342006E83C0 /* NICameraAssistanceView.swift in Sources */,
 				4287B77F2C43BF2200E58A60 /* SharePlayUseCase.swift in Sources */,
+				429260E82C60FE1000E025A6 /* VibrationManager.swift in Sources */,
 				429260E42C5D2D4E00E025A6 /* MainLocationView.swift in Sources */,
 				4250FA942C209322006E83C0 /* Constant.swift in Sources */,
 				4287B7712C4226AF00E58A60 /* CLAuthorizationStatus+.swift in Sources */,
