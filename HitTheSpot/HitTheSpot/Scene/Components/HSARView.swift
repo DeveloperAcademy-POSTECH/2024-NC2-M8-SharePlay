@@ -56,7 +56,7 @@ extension HSARView {
     HSARView(arUseCase: 
         .init(
             niManager: NISessionManager(),
-            arManager: HSARManager()
+            arManager: ARManager()
         )
     )
 }

@@ -32,15 +32,15 @@ class MyInfoUseCase {
         var location: HSLocation? = nil
     }
     
-    private let activityManager: HSGroupActivityManager
+    private let activityManager: GroupActivityManager
     private let niManager: NISessionManager
-    private let locationManager: HSLocationManager
+    private let locationManager: LocationManager
     private(set) var state: State
     
     init(
-        activityManager: HSGroupActivityManager,
+        activityManager: GroupActivityManager,
         niManager: NISessionManager,
-        locationManager: HSLocationManager
+        locationManager: LocationManager
     ) {
         if let savedProfile = UserDefaults.standard.data(forKey: "profile"),
             let profile = try? JSONDecoder().decode(HSUserProfile.self, from: savedProfile) {

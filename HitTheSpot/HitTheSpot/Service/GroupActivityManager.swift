@@ -1,5 +1,5 @@
 //
-//  HSGroupActivityManager.swift
+//  GroupActivityManager.swift
 //  HitTheSpot
 //
 //  Created by 남유성 on 7/13/24.
@@ -9,12 +9,12 @@ import Foundation
 import GroupActivities
 import Combine
 
-class HSGroupActivityManager {
-    typealias SessionState = GroupSession<HSShareLocationActivity>.State
+class GroupActivityManager {
+    typealias SessionState = GroupSession<HitTheSpotActivity>.State
     
     private let groupStateObserver = GroupStateObserver()
-    private(set) var activity: HSShareLocationActivity
-    private var session: GroupSession<HSShareLocationActivity>?
+    private(set) var activity: HitTheSpotActivity
+    private var session: GroupSession<HitTheSpotActivity>?
     private var messenger: GroupSessionMessenger?
     
     private var cancellables = Set<AnyCancellable>()
@@ -32,7 +32,7 @@ class HSGroupActivityManager {
 }
 
 // MARK: - start/leave Activity
-extension HSGroupActivityManager {
+extension GroupActivityManager {
     public func requestStartGroupActivity() async -> Bool {
         let result = await activity.prepareForActivation()
         
@@ -64,10 +64,10 @@ extension HSGroupActivityManager {
 }
 
 // MARK: - Monitoring New Activity
-extension HSGroupActivityManager {
+extension GroupActivityManager {
     private func monitorNewGroupActivity() {
         Task.detached { [weak self] in
-            for await session in HSShareLocationActivity.sessions() {
+            for await session in HitTheSpotActivity.sessions() {
                 self?.log("새로운 활동 세션 감지됨")
                 self?.session = session
                 self?.messenger = GroupSessionMessenger(session: session)
@@ -79,7 +79,7 @@ extension HSGroupActivityManager {
         }
     }
     
-    private func join(_ session: GroupSession<HSShareLocationActivity>) {
+    private func join(_ session: GroupSession<HitTheSpotActivity>) {
         if session.state != .joined {
             session.join()
         }
@@ -133,8 +133,8 @@ extension HSGroupActivityManager {
 }
 
 // MARK: - Messaging
-extension HSGroupActivityManager {
-    public func send(_ message: HSPeerInfoMessage) async throws {
+extension GroupActivityManager {
+    public func send(_ message: HSMessage) async throws {
         do {
             switch message {
             case .profile(let profile):
@@ -166,7 +166,7 @@ extension HSGroupActivityManager {
 }
 
 // MARK: - Log
-extension HSGroupActivityManager {
+extension GroupActivityManager {
     private func log(_ message: String) {
         HSLog(from: "\(Self.self)", with: message)
     }

@@ -1,5 +1,5 @@
 //
-//  HSShareLocationActivity.swift
+//  HitTheSpotActivity.swift
 //  HitTheSpot
 //
 //  Created by 남유성 on 7/14/24.
@@ -8,7 +8,7 @@
 import UIKit
 import GroupActivities
 
-struct HSShareLocationActivity: GroupActivity {
+struct HitTheSpotActivity: GroupActivity {
     static let activityIdentifier = Constant.activityIdentifier
 
     var metadata: GroupActivityMetadata {

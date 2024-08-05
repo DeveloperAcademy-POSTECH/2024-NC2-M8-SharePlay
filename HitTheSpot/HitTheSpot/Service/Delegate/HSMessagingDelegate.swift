@@ -9,5 +9,5 @@ import Foundation
 
 // MARK: - Messaging
 protocol HSMessagingDelegate: AnyObject {
-    func receive(_ message: HSPeerInfoMessage)
+    func receive(_ message: HSMessage)
 }

@@ -17,11 +17,11 @@ class ARUseCase {
     }
     
     private let niManager: NISessionManager
-    private let arManager: HSARManager
+    private let arManager: ARManager
     
     init(
         niManager: NISessionManager,
-        arManager: HSARManager
+        arManager: ARManager
     ) {
         self.niManager = niManager
         self.arManager = arManager

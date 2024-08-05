@@ -12,7 +12,7 @@ import NearbyInteraction
 @Observable
 class PeerInfoUseCase {
     enum Action {
-        case didMessageReceived(message: HSPeerInfoMessage)
+        case didMessageReceived(message: HSMessage)
         case didNIObjectUpdated(object: NINearbyObject)
         case didConvergenceUpdated(
             convergence: NIAlgorithmConvergence,
@@ -23,17 +23,16 @@ class PeerInfoUseCase {
     struct State {
         var profile: HSUserProfile? = nil
         var location: HSLocation? = nil
-        var token: NIDiscoveryToken? = nil
         var nearbyObject: NINearbyObject? = nil
         var convergence: NIAlgorithmConvergence? = nil
     }
     
-    private let activityManager: HSGroupActivityManager
+    private let activityManager: GroupActivityManager
     private let niManager: NISessionManager
     private(set) var state: State = .init()
     
     init(
-        activityManager: HSGroupActivityManager,
+        activityManager: GroupActivityManager,
         niManager: NISessionManager
     ) {
         self.activityManager = activityManager
@@ -53,7 +52,7 @@ class PeerInfoUseCase {
         }
     }
     
-    private func didMessageReceivedEffect(message: HSPeerInfoMessage) {
+    private func didMessageReceivedEffect(message: HSMessage) {
         switch message {
         case .profile(let profile):
             state.profile = profile
@@ -70,7 +69,7 @@ class PeerInfoUseCase {
 }
 
 extension PeerInfoUseCase: HSMessagingDelegate {
-    func receive(_ message: HSPeerInfoMessage) {
+    func receive(_ message: HSMessage) {
         effect(.didMessageReceived(message: message))
     }
 }

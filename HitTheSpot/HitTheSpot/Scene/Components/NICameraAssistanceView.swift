@@ -19,7 +19,7 @@ struct NICameraAssistanceView: View {
     NICameraAssistanceView(arUseCase:
         .init(
             niManager: NISessionManager(),
-            arManager: HSARManager()
+            arManager: ARManager()
         )
     )
 }

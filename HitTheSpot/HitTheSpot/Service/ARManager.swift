@@ -1,5 +1,5 @@
 //
-//  HSARManager.swift
+//  ARManager.swift
 //  HitTheSpot
 //
 //  Created by 남유성 on 7/19/24.
@@ -10,7 +10,7 @@ import RealityKit
 import ARKit
 
 @Observable
-class HSARManager {
+class ARManager {
     var arView: ARView?
     
     func setARView(_ arView: ARView) {

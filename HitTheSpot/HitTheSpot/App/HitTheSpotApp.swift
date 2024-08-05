@@ -18,7 +18,7 @@ struct HitTheSpotApp: App {
     var isSupportU2: Bool { NISession.deviceCapabilities.supportsExtendedDistanceMeasurement }
     
     init() {
-        let activityManager = HSGroupActivityManager()
+        let activityManager = GroupActivityManager()
         let niManager = NISessionManager()
         
         sharePlayUseCase = .init(manager: activityManager)
@@ -26,7 +26,7 @@ struct HitTheSpotApp: App {
         myInfoUseCase = .init(
             activityManager: activityManager, 
             niManager: niManager,
-            locationManager: HSLocationManager()
+            locationManager: LocationManager()
         )
         
         peerInfoUseCase = .init(
@@ -36,7 +36,7 @@ struct HitTheSpotApp: App {
         
         arUseCase = .init(
             niManager: niManager,
-            arManager: HSARManager()
+            arManager: ARManager()
         )
     }
     
