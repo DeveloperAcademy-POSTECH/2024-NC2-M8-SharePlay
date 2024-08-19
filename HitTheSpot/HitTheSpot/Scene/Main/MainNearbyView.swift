@@ -29,9 +29,6 @@ struct MainNearbyView: View {
             
             LottieView(filename: "NearbyEffect")
         }
-        .onAppear {
-            VibrationManager.shared?.playHaptic(haptic: .sample)
-        }
     }
 }
 

@@ -14,7 +14,7 @@ class MeasurementQualityEstimator {
     /// 최소 샘플 수
     let minSamples: Int = ThreshHold.minSamples
     /// 최대 거리, 미터 단위
-    let maxDistance: Float = ThreshHold.maxDistacne
+    let maxDistance: Float = ThreshHold.maxDistance
     /// 최소 거리, 미터 단위
     let closeDistance: Float = ThreshHold.nearByDistance
     

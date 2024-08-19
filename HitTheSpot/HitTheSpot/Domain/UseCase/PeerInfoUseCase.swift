@@ -12,6 +12,8 @@ import NearbyInteraction
 @Observable
 class PeerInfoUseCase {
     enum Action {
+        case didNearby
+        case isFinding
         case didMessageReceived(message: HSMessage)
         case didNIObjectUpdated(object: NINearbyObject)
         case didConvergenceUpdated(
@@ -25,6 +27,7 @@ class PeerInfoUseCase {
         var location: HSLocation? = nil
         var nearbyObject: NINearbyObject? = nil
         var convergence: NIAlgorithmConvergence? = nil
+        var isNearby: Bool = false
     }
     
     private let activityManager: GroupActivityManager
@@ -49,6 +52,12 @@ class PeerInfoUseCase {
             state.nearbyObject = object
         case .didConvergenceUpdated(let convergence, let object):
             didEffect(of: object) { state.convergence = convergence }
+        case .didNearby:
+            VibrationManager.shared?.playHaptic(haptic: .sample)
+            state.isNearby = true
+        case .isFinding:
+            VibrationManager.shared?.stopHaptic()
+            state.isNearby = false
         }
     }
     
@@ -77,6 +86,15 @@ extension PeerInfoUseCase: HSMessagingDelegate {
 extension PeerInfoUseCase: HSNIObjectDelegate {
     func didNIObjectUpdated(object: NINearbyObject) {
         effect(.didNIObjectUpdated(object: object))
+        
+        guard let distance = object.distance else { return }
+    
+        switch distance {
+        case 0..<ThreshHold.nearByDistance:
+            if !state.isNearby { effect(.didNearby) }
+        default:
+            if state.isNearby { effect(.isFinding) }
+        }
     }
     
     func didUpdateConvergence(convergence: NIAlgorithmConvergence, object: NINearbyObject) {

@@ -60,7 +60,6 @@ class VibrationManager {
         }
     }
     
-    
     private func makePattern(haptic: CustomHaptic) throws -> CHHapticPattern {
         var events: [CHHapticEvent] = []
         var relativeTime = 0.0

@@ -8,28 +8,20 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var state: ViewState = .direction
-    @State private var lastViewState: ViewState = .direction
-//    @State private var niSessionManager = NISessionManager(niStatus: .extended)
+    @State private var state: ViewState = .init()
     let peerInfoUseCase: PeerInfoUseCase
     let myInfoUseCase: MyInfoUseCase
     let arUseCase: ARUseCase
     
     var body: some View {
         Group {
-            switch state {
+            switch state.state {
             case .direction:
-//                DPMainDistanceView(
-//                    peerInfoUseCase: peerInfoUseCase,
-//                    niSessionManager: niSessionManager,
-//                    arUseCase: arUseCase,
-//                    modeChangeHandler: { updateViewState(to: .location) }
-//                )
                 MainDirectionView(
                     myInfoUseCase: myInfoUseCase,
                     peerInfoUseCase: peerInfoUseCase,
                     arUseCase: arUseCase,
-                    modeChangeHandler: { updateViewState(to: .location) }
+                    modeChangeHandler: { state.update(to: .location) }
                 )
 
             case .location:
@@ -37,8 +29,9 @@ struct MainView: View {
                     myInfoUseCase: myInfoUseCase,
                     peerInfoUseCase: peerInfoUseCase,
                     arUseCase: arUseCase,
-                    modeChangeHandler: { updateViewState(to: .direction) }
+                    modeChangeHandler: { state.update(to: .direction) }
                 )
+                
             case .nearby:
                 MainNearbyView(peerInfoUseCase: peerInfoUseCase)
             }
@@ -49,38 +42,32 @@ struct MainView: View {
         .onDisappear {
             myInfoUseCase.effect(.stopMonitorLocation)
         }
-        .onChange(of: state) { _, newValue in
-            switch newValue {
-            case .direction, .location:
-                lastViewState = newValue
-            case .nearby:
-                break
-            }
+        .onChange(of: peerInfoUseCase.state.isNearby) { _, isNearby in
+            isNearby ? state.update(to: .nearby) : state.rollBack()
         }
-        .onChange(of: peerInfoUseCase.state.nearbyObject) {
-            guard let distance = peerInfoUseCase.state.nearbyObject?.distance else { return }
+    }
+}
+
+extension MainView {
+    @Observable
+    class ViewState {
+        enum StateType {
+            case direction
+            case location
+            case nearby
+        }
+        
+        private(set) var state: StateType = .direction
+        @ObservationIgnored private(set) var lastState: StateType = .direction
             
-            switch distance {
-            case 0..<ThreshHold.nearByDistance:
-                updateViewState(to: .nearby)
-            default:
-                updateViewState(to: lastViewState)
-            }
+        func update(to viewState: StateType) {
+            lastState = state
+            withAnimation { self.state = viewState }
         }
-    }
-}
-
-extension MainView {
-    enum ViewState {
-        case direction
-        case location
-        case nearby
-    }
-}
-
-extension MainView {
-    func updateViewState(to viewState: ViewState) {
-        withAnimation { self.state = viewState }
+        
+        func rollBack() {
+            withAnimation { self.state = self.lastState }
+        }
     }
 }
 
