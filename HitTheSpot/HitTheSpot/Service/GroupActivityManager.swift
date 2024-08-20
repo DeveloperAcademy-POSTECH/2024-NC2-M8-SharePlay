@@ -101,6 +101,12 @@ extension GroupActivityManager {
                     self.sessionDelegate?.didInvalidated(session, reason: error)
                     
                 case .joined:
+                    guard let session = self.session,
+                          session.activeParticipants.count <= 2
+                    else {
+                        return session.leave()
+                    }
+
                     self.log("Join to GroupSession")
                     self.session.map(self.join(_:))
                     self.sessionDelegate?.didLocalJoined(session)
@@ -123,6 +129,7 @@ extension GroupActivityManager {
             .$activeParticipants
             .sink { [weak self] in
                 guard let self else { return }
+                
                 self.sessionDelegate?.didParticipantsUpdated(
                     session,
                     local: session.localParticipant,
