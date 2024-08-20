@@ -14,9 +14,7 @@ class VibrationManager {
     static let shared = VibrationManager()
     
     private let hapticEngine: CHHapticEngine
-    
-    /// 엔진이 패턴 가지고 만드는 플레이어
-    private var hapticAdvancedPlayer: CHHapticAdvancedPatternPlayer? = nil
+    private var hapticAdvancedPlayer: CHHapticAdvancedPatternPlayer?
     
     private init?() {
         let hapticCapability = CHHapticEngine.capabilitiesForHardware()
@@ -28,35 +26,38 @@ class VibrationManager {
         
         do {
             hapticEngine = try CHHapticEngine()
-        } catch let error {
+        } catch {
             print("Haptic engine Creation Error: \(error)")
             return nil
         }
     }
 
     func stopHaptic() {
-        do {
-            try hapticAdvancedPlayer?.stop(atTime: 0)
-        } catch {
-            print("Failed to stopHaptic: \(error)")
-        }
+        stopPlayer()
     }
     
     func playHaptic(haptic: CustomHaptic) {
         do {
-            try hapticAdvancedPlayer?.stop(atTime: 0)
+            stopPlayer()
             
             let pattern = try makePattern(haptic: haptic)
-            
             hapticAdvancedPlayer = try hapticEngine.makeAdvancedPlayer(with: pattern)
             hapticAdvancedPlayer?.loopEnabled = true
-            hapticAdvancedPlayer?.playbackRate = 1.0
             
             try hapticEngine.start()
             try hapticAdvancedPlayer?.start(atTime: 0)
             
         } catch {
             print("Failed to playHaptic: \(error)")
+        }
+    }
+    
+    private func stopPlayer() {
+        guard let player = hapticAdvancedPlayer else { return }
+        do {
+            try player.stop(atTime: 0)
+        } catch {
+            print("Failed to stopHaptic: \(error)")
         }
     }
     
@@ -78,7 +79,6 @@ class VibrationManager {
             )
             
             events.append(event)
-            
             relativeTime += duration
         }
 
@@ -107,3 +107,4 @@ extension VibrationManager {
         }
     }
 }
+
