@@ -33,7 +33,7 @@ class GroupActivityManager {
 
 // MARK: - start/leave Activity
 extension GroupActivityManager {
-    public func requestStartGroupActivity() async -> Bool {
+    public func requestStartGroupActivity() async throws {
         let result = await activity.prepareForActivation()
         
         switch result {
@@ -42,13 +42,14 @@ extension GroupActivityManager {
                 _ = try await activity.activate()
                 log("새로운 Group Activity 활성화")
             } catch {
-                return false // (Error) .activationPreferred
+                // (Error) .activationPreferred
+                log("Group Activity 활성화 ERROR")
             }
         default:
-            return false // (Success) .activationDisabled, .canceled
+            return // (Success) .activationDisabled, .canceled
         }
         
-        return true // (Success) .activationPreferred
+        return // (Success) .activationPreferred
     }
     
     public func leaveGroupActivity() {

@@ -45,6 +45,7 @@ struct ContentView: View {
                 )
             case .localWithPeer:
                 MainView(
+                    sharePlayUseCase: sharePlayUseCase,
                     peerInfoUseCase: peerInfoUseCase,
                     myInfoUseCase: myInfoUseCase,
                     arUseCase: arUseCase
@@ -54,6 +55,10 @@ struct ContentView: View {
         .onChange(of: sharePlayUseCase.state.sharePlayState) { oldValue, newValue in
             if newValue == .localWithPeer {
                 myInfoUseCase.effect(.didPeerJoined)
+                peerInfoUseCase.effect(.didPeerJoined)
+            }
+            if oldValue == .localWithPeer && (newValue == .notJoined || newValue == .onlyLocal) {
+                peerInfoUseCase.effect(.stopSharePlayBtnTap)
             }
         }
     }

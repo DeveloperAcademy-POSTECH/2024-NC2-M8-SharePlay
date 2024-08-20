@@ -27,7 +27,6 @@ class SharePlayUseCase {
     
     struct State {
         var activity: HitTheSpotActivity
-        var isActivated: Bool = false
         var isSharePlaySheetPresented: Bool = false
         var participantCount: Int = 0
         var sharePlayState: SharePlayState = .notJoined
@@ -49,18 +48,22 @@ extension SharePlayUseCase {
         case .startSharePlayBtnTap:
             Task {
                 if manager.isGroupActivityAvailable {
-                    state.isActivated = await manager.requestStartGroupActivity()
+                    try await manager.requestStartGroupActivity()
                 } else {
                     state.isSharePlaySheetPresented = true
                 }
             }
         case .stopSharePlayBtnTap:
             manager.leaveGroupActivity() 
+            state = .init(activity: manager.activity)
         case .didSheetPresented(let isPresented):
             state.isSharePlaySheetPresented = isPresented
         case .didSharePlayStateUpdated(let sharePlayState, let count):
             state.sharePlayState = sharePlayState
             state.participantCount = count
+            if sharePlayState != .localWithPeer {
+                VibrationManager.shared?.stopHaptic()
+            }
         }
     }
 }

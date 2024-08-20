@@ -14,6 +14,8 @@ class PeerInfoUseCase {
     enum Action {
         case didNearby
         case isFinding
+        case stopSharePlayBtnTap
+        case didPeerJoined
         case didMessageReceived(message: HSMessage)
         case didNIObjectUpdated(object: NINearbyObject)
         case didConvergenceUpdated(
@@ -28,6 +30,7 @@ class PeerInfoUseCase {
         var nearbyObject: NINearbyObject? = nil
         var convergence: NIAlgorithmConvergence? = nil
         var isNearby: Bool = false
+        var isFinding: Bool = false
     }
     
     private let activityManager: GroupActivityManager
@@ -58,6 +61,11 @@ class PeerInfoUseCase {
         case .isFinding:
             VibrationManager.shared?.stopHaptic()
             state.isNearby = false
+        case .stopSharePlayBtnTap:
+            VibrationManager.shared?.stopHaptic()
+            state = .init()
+        case .didPeerJoined:
+            state.isFinding = true
         }
     }
     
@@ -87,7 +95,9 @@ extension PeerInfoUseCase: HSNIObjectDelegate {
     func didNIObjectUpdated(object: NINearbyObject) {
         effect(.didNIObjectUpdated(object: object))
         
-        guard let distance = object.distance else { return }
+        guard let distance = object.distance,
+              state.isFinding
+        else { return }
     
         switch distance {
         case 0..<ThreshHold.nearByDistance:

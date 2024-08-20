@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @State private var state: ViewState = .init()
+    let sharePlayUseCase: SharePlayUseCase
     let peerInfoUseCase: PeerInfoUseCase
     let myInfoUseCase: MyInfoUseCase
     let arUseCase: ARUseCase
@@ -33,7 +34,10 @@ struct MainView: View {
                 )
                 
             case .nearby:
-                MainNearbyView(peerInfoUseCase: peerInfoUseCase)
+                MainNearbyView(
+                    sharePlayUseCase: sharePlayUseCase,
+                    peerInfoUseCase: peerInfoUseCase
+                )
             }
         }
         .onAppear {
@@ -75,6 +79,9 @@ extension MainView {
 
 #Preview {
     MainView(
+        sharePlayUseCase: .init(
+            manager: .init()
+        ),
         peerInfoUseCase: .init(
             activityManager: .init(),
             niManager: .init()
