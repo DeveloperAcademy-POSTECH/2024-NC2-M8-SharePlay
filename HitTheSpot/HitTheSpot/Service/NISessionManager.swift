@@ -101,9 +101,7 @@ extension NISessionManager {
 
             // Prevent Simulator from finding devices.
             #if targetEnvironment(simulator)
-            let serviceIdentity = niStatus == .extended
-            ? Constant.serviceIdentityForSimulatorEDM
-            : Constant.serviceIdentityForSimulator
+            let serviceIdentity = Constant.serviceIdentityForSimulatorEDM
             #else
             let serviceIdentity = Constant.serviceIdentity
             #endif

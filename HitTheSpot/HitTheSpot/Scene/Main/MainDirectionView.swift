@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct MainDirectionView: View {
     @Bindable var myInfoUseCase: MyInfoUseCase
@@ -25,29 +26,37 @@ struct MainDirectionView: View {
         self.modeChangeHandler = modeChangeHandler
     }
     
+    var distance: CLLocationDistance {
+        peerInfoUseCase.state.location?.distance(from: myInfoUseCase.state.location) ?? 0
+    }
+    
     var body: some View {
-        ZStack {
-            HSARView(arUseCase: arUseCase)
-                .ignoresSafeArea()
-            
-            VStack {
-                TitleLabel(
-                    peerName: peerInfoUseCase.state.profile?.name ?? "",
-                    distance: peerInfoUseCase.state.nearbyObject?.distance ?? 0
+        GeometryReader { gr in
+            ZStack {
+                HSARView(arUseCase: arUseCase)
+                    .ignoresSafeArea()
+                
+                ArrowOverlay(
+                    gr: gr,
+                    rotateAngle: peerInfoUseCase.state.nearbyObject?.horizontalAngle
                 )
                 
-                Spacer()
-                
-                ShowLocationViewButton {
-                    modeChangeHandler()
+                VStack {
+                    TitleLabel(
+                        peerName: peerInfoUseCase.state.profile?.name ?? "친구",
+                        distance: peerInfoUseCase.state.nearbyObject?.distance ?? Float(distance)
+                    )
+                    
+                    Spacer()
+                    
+                    ShowLocationViewButton {
+                        withAnimation {
+                            modeChangeHandler()
+                        }
+                    }
                 }
+                .padding(.vertical, 60)
             }
-            .padding(.vertical, 60)
-            
-            ArrowOverlay()
-                .rotationEffect(
-                    Angle(radians: Double(peerInfoUseCase.state.nearbyObject?.horizontalAngle ?? 0))
-                )
         }
         .onAppear {
             arUseCase.effect(.startSession)
@@ -60,7 +69,7 @@ struct MainDirectionView: View {
 
 extension MainDirectionView {
     @ViewBuilder
-    func ArrowOverlay() -> some View {
+    func ArrowOverlay(gr: GeometryProxy, rotateAngle: Float?) -> some View {
         ZStack {
             Circle()
                 .fill(
@@ -77,17 +86,29 @@ extension MainDirectionView {
                     )
                 )
             
-            Circle()
-                .stroke(.white, lineWidth: 1)
-            
-            Literal.HSImage.arrow
-            
-            Circle()
-                .fill(Color.accent)
-                .frame(width: 16)
-                .offset(y: -180)
+            if rotateAngle != nil {
+                Circle()
+                    .stroke(.white, lineWidth: 1)
+                
+                Literal.HSImage.arrow
+                
+                HStack {
+                    Circle()
+                        .fill(Color.accent)
+                        .frame(width: 16)
+                        .offset(x: -8)
+                    Spacer()
+                }
+                .rotationEffect(.radians(.pi / 2))
+                
+            } else {
+                LottieView(filename: "Searching")
+                    .scaleEffect(2)
+                    .padding(.horizontal, 10)
+            }
         }
         .padding(.horizontal, 16)
+        .rotationEffect(Angle(radians: Double(rotateAngle ?? 0)))
     }
     
     @ViewBuilder

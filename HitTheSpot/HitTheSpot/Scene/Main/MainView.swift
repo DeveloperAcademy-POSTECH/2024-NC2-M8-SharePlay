@@ -64,15 +64,13 @@ extension MainView {
         private(set) var state: StateType = .direction
         @ObservationIgnored private(set) var lastState: StateType = .direction
         
-        @MainActor
         func update(to viewState: StateType) {
             lastState = state
-            withAnimation { self.state = viewState }
+            state = viewState
         }
         
-        @MainActor
         func rollBack() {
-            withAnimation { self.state = self.lastState }
+            state = lastState
         }
     }
 }

@@ -52,7 +52,7 @@ class PeerInfoUseCase {
         case .didMessageReceived(let message):
             didMessageReceivedEffect(message: message)
         case .didNIObjectUpdated(let object):
-            state.nearbyObject = object
+            Task { @MainActor in self.state.nearbyObject = object }
         case .didConvergenceUpdated(let convergence, let object):
             didEffect(of: object) { state.convergence = convergence }
         case .didNearby:

@@ -37,7 +37,11 @@ struct MainLocationView: View {
                     HStack(alignment: .bottom) {
                         Color.clear.frame(width: 50, height: 50)
                         Spacer()
-                        ShowDistanceViewButton { modeChangeHandler() }
+                        ShowDistanceViewButton {
+                            withAnimation {
+                                modeChangeHandler()
+                            }
+                        }
                         Spacer()
                         HSMapControls(scope: mapScope)
                     }
