@@ -21,7 +21,6 @@ class MyInfoUseCase {
         case didPeerJoined
         
         case sendProfile(profile: HSUserProfile)
-        case sendToken(token: NIDiscoveryToken)
         case sendLocation(location: HSLocation)
         case sendError(error: Error)
         case saveError
@@ -31,18 +30,17 @@ class MyInfoUseCase {
     struct State {
         var profile: HSUserProfile? = nil
         var location: HSLocation? = nil
-        var token: NIDiscoveryToken? = nil
     }
     
-    private let activityManager: HSGroupActivityManager
-    private let niManager: HSNearbyInteractManager
-    private let locationManager: HSLocationManager
+    private let activityManager: GroupActivityManager
+    private let niManager: NISessionManager
+    private let locationManager: LocationManager
     private(set) var state: State
     
     init(
-        activityManager: HSGroupActivityManager,
-        niManager: HSNearbyInteractManager,
-        locationManager: HSLocationManager
+        activityManager: GroupActivityManager,
+        niManager: NISessionManager,
+        locationManager: LocationManager
     ) {
         if let savedProfile = UserDefaults.standard.data(forKey: "profile"),
             let profile = try? JSONDecoder().decode(HSUserProfile.self, from: savedProfile) {
@@ -60,34 +58,27 @@ class MyInfoUseCase {
         switch action {
         case .startMonitorLocation:
             locationManager.startUpdating()
+            niManager.startup()
         case .stopMonitorLocation:
             locationManager.stopUpdating()
+            niManager.invalidate()
         case .updateProfile(let profile):
             save(profile)
             state.profile = profile
         case .didGPSUpdated(let location):
+            effect(.sendLocation(location: location))
             state.location = location
-        
+            
         case .didPeerJoined:
-            guard let profile = state.profile,
-                  let token = niManager.token
+            guard let profile = state.profile
             else { effect(.noProfileError); return }
             
             effect(.sendProfile(profile: profile))
-            effect(.sendToken(token: token))
             
         case .sendProfile(let profile):
             Task {
                 do {
                     try await activityManager.send(.profile(profile))
-                } catch {
-                    effect(.sendError(error: error))
-                }
-            }
-        case .sendToken(let token):
-            Task {
-                do {
-                    try await activityManager.send(.token(encode(token)))
                 } catch {
                     effect(.sendError(error: error))
                 }

@@ -1,5 +1,5 @@
 //
-//  HSGroupActivityManager.swift
+//  GroupActivityManager.swift
 //  HitTheSpot
 //
 //  Created by 남유성 on 7/13/24.
@@ -9,12 +9,12 @@ import Foundation
 import GroupActivities
 import Combine
 
-class HSGroupActivityManager {
-    typealias SessionState = GroupSession<HSShareLocationActivity>.State
+class GroupActivityManager {
+    typealias SessionState = GroupSession<HitTheSpotActivity>.State
     
     private let groupStateObserver = GroupStateObserver()
-    private(set) var activity: HSShareLocationActivity
-    private var session: GroupSession<HSShareLocationActivity>?
+    private(set) var activity: HitTheSpotActivity
+    private var session: GroupSession<HitTheSpotActivity>?
     private var messenger: GroupSessionMessenger?
     
     private var cancellables = Set<AnyCancellable>()
@@ -32,27 +32,24 @@ class HSGroupActivityManager {
 }
 
 // MARK: - start/leave Activity
-extension HSGroupActivityManager {
-    public func requestStartGroupActivity() async -> Bool {
+extension GroupActivityManager {
+    public func requestStartGroupActivity() async throws {
         let result = await activity.prepareForActivation()
         
         switch result {
         case .activationPreferred:
             do {
-                if let session {
-                    session.join()
-                } else {
-                    _ = try await activity.activate()
-                    log("새로운 Group Activity 활성화")
-                }
+                _ = try await activity.activate()
+                log("새로운 Group Activity 활성화")
             } catch {
-                return false // (Error) .activationPreferred
+                // (Error) .activationPreferred
+                log("Group Activity 활성화 ERROR")
             }
         default:
-            return false // (Success) .activationDisabled, .canceled
+            return // (Success) .activationDisabled, .canceled
         }
         
-        return true // (Success) .activationPreferred
+        return // (Success) .activationPreferred
     }
     
     public func leaveGroupActivity() {
@@ -68,10 +65,10 @@ extension HSGroupActivityManager {
 }
 
 // MARK: - Monitoring New Activity
-extension HSGroupActivityManager {
+extension GroupActivityManager {
     private func monitorNewGroupActivity() {
         Task.detached { [weak self] in
-            for await session in HSShareLocationActivity.sessions() {
+            for await session in HitTheSpotActivity.sessions() {
                 self?.log("새로운 활동 세션 감지됨")
                 self?.session = session
                 self?.messenger = GroupSessionMessenger(session: session)
@@ -83,7 +80,7 @@ extension HSGroupActivityManager {
         }
     }
     
-    private func join(_ session: GroupSession<HSShareLocationActivity>) {
+    private func join(_ session: GroupSession<HitTheSpotActivity>) {
         if session.state != .joined {
             session.join()
         }
@@ -137,16 +134,14 @@ extension HSGroupActivityManager {
 }
 
 // MARK: - Messaging
-extension HSGroupActivityManager {
-    public func send(_ message: HSPeerInfoMessage) async throws {
+extension GroupActivityManager {
+    public func send(_ message: HSMessage) async throws {
         do {
             switch message {
             case .profile(let profile):
                 try await messenger?.send(profile)
             case .location(let location):
                 try await messenger?.send(location)
-            case .token(let tokenData):
-                try await messenger?.send(tokenData)
             }
             
         } catch {
@@ -168,17 +163,11 @@ extension HSGroupActivityManager {
                 self.messageDelegate?.receive(.location(message.0))
             }
         }
-        
-        Task.detached {
-            for await message in messenger.messages(of: Data.self) {
-                self.messageDelegate?.receive(.token(message.0))
-            }
-        }
     }
 }
 
 // MARK: - Log
-extension HSGroupActivityManager {
+extension GroupActivityManager {
     private func log(_ message: String) {
         HSLog(from: "\(Self.self)", with: message)
     }

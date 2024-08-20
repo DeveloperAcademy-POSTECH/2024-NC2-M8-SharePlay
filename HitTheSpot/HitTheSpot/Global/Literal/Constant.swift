@@ -22,7 +22,7 @@ enum QueueLabel {
 }
 
 enum ThreshHold {
-    static let maxDistacne: Float = 50.0
-    static let nearByDistance: Float = 1.0
+    static let maxDistance: Float = 50.0
+    static let nearByDistance: Float = 0.3
     static let minSamples: Int = 8
 }

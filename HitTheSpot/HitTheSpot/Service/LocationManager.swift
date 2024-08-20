@@ -1,5 +1,5 @@
 //
-//  HSLocationManager.swift
+//  LocationManager.swift
 //  HitTheSpot
 //
 //  Created by 남유성 on 7/13/24.
@@ -8,8 +8,8 @@
 import Foundation
 import CoreLocation
 
-class HSLocationManager: NSObject {
-    private let _manager: CLLocationManager
+class LocationManager: NSObject {
+    private let manager: CLLocationManager
     private var location: CLLocation?
     private var isUpdating: Bool = false
     private var curLocationCompletion: ((CLLocation?) -> Void)?
@@ -17,15 +17,15 @@ class HSLocationManager: NSObject {
     weak var delegate: HSLocationDelegate?
     
     override init() {
-        _manager = CLLocationManager()
+        manager = CLLocationManager()
         super.init()
-        _manager.delegate = self
+        manager.delegate = self
     }
 }
 
-extension HSLocationManager {
+extension LocationManager {
     public func startUpdating() {
-        switch _manager.authorizationStatus {
+        switch manager.authorizationStatus {
         case .notDetermined:
             requestAuthorization()
             
@@ -44,7 +44,7 @@ extension HSLocationManager {
     public func stopUpdating() {
         isUpdating = false
         location = nil
-        _manager.stopUpdatingLocation()
+        manager.stopUpdatingLocation()
         log("사용자의 위치 업데이트를 중지합니다.")
     }
     
@@ -61,19 +61,19 @@ extension HSLocationManager {
     }
     
     private func requestAuthorization() {
-        _manager.desiredAccuracy = kCLLocationAccuracyBest
-        _manager.requestWhenInUseAuthorization()
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
         log("사용자의 위치 권한을 요청합니다.")
     }
     
     private func startUpdatingLocation() {
         isUpdating = true
-        _manager.startUpdatingLocation()
+        manager.startUpdatingLocation()
         log("사용자의 위치 업데이트를 시작합니다.")
     }
 }
 
-extension HSLocationManager: CLLocationManagerDelegate {
+extension LocationManager: CLLocationManagerDelegate {
     /// 위치 정보가 업데이트 되었을 때 실행
     func locationManager(
         _ manager: CLLocationManager,
@@ -100,7 +100,7 @@ extension HSLocationManager: CLLocationManagerDelegate {
 }
 
 // MARK: - Log 관련
-extension HSLocationManager {
+extension LocationManager {
     private func log(_ message: String) {
         HSLog(from: "\(Self.self)", with: message)
     }

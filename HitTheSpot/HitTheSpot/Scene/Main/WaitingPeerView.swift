@@ -100,7 +100,10 @@ extension WaitingPeerView {
         }
         .padding(.vertical, 20)
         .padding(.horizontal, 37)
-        .background(RoundedRectangle(cornerRadius: 20))
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundStyle(.black)
+        )
     }
     
     @ViewBuilder

@@ -10,7 +10,7 @@ import GroupActivities
 
 // MARK: - Monitoring Session
 protocol HSGroupSessionDelegate: AnyObject {
-    typealias Session = GroupSession<HSShareLocationActivity>
+    typealias Session = GroupSession<HitTheSpotActivity>
     
     func didInvalidated(_ session: Session, reason: Error)
     func didLocalJoined(_ session: Session)

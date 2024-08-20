@@ -16,12 +16,12 @@ class ARUseCase {
         case stopSession
     }
     
-    private let niManager: HSNearbyInteractManager
-    private let arManager: HSARManager
+    private let niManager: NISessionManager
+    private let arManager: ARManager
     
     init(
-        niManager: HSNearbyInteractManager,
-        arManager: HSARManager
+        niManager: NISessionManager,
+        arManager: ARManager
     ) {
         self.niManager = niManager
         self.arManager = arManager

@@ -10,57 +10,54 @@ import NearbyInteraction
 import MultipeerConnectivity
 import ARKit
 
-@Observable
+protocol HSNIObjectDelegate: AnyObject {
+    func didNIObjectUpdated(object: NINearbyObject)
+    func didUpdateConvergence(
+        convergence: NIAlgorithmConvergence,
+        object: NINearbyObject
+    )
+}
+
 class NISessionManager: NSObject {
-    var connectedPeerName: String? = nil
-    var distance: Float? = nil
-    var horizontalAngle: Float? = nil
-    
-    /// Nearby Interaction 지원 상태
-    @ObservationIgnored private let niStatus: HSNIStatus
-    
     /// NISession의 세션 동기화 작업을 위한 Queue
-    @ObservationIgnored private let niSessionQueue = DispatchQueue(
+    private let niSessionQueue = DispatchQueue(
         label: QueueLabel.niSessionQueue,
         qos: .userInitiated
     )
     
     /// 상대 Peer와의 측정 퀄리티 측정 객체
-    @ObservationIgnored private let qualityEstimator: MeasurementQualityEstimator?
+    private let qualityEstimator: MeasurementQualityEstimator?
     
     /// 현재 Nearby Interation Session
-    @ObservationIgnored private var niSession: NISession?
+    private var niSession: NISession?
     
     /// 현재 Multipeer Connectivity Session
-    @ObservationIgnored private var mpcSession: MPCSession?
+    private var mpcSession: MPCSession?
     
     /// 현재 AR Session
-    @ObservationIgnored private var arSession: ARSession?
+    private var arSession: ARSession?
     
     /// MPCSession으로 연결된 Peer의 DiscoveryToken
-    @ObservationIgnored private var peerDiscoveryToken: NIDiscoveryToken?
+    private var peerDiscoveryToken: NIDiscoveryToken?
     
     /// MPCSession으로 연결된 Peer의 NISession으로 제공받은 NearbyObject(거리, 방향 정보)
-    @ObservationIgnored private var currentNearbyObject: NINearbyObject?
+    private var currentNearbyObject: NINearbyObject?
     
     /// MPCSession으로 연결된 Peer
-    @ObservationIgnored private var connectedPeer: MCPeerID? = nil
+    private var connectedPeer: MCPeerID? = nil
     
     /// MPCSession으로 연결된 Peer에게 DiscoveryToken을 전송했는 지 여부
-    @ObservationIgnored private var sharedTokenWithPeer = false
+    private var sharedTokenWithPeer = false
     
     /// Nearby Interaction에서 카메라 지원을 활성화 했을 때, 런타임에서 필요로 하는 카메라 세팅의 권장사항
-    @ObservationIgnored private var convergenceContext: NIAlgorithmConvergence?
+    private var convergenceContext: NIAlgorithmConvergence?
     
-    /// Nearby Interaction 기능 지원 여부
-    @ObservationIgnored private var isSupportU1: Bool { niStatus == .precise }
     
-    /// Nearby Interaction EDM(Extended Distance Measurement) 기능 지원 여부
-    @ObservationIgnored private var isSupportU2: Bool { niStatus == .extended }
     
-    init(niStatus: HSNIStatus) {
-        self.niStatus = niStatus
-        self.qualityEstimator = niStatus == .extended ? MeasurementQualityEstimator() : nil
+    weak var niObjectDelegate: HSNIObjectDelegate?
+    
+    override init() {
+        self.qualityEstimator = MeasurementQualityEstimator()
         super.init()
     }
     
@@ -80,7 +77,7 @@ extension NISessionManager {
     }
     
     func invalidate() {
-        arSession?.pause()
+//        arSession?.pause()
         resetPeerData()
         invalidateMPCSession()
         invalidateNISession()
@@ -104,9 +101,7 @@ extension NISessionManager {
 
             // Prevent Simulator from finding devices.
             #if targetEnvironment(simulator)
-            let serviceIdentity = niStatus == .extended
-            ? Constant.serviceIdentityForSimulatorEDM
-            : Constant.serviceIdentityForSimulator
+            let serviceIdentity = Constant.serviceIdentityForSimulatorEDM
             #else
             let serviceIdentity = Constant.serviceIdentity
             #endif
@@ -180,21 +175,14 @@ extension NISessionManager {
         }
 
         // 연결된 Peer 정보 저장
-        connectedPeer = peer 
-        // TODO: - 여럿이 되면 여기를 배열로 변경?
-        
-        // TODO: - connected Peer 정보 View 업데이트
-        connectedPeerName = connectedPeer?.displayName
+        connectedPeer = peer
     }
     
     /// MPCSession에서 Peer와 연결이 끊어졌을 때 실행할 클로저
     /// - Parameter peer: 연결이 끊어진 Peer
     private func disconnectedFromPeer(peer: MCPeerID) {
         // TODO: - 여러 Peer와 연결될 경우, 배열에서 삭제하는 로직으로 수정
-        if connectedPeer == peer {
-            resetPeerData()
-            connectedPeerName = nil
-        }
+        if connectedPeer == peer { resetPeerData() }
     }
     
     /// MPCSession에서 DiscoveryToken을 전송 받았을 때 실행할 클로저
@@ -288,9 +276,7 @@ extension NISessionManager: NISessionDelegate {
 
         // Update and compute with updated `nearbyObject`.
         currentNearbyObject = peerObj
-        
-        distance = peerObj.distance
-        horizontalAngle = peerObj.horizontalAngle
+        niObjectDelegate?.didNIObjectUpdated(object: peerObj)
     }
     
     /// 1개 이상의 NearBy 객체가 제거될 때 호출
@@ -394,9 +380,10 @@ extension NISessionManager {
         // Update and compute with updated algorithm `convergence` and `nearbyObject`.
         currentNearbyObject = nearbyObject
         convergenceContext = convergence
-        
-        distance = nearbyObject.distance
-        horizontalAngle = nearbyObject.horizontalAngle
+        niObjectDelegate?.didUpdateConvergence(
+            convergence: convergence,
+            object: nearbyObject
+        )
     }
 }
 

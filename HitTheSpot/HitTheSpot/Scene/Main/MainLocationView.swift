@@ -2,7 +2,7 @@
 //  MainLocationView.swift
 //  HitTheSpot
 //
-//  Created by 남유성 on 6/18/24.
+//  Created by 남유성 on 8/3/24.
 //
 
 import SwiftUI
@@ -10,89 +10,88 @@ import MapKit
 
 struct MainLocationView: View {
     @Bindable var myInfoUseCase: MyInfoUseCase
-    @Bindable var activityManager: GroupActivityManager
-    @State private var locationManager = LocationManager()
+    @Bindable var peerInfoUseCase: PeerInfoUseCase
     @State private var cameraPosition: MapCameraPosition = .userLocation(
         followsHeading: true,
         fallback: .automatic
     )
-    @State private var workItem: DispatchWorkItem?
+    @Namespace var mapScope
     
-    let arViewController: HSARManager
-    var modeChangeHandler: (() -> Void)?
+    let arUseCase: ARUseCase
+    let modeChangeHandler: () -> Void
     
     var body: some View {
         ZStack {
-            Map(position: $cameraPosition) {
-                
-                if let myLocation = myInfoUseCase.state.location {
-                    Annotation("나", coordinate: .init(myLocation)) {
-                        Marker()
-                    }
-                }
-                
-                if let peerLocationMessage = activityManager.locationMessages.last {
-                    Annotation(
-                        peerLocationMessage.userName,
-                        coordinate: .init(peerLocationMessage.location)
-                    ) {
-                        Marker(isPeer: true)
-                    }
-                }
-            }
+            HSMap(position: $cameraPosition, scope: mapScope)
             
             Group {
                 RadialGradientCover()
+                    .allowsHitTesting(false)
                 
                 VStack {
-                    if let peerLocationMessage = activityManager.locationMessages.last {
-                        TitleLabel(pearName: peerLocationMessage.userName)
-                    } else {
-                        TitleLabel(pearName: "친구")
-                    }
+                    TitleLabel(pearName: peerInfoUseCase.state.profile?.name ?? "친구")
+                        .allowsTightening(false)
                     
                     Spacer()
                     
-                    ShowDistanceViewButton {
-                        modeChangeHandler?()
+                    HStack(alignment: .bottom) {
+                        Color.clear.frame(width: 50, height: 50)
+                        Spacer()
+                        ShowDistanceViewButton {
+                            withAnimation {
+                                modeChangeHandler()
+                            }
+                        }
+                        Spacer()
+                        HSMapControls(scope: mapScope)
                     }
+                    .padding(.horizontal, 24)
                 }
                 .padding(.vertical, 60)
             }
-            .allowsHitTesting(false)
         }
-        .onAppear {
-            locationManager.updateLocationHandler = { location in
-                Task {
-                    do {
-                        try await activityManager.send(ShareLocationMessage(userName: "이거 나임", location: .init(location)))
-                    } catch {
-                        print(#fileID, #function, #line, "\(error)")
-                    }
-                }
-            }
-            locationManager.requestAuthorization()
-            arViewController.pauseSession()
-        }
-        .onDisappear {
-            locationManager.stopUpdatingLocation()
-            arViewController.startSession()
-        }
-        .onMapCameraChange(frequency: .continuous) {
-            // TODO: - 다수라면 여기 코드 업데이트
-            let peerLocation = activityManager.locationMessages.last?.location.toCLLocation()
-            
-            schedule(
-                task: {
-                    updateCameraPostion(for: [peerLocation].compactMap { $0 })
-                }, 
-                after: .now() + 1
-            )
-        }
+        .mapScope(mapScope)
     }
 }
 
 extension MainLocationView {
+    @ViewBuilder
+    func HSMap(position: Binding<MapCameraPosition>, scope: Namespace.ID) -> some View {
+        Map(position: position, scope: scope) {
+            
+            if let myLocation = myInfoUseCase.state.location {
+                Annotation("나", coordinate: .init(myLocation)) {
+                    Marker()
+                }
+            }
+            
+            if let peerInfo = peerInfoUseCase.state.profile,
+               let peerLocation = peerInfoUseCase.state.location
+            {
+                Annotation(peerInfo.name, coordinate: .init(peerLocation)) {
+                    Marker(isPeer: true)
+                }
+            }
+        }
+        .mapControlVisibility(.hidden)
+    }
+
+    @ViewBuilder
+    func HSMapControls(scope: Namespace.ID) -> some View {
+        VStack(alignment: .trailing, spacing: 16) {
+            Group {
+                MapCompass(scope: scope)
+                
+                MapPitchToggle(scope: scope)
+                
+                MapUserLocationButton(scope: scope)
+                    .buttonBorderShape(.buttonBorder)
+                    .clipShape(Circle())
+            }
+            .frame(width: 50, height: 50)
+        }
+    }
+    
     @ViewBuilder
     func Marker(isPeer: Bool = false) -> some View {
         ZStack {
@@ -176,57 +175,6 @@ extension MainLocationView {
     }
 }
 
-extension MainLocationView {
-    private func schedule(
-        task: @escaping () -> Void,
-        after: DispatchTime = .now() + 1
-    ) {
-        workItem?.cancel()
-        let item = DispatchWorkItem { task() }
-        workItem = item
-        DispatchQueue.main.asyncAfter(deadline: after, execute: item)
-    }
-    
-    private func updateCameraPostion(for locations: [CLLocation] = []) {
-        guard let myLocation = locationManager.lastLocation else { return }
-        
-        guard !locations.isEmpty else {
-            let camPostion = MapCameraPosition.region(
-                .init(
-                    center: myLocation.coordinate,
-                    span: .init(latitudeDelta: 0.02, longitudeDelta: 0.02) // 기본값으로 0.02로 설정
-                )
-            )
-            
-            moveCamera(to: camPostion)
-            return
-        }
-        
-        guard let maxDistance = locations.map({ $0.distance(from: myLocation) }).max() else { return }
-        
-        let span = MKCoordinateSpan(
-            latitudeDelta: maxDistance * 2 * 1.2, // 기본값으로 1.2 만큼 확장되도록 설정
-            longitudeDelta: maxDistance * 2 * 1.2
-        )
-        
-        moveCamera(to: .region(.init(center: myLocation.coordinate, span: span)))
-    }
-    
-    private func moveCamera(to position: MapCameraPosition) {
-        withAnimation {
-            cameraPosition = .userLocation(followsHeading: true, fallback: position)
-        }
-    }
-}
-
 #Preview {
-    MainLocationView(
-        myInfoUseCase: MyInfoUseCase(
-            activityManager: HSGroupActivityManager(),
-            niManager: HSNearbyInteractManager(),
-            locationManager: HSLocationManager()
-        ),
-        activityManager: GroupActivityManager(),
-        arViewController: HSARManager()
-    )
+    MainLocationView(myInfoUseCase: .init(activityManager: .init(), niManager: .init(), locationManager: .init()), peerInfoUseCase: .init(activityManager: .init(), niManager: .init()), arUseCase: .init(niManager: .init(), arManager: .init()), modeChangeHandler: {})
 }

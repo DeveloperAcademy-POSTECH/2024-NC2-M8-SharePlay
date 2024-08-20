@@ -28,14 +28,18 @@ extension HSLocation {
         .init(latitude: self.latitude, longitude: self.longitude)
     }
     
-    func distance(from location: HSLocation) -> CLLocationDistance {
+    func distance(from location: HSLocation?) -> CLLocationDistance {
+        guard let location else { return 0 }
+        
         let fromLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
         let toLocation = CLLocation(latitude: self.latitude, longitude: self.longitude)
         
         return fromLocation.distance(from: toLocation)
     }
     
-    func distance(from fromLocation: CLLocation) -> CLLocationDistance {
+    func distance(from fromLocation: CLLocation?) -> CLLocationDistance {
+        guard let fromLocation else { return 0 }
+        
         let toLocation = CLLocation(latitude: self.latitude, longitude: self.longitude)
         
         return fromLocation.distance(from: toLocation)

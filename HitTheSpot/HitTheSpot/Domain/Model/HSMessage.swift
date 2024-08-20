@@ -9,9 +9,8 @@ import Foundation
 import NearbyInteraction
 import CoreLocation
 
-enum HSPeerInfoMessage {
+enum HSMessage {
     case profile(_ profile: HSUserProfile)
     case location(_ location: HSLocation)
-    case token(_ token: Data)
 }
 

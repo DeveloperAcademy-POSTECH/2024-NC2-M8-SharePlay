@@ -12,9 +12,12 @@ import NearbyInteraction
 @Observable
 class PeerInfoUseCase {
     enum Action {
-        case didMessageReceived(message: HSPeerInfoMessage)
+        case didNearby
+        case isFinding
+        case stopSharePlayBtnTap
+        case didPeerJoined
+        case didMessageReceived(message: HSMessage)
         case didNIObjectUpdated(object: NINearbyObject)
-        case didNIObjectRemoved(object: NINearbyObject)
         case didConvergenceUpdated(
             convergence: NIAlgorithmConvergence,
             object: NINearbyObject
@@ -24,23 +27,24 @@ class PeerInfoUseCase {
     struct State {
         var profile: HSUserProfile? = nil
         var location: HSLocation? = nil
-        var token: NIDiscoveryToken? = nil
         var nearbyObject: NINearbyObject? = nil
         var convergence: NIAlgorithmConvergence? = nil
+        var isNearby: Bool = false
+        var isFinding: Bool = false
     }
     
-    private let activityManager: HSGroupActivityManager
-    private let niManager: HSNearbyInteractManager
+    private let activityManager: GroupActivityManager
+    private let niManager: NISessionManager
     private(set) var state: State = .init()
     
     init(
-        activityManager: HSGroupActivityManager,
-        niManager: HSNearbyInteractManager
+        activityManager: GroupActivityManager,
+        niManager: NISessionManager
     ) {
         self.activityManager = activityManager
         self.niManager = niManager
         self.activityManager.messageDelegate = self
-        self.niManager.delegate = self
+        self.niManager.niObjectDelegate = self
     }
     
     public func effect(_ action: Action) {
@@ -48,22 +52,29 @@ class PeerInfoUseCase {
         case .didMessageReceived(let message):
             didMessageReceivedEffect(message: message)
         case .didNIObjectUpdated(let object):
-            state.nearbyObject = object
-        case .didNIObjectRemoved(let object):
-            didEffect(of: object) { state.nearbyObject = nil }
+            Task { @MainActor in self.state.nearbyObject = object }
         case .didConvergenceUpdated(let convergence, let object):
             didEffect(of: object) { state.convergence = convergence }
+        case .didNearby:
+            VibrationManager.shared?.playHaptic(haptic: .sample)
+            state.isNearby = true
+        case .isFinding:
+            VibrationManager.shared?.stopHaptic()
+            state.isNearby = false
+        case .stopSharePlayBtnTap:
+            VibrationManager.shared?.stopHaptic()
+            state = .init()
+        case .didPeerJoined:
+            state.isFinding = true
         }
     }
     
-    private func didMessageReceivedEffect(message: HSPeerInfoMessage) {
+    private func didMessageReceivedEffect(message: HSMessage) {
         switch message {
         case .profile(let profile):
             state.profile = profile
         case .location(let location):
             state.location = location
-        case .token(let data):
-            state.token = decode(data: data)
         }
     }
     
@@ -72,31 +83,28 @@ class PeerInfoUseCase {
             effect()
         }
     }
-    
-    private func decode<T: NSObject & NSSecureCoding>(data: Data) -> T? {
-        guard let decodedObject = try? NSKeyedUnarchiver.unarchivedObject(
-            ofClass: T.self,
-            from: data
-        ) else {
-            return nil
-        }
-        return decodedObject
-    }
 }
 
 extension PeerInfoUseCase: HSMessagingDelegate {
-    func receive(_ message: HSPeerInfoMessage) {
+    func receive(_ message: HSMessage) {
         effect(.didMessageReceived(message: message))
     }
 }
 
-extension PeerInfoUseCase: HSNearbyInteractionDelegate {
+extension PeerInfoUseCase: HSNIObjectDelegate {
     func didNIObjectUpdated(object: NINearbyObject) {
         effect(.didNIObjectUpdated(object: object))
-    }
+        
+        guard let distance = object.distance,
+              state.isFinding
+        else { return }
     
-    func didNIObjectRemoved(object: NINearbyObject) {
-        effect(.didNIObjectRemoved(object: object))
+        switch distance {
+        case 0..<ThreshHold.nearByDistance:
+            if !state.isNearby { effect(.didNearby) }
+        default:
+            if state.isNearby { effect(.isFinding) }
+        }
     }
     
     func didUpdateConvergence(convergence: NIAlgorithmConvergence, object: NINearbyObject) {

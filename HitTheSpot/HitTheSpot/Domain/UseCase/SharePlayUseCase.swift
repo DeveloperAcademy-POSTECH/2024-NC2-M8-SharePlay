@@ -10,7 +10,7 @@ import GroupActivities
 
 @Observable
 class SharePlayUseCase {
-    typealias Activity = HSShareLocationActivity
+    typealias Activity = HitTheSpotActivity
     
     enum SharePlayState {
         case notJoined
@@ -26,17 +26,16 @@ class SharePlayUseCase {
     }
     
     struct State {
-        var activity: HSShareLocationActivity
-        var isActivated: Bool = false
+        var activity: HitTheSpotActivity
         var isSharePlaySheetPresented: Bool = false
         var participantCount: Int = 0
         var sharePlayState: SharePlayState = .notJoined
     }
     
-    private let manager: HSGroupActivityManager
+    private let manager: GroupActivityManager
     private(set) var state: State
     
-    init(manager: HSGroupActivityManager) {
+    init(manager: GroupActivityManager) {
         self.manager = manager
         self.state = .init(activity: manager.activity)
         self.manager.sessionDelegate = self
@@ -49,18 +48,22 @@ extension SharePlayUseCase {
         case .startSharePlayBtnTap:
             Task {
                 if manager.isGroupActivityAvailable {
-                    state.isActivated = await manager.requestStartGroupActivity()
+                    try await manager.requestStartGroupActivity()
                 } else {
                     state.isSharePlaySheetPresented = true
                 }
             }
         case .stopSharePlayBtnTap:
             manager.leaveGroupActivity() 
+            state = .init(activity: manager.activity)
         case .didSheetPresented(let isPresented):
             state.isSharePlaySheetPresented = isPresented
         case .didSharePlayStateUpdated(let sharePlayState, let count):
             state.sharePlayState = sharePlayState
             state.participantCount = count
+            if sharePlayState != .localWithPeer {
+                VibrationManager.shared?.stopHaptic()
+            }
         }
     }
 }
