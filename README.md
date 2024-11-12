@@ -1,3 +1,10 @@
+# 프로젝트 소개 링크
+https://kiwi-river-cf1.notion.site/SharePlay-77c694848c974e609eafe22370849c78?pvs=4
+
+# 영상 링크
+https://www.youtube.com/watch?v=simTpE_JiGw
+
+# 키노트
 ![NC2_오전_페어8_SharePlay 001](https://github.com/user-attachments/assets/105ed434-c844-4ca7-96cd-123c198c6326)
 ![NC2_오전_페어8_SharePlay 002](https://github.com/user-attachments/assets/e6a0fa67-88f8-43e0-a41f-f861feb656c3)
 ![NC2_오전_페어8_SharePlay 003](https://github.com/user-attachments/assets/59f9c6df-2fb7-438c-8598-aa2cf2af90f8)
